@@ -11,8 +11,10 @@ body {
 }
 
 .container {
-    max-width: 400px;
-    width: 100%;
+    max-width: 1000px;
+    width: 200%;
+    height: 100%;
+    max-height: 800px;
     background-color: white;
     padding: 30px;
     border-radius: 10px;
@@ -21,12 +23,13 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+   
 }
 
  h1 {
     font-size: 36px;
     color: #333;
-    margin-top: 30px;
+    margin-top: 210px;
 }
 
 form {
@@ -34,7 +37,8 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: fit-content;
+    height: fit-content;
 }
 
 input[placeholder]{
@@ -45,7 +49,7 @@ input[placeholder]{
     font-size: 14px;
     color: #333;
     display: flex;
-    align-items: center;
+    align-items: left;
 }
 
   p{
@@ -56,22 +60,21 @@ input[placeholder]{
 
 
     input[type="dataname"] {
-       
- width: 100%;
- padding: 10px;
- font-size: 16px;
- border: 1px solid #ccc;
- border-radius: 5px;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
       }
        
-           input[type="email"] {
+ input[type="email"] {
         
- width: 100%;
- padding: 10px;
- font-size: 16px;
- border: 1px solid #ccc;
- border-radius: 5px;
-      }
+   width: 100%;
+   padding: 10px;
+   font-size: 16px;
+   border: 1px solid #ccc;
+   border-radius: 10px;
+    }
 
 
    input[type="password"] {
@@ -80,25 +83,33 @@ input[placeholder]{
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 13px;
-
+    border-radius: 10px;
       }
 
-  input[type="tel"] {     
+   input[type="tel"] {     
    width: 100%;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
       }
   
       input[type="text"] {
-     width: 100%;
-     padding: 10px;
+      width: 100%;
+      padding: 10px;
       font-size: 16px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 10px;
       }
+
+      
+      input[type="date"] {
+        width: 100%;
+        padding: 10px;
+         font-size: 16px;
+         border: 1px solid #ccc;
+         border-radius: 10px;
+         }
 
 
 .Button1{

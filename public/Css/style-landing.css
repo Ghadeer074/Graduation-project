@@ -1,0 +1,97 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #E2C6A7, #D1A97D, #C99766);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Transparent Hajj Image as Background */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/public/Images/Hajj.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.15;
+    z-index: 1;
+}
+
+/* Main Container */
+.container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+/* Language Switch Icon (Plant/Earth) */
+.language-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.language-icon {
+    width: 50px;
+    height: 50px;
+}
+
+/* Logo Styling */
+.logo {
+    margin-top: 20px;
+}
+
+.logo-img {
+    width: 150px;
+}
+
+/* Welcome Text */
+.welcome-text h1 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+.welcome-text p {
+    font-size: 1.5em;
+    color: #555;
+}
+
+/* Buttons */
+.button-container {
+    margin-top: 30px;
+}
+
+.pilgrim-button, .organizer-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+
+.pilgrim-button {
+    background-color: #C4975C;
+    color: white;
+}
+
+.organizer-button {
+    background-color: #D1A97D;
+    color: white;
+}
+
+/* Hover Effects */
+.pilgrim-button:hover {
+    background-color: #a67d4e;
+}
+
+.organizer-button:hover {
+    background-color: #b48b64;
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/public/Images/Faridah app Logo.png" type="image/png">
-    <link rel="stylesheet" href="/public/Css/style-login.css">
+    <link rel="stylesheet" href="/public/Css/style-signup.css">
   </head>
   <body>
     <title>Faridah</title>
@@ -12,55 +12,55 @@
 <h1>Sign up</h1>
 <form method = "post" action="show-data.php" enctype="multipart/form-data">
 <p class = "row">
-<label>First name:</label>
+<label class="label">First name:</label>
 <input type="dataname" required="required" id="first" placeholder="Enter your first name">
 </p>
 
 <p class = "row">
-<label>Last name:</label>
+<label class="label">Last name:</label>
 <input type="dataname" required="required" id = "last" placeholder="Enter your last name"></p>
 
 <p class = "row">
-    <label>Date of birth:</label>
+    <label class="label">Date of birth:</label>
     <input type="date" required="required" id = "dob" placeholder="Enter your date of birth"></p>
     
 
 <p class = "row">
-    <label>Email address:</label>
+    <label class="label">Email address:</label>
     <input type="email" required="required" id="email" placeholder="Example@gmail.com">
 </input type>
 </p>
 
 <p class = "row">
-    <label>Phone number:</label>
+    <label class="label">Phone number:</label>
 <input type = "tel" id ="phoneNumber" required="required" placeholder="Enter phone number">
 </p>
 
 
 <p class = "row">
-    <label>Nationaliy:</label>
+    <label class="label">Nationaliy:</label>
     <input type="text" required="required" id ="nat" placeholder="Enter your Nationaliy">
 </input type>
 </p>
 
 <p class = "row">
-    <label>Province:</label>
+    <label class="label">Province:</label>
     <input type="text" required="required" id ="prov" placeholder="Enter your Province">
 </input type>
 </p>
 
 <p class = "row">
-    <label>Username:</label>
+    <label class="label" >Username:</label>
     <input type="text" id ="un" required="required" placeholder="Enter your username">
 </input type>
 </p>
 
 <p class = "row">
-    <label>Password:</label>
+    <label class="label">Password:</label>
     <input type="password" name="dataPassword" id="pass" placeholder="Password" required="required" size="20" maxlength="8"/> 
 </form>
 <p  class ="row">
-<input type="button" class="Button1" value="Create account" onclick="signUp()">
+<button type="button" class="Button1"  onclick="signUp()">Create account</button>
 </p>
 <p id="log">Already have an account? <a href="login pilgrim.html">Log in</a></p>
  </div>
