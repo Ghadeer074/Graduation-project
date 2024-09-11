@@ -1,4 +1,4 @@
-//<<<<<<< HEAD
+
 // JavaScript front-end codes here 
 document.querySelector('#content').innerHTML = `<button id="sendData">Send Data</button>`;
 
@@ -60,5 +60,3 @@ function validateForm() {
     // If validation passes, display a hello message
     alert('Hello!');
 } //end login javascript 
-
-//>>>>>>> 77beb6360bc88c6502e16e001e556b0b9c5a2f03

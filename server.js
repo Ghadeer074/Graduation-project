@@ -5,7 +5,7 @@ const path = require('path');
 
 // Create an Express app
 const app = express();
-const port = 3000; // You can change the port if needed
+const port = 3000; 
 
 // Middleware
 app.use(bodyParser.json());
