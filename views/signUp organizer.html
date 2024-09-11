@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/public/Images/Faridah app Logo.png" type="image/png">
+  </head>
+  <body>
+
+    <title>Faridah</title>
+<h1>Sign up</h1>
+<form method = "post" action="show-data.php" enctype="multipart/form-data">
+<p class = "row">
+<label>First name:</label>
+<input type="dataname" required="required" id="first" placeholder="Enter your first name">
+</p>
+
+<p class = "row">
+<label>Last name:</label>
+<input type="dataname" required="required" id = "last" placeholder="Enter your last name"></p>
+
+<p class = "row">
+    <label>Email address:</label>
+    <input type="email" required="required" id="email" placeholder="Example@gmail.com">
+</input type>
+</p>
+
+<p class = "row">
+    <label>Phone number:</label>
+<input type = "tel" id ="phoneNumber" required="required" placeholder="Enter phone number">
+</p>
+
+
+<p class = "row">
+    <label>Organization Name:</label>
+    <input type="text" required="required" id ="orgname" placeholder="Enter Organization Name">
+</input type>
+</p>
+
+
+<p class = "row">
+    <label>Organization Number:</label>
+    <input type="text" required="required" id ="orgnum" placeholder="Enter Organization Number">
+</input type>
+</p>
+
+<p class = "row">
+    <label>Password:</label>
+    <input type="password" name="dataPassword" id="pass" placeholder="Password" required="required" size="20" maxlength="8"/> 
+
+</form>
+
+<p  class ="row">
+<input type="button" id="Button1" value="Continue" onclick="signUp()">
+</p>
+<p id="log">Already have an account? <a href="login organizer.html">Log in</a></p>
+
+<script>src="\public\JavaScript\script-signup-org.js"</script>
+  </body>
+</html>
