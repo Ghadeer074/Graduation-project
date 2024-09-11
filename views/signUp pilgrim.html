@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/public/Images/Faridah app Logo.png" type="image/png">
+    <link rel="stylesheet" href="/public/Css/style-login.css">
   </head>
   <body>
-
     <title>Faridah</title>
+ <div class="container"> 
 <h1>Sign up</h1>
 <form method = "post" action="show-data.php" enctype="multipart/form-data">
 <p class = "row">
@@ -42,30 +43,27 @@
 </input type>
 </p>
 
-<p class = "row"></p>
+<p class = "row">
     <label>Province:</label>
     <input type="text" required="required" id ="prov" placeholder="Enter your Province">
 </input type>
 </p>
 
-
-<p class = "row"></p>
+<p class = "row">
     <label>Username:</label>
-    <input type="text" required="required" id ="un" placeholder="Enter your username">
+    <input type="text" id ="un" required="required" placeholder="Enter your username">
 </input type>
 </p>
 
 <p class = "row">
     <label>Password:</label>
     <input type="password" name="dataPassword" id="pass" placeholder="Password" required="required" size="20" maxlength="8"/> 
-
 </form>
-
 <p  class ="row">
-<input type="button" id="Button1" value="Continue" onclick="signUp()">
+<input type="button" class="Button1" value="Create account" onclick="signUp()">
 </p>
 <p id="log">Already have an account? <a href="login pilgrim.html">Log in</a></p>
-
+ </div>
 <script src="/public/JavaScript/script-signup-pil.js"></script>
   </body>
 </html>
