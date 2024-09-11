@@ -15,4 +15,6 @@ build/
 
 # Cache
 .cache/
+
+# Peacock settings in my vs code 
 .vscode
