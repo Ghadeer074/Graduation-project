@@ -31,29 +31,34 @@ body::before {
     text-align: center;
 }
 
-/* Language Switch Icon (Plant/Earth) */
+/* Language Switch Icon */
 .language-switch {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position:fixed;
+    top: 29px;
+    right: 100px;
+
 }
 
 .language-icon {
     width: 50px;
     height: 50px;
+    background-color: #bc8339;
 }
 
 /* Logo Styling */
 .logo {
     margin-top: 20px;
+   
 }
 
 .logo-img {
-    width: 150px;
+    width: 320px;
+
 }
 
 /* Welcome Text */
 .welcome-text h1 {
+    margin-top: -16px;
     font-size: 2.5em;
     color: #333;
 }
@@ -78,18 +83,18 @@ body::before {
 }
 
 .pilgrim-button {
-    background-color: #C4975C;
+    background-color: #bc8339;
     color: white;
 }
 
 .organizer-button {
-    background-color: #D1A97D;
+    background-color: #bc7223;
     color: white;
 }
 
 /* Hover Effects */
 .pilgrim-button:hover {
-    background-color: #a67d4e;
+    background-color: #a47d50;
 }
 
 .organizer-button:hover {
