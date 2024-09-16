@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.log(`http://localhost:${port}`);
 });
 
 //const Data = require('./models/data');
