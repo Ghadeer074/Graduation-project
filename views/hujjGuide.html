@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/public/Images/Faridah app Logo.png" type="image/png">
+    <title>Hajj Guide</title>
+    <!-- css ربط ملف -->
+    <link rel="stylesheet" href="/public/Css/style-hujjGuide.css">
+</head>
+<body>
+
+    <!-- الهيدر الرئيسي للصفحة -->
+    <div class="header">
+        Hajj Guide
+    </div>
+
+    <!-- الحاوية الرئيسية التي تحتوي على كل أيام الحج -->
+    <div class="container">
+        <!-- كارت اليوم الأول -->
+        <div class="day-card">
+            <!-- صورة تمثيلية لليوم الأول -->
+            <img src="/public/Images/day1.jpg" alt="Day 1">
+            <!-- محتوى الكارت -->
+            <div class="day-card-content">
+                <!-- عنوان اليوم الأول -->
+                <div class="day-title">DAY 1 (8th of Dhul-Hijjah) – Day of Tarwiyah</div>
+                <!-- تفاصيل اليوم الأول -->
+                <div class="day-details" id="details-1">
+                    <ul>
+                        <li>The pilgrim takes a bath, enters the state of Ihram, and heads to Mina.</li>
+                        <li>The pilgrim performs the Dhuhr, Asr, Maghrib, and Isha prayers and spends the night in Mina.</li>
+                    </ul>
+                </div>
+                <!-- زر إظهار أو إخفاء التفاصيل -->
+                <button class="toggle-details" onclick="toggleDetails(1)"> Details</button>
+            </div>
+        </div>
+
+        <!-- كارت اليوم الثاني -->
+        <div class="day-card">
+            <!-- صورة تمثيلية لليوم الثاني -->
+            <img src="/public/Images/day2.jpg" alt="Day 2">
+            <!-- محتوى الكارت -->
+            <div class="day-card-content">
+                <!-- عنوان اليوم الثاني -->
+                <div class="day-title">DAY 2 (9th of Dhul-Hijjah) – Day of Arafah</div>
+                <!-- تفاصيل اليوم الثاني -->
+                <div class="day-details hidden" id="details-2">
+                    <ul>
+                        <li>After Fajr prayer, the pilgrim heads to Mount Arafat.</li>
+                        <li>The pilgrim stands at Arafat until sunset, engaging in prayers and supplication.</li>
+                        <li>After sunset, the pilgrim heads to Muzdalifah, performs Maghrib and Isha prayers, collects pebbles, and stays overnight.</li>
+                    </ul>
+                </div>
+                <!-- زر إظهار أو إخفاء التفاصيل -->
+                <button class="toggle-details" onclick="toggleDetails(2)"> Details</button>
+            </div>
+        </div>
+
+        <!-- كارت اليوم الثالث -->
+        <div class="day-card">
+            <!-- صورة تمثيلية لليوم الثالث -->
+            <img src="/public/Images/day3.jpg" alt="Day 3">
+            <!-- محتوى الكارت -->
+            <div class="day-card-content">
+                <!-- عنوان اليوم الثالث -->
+                <div class="day-title">DAY 3 (10th of Dhul-Hijjah) – Day of Sacrifice</div>
+                <!-- تفاصيل اليوم الثالث -->
+                <div class="day-details hidden" id="details-3">
+                    <ul>
+                        <li>The pilgrim throws seven pebbles at Jamrat al-Aqaba in Mina.</li>
+                        <li>After throwing, the pilgrim sacrifices an animal and shaves or trims their hair.</li>
+                        <li>Then, the pilgrim performs Tawaf al-Ifadah in Mecca.</li>
+                    </ul>
+                </div>
+                <!-- زر إظهار أو إخفاء التفاصيل -->
+                <button class="toggle-details" onclick="toggleDetails(3)"> Details</button>
+            </div>
+        </div>
+
+        <!-- كارت اليوم الرابع -->
+        <div class="day-card">
+            <!-- صورة تمثيلية لليوم الرابع -->
+            <img src="/public/Images/day4.jpg" alt="Day 4">
+            <!-- محتوى الكارت -->
+            <div class="day-card-content">
+                <!-- عنوان اليوم الرابع -->
+                <div class="day-title">DAY 4 (11th of Dhul-Hijjah) – First Day of Tashreeq</div>
+                <!-- تفاصيل اليوم الرابع -->
+                <div class="day-details hidden" id="details-4">
+                    <ul>
+                        <li>The pilgrim throws stones at the three pillars: the small, medium, and large Jamrat.</li>
+                        <li>The pilgrim may stay overnight in Mina.</li>
+                    </ul>
+                </div>
+                <!-- زر إظهار أو إخفاء التفاصيل -->
+                <button class="toggle-details" onclick="toggleDetails(4)"> Details</button>
+            </div>
+        </div>
+
+        <!-- كارت اليوم الخامس -->
+        <div class="day-card">
+            <!-- صورة تمثيلية لليوم الخامس -->
+            <img src="/public/Images/day5.jpg" alt="Day 5">
+            <!-- محتوى الكارت -->
+            <div class="day-card-content">
+                <!-- عنوان اليوم الخامس -->
+                <div class="day-title">DAY 5 (12th of Dhul-Hijjah) – Second Day of Tashreeq</div>
+                <!-- تفاصيل اليوم الخامس -->
+                <div class="day-details hidden" id="details-5">
+                    <ul>
+                        <li>The pilgrim throws stones at the three pillars again.</li>
+                        <li>The pilgrim may leave Mina after throwing, which is known as "Al-Ta'ajjul" (expedited departure).</li>
+                    </ul>
+                </div>
+                <!-- زر إظهار أو إخفاء التفاصيل -->
+                <button class="toggle-details" onclick="toggleDetails(5)"> Details</button>
+            </div>
+        </div>
+
+        <!-- كارت اليوم السادس (اختياري) -->
+        <div class="day-card">
+            <!-- صورة تمثيلية لليوم السادس -->
+            <img src="/public/Images/day6.jpg" alt="Day 6">
+            <!-- محتوى الكارت -->
+            <div class="day-card-content">
+                <!-- عنوان اليوم السادس -->
+                <div class="day-title">DAY 6 (13th of Dhul-Hijjah) – Third Day of Tashreeq (optional)</div>
+                <!-- تفاصيل اليوم السادس -->
+                <div class="day-details hidden" id="details-6">
+                    <ul>
+                        <li>If the pilgrim did not opt for Al-Ta'ajjul, they throw stones at the three pillars once more and depart from Mina after throwing.</li>
+                    </ul>
+                </div>
+                <!-- زر إظهار أو إخفاء التفاصيل -->
+                <button class="toggle-details" onclick="toggleDetails(6)"> Details</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript ربط ملف لتحكم في إظهار وإخفاء التفاصيل -->
+    <script src="/public/JavaScript/script-hujjGuide.js"></script>
+
+</body>
+</html>
