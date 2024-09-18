@@ -14,3 +14,6 @@
  # you can run 'git status' again to make sure the changes or updates were pushed correctly. 
  # you must do these steps each time you change something. 
 
+# port number: 2002
+# database username: ghadeer
+# database password: 0iuDyICJDPAKxGur
