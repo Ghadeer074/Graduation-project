@@ -19,6 +19,8 @@ app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static('public'));
 
 // Basic route to render index.html
+// Set EJS as the templating engine
+app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views/index.html'));
 });
