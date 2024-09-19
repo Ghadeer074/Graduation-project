@@ -35,7 +35,7 @@ app.post('/submit', (req, res) => {
 
 
 //import routes 
-const routes = require("./routes/route");
+const routes = require("./routes/landing route");
 // use the routes 
 app.use(routes);
 

@@ -1,7 +1,7 @@
 function signUp(){
     var firstName = document.getElementById('first');
     var lastName = document.getElementById('last');
-    var nationality= document.getElementById('nat');
+    var nationality= document.getElementById('country');
     var province = document.getElementById('prov');
     var username = document.getElementById('un');
     var email = document.getElementById('email');
@@ -25,7 +25,7 @@ function signUp(){
     }
 
     if (nationality.value.trim().isEmpty()) {
-        setStyleAndMsg(nationality, "You must enter your nationality.");
+        setStyleAndMsg(nationality, "You must select your nationality.");
     } else if (!isAlpha(nationality.value)) {
         setStyleAndMsg(nationality, "nationality must contain letters.");
     }
@@ -55,7 +55,7 @@ function signUp(){
     if (password.value.trim().isEmpty()){
         setStyleAndMsg(password, "You must enter a password.");
     } else if (!isPasswordValid(password.value)) {
-        setStyleAndMsg(password, "Password must be 8 digits, have at least one uppercase letter, one lowercase letter, and one digit.");
+        setStyleAndMsg(password, "Password must be between 8 and 12 characters long , have at least one uppercase letter, one lowercase letter, and must have digits.");
     }
 }
 
@@ -87,7 +87,7 @@ function isNumeric(value) {
 }
 
 function isPasswordValid(value) {
-    if (value.length < 8){
+    if (value.length < 8 && value.length > 10 || value.length > 12){
         return false;
     }
 
