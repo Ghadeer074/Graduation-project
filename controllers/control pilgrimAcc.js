@@ -76,7 +76,6 @@ function signUpPil(req, res) {
     return res.status(200).json({ message: "Account created successfully!" });
 }
 
-
 // Export the function
 module.exports = {signPilGet,signUpPil};
 
