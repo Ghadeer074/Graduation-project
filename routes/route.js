@@ -6,8 +6,8 @@ const control = require("./controller");
 app.get('/',(req,res)=> { 
  res.sendFile("./views/index.ejs")
 })
-router.get('/',control.landing);
+router.get('/',controller.landing);
 
-//router.post('/index',control.index);
+router.post('/index',controller.index);
 
 //module.exports = router;
