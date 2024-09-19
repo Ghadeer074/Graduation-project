@@ -25,11 +25,10 @@ app.set('view engine', 'ejs');
 app.get('/data', (req, res) => {
     res.json({ message: 'Hello from Express!' });
 });
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
     const name = req.query.name || 'Guest'; // Defaults to 'Guest' if no name is provided
     res.render('index', { name });
-});
-
+});*/
 
 
 // Handle a POST request (for AJAX)
@@ -37,6 +36,11 @@ app.post('/submit', (req, res) => {
     console.log(req.body);
     res.json({ message: 'Data received successfully', data: req.body });
 });
+
+
+//import routes 
+const routes = require("./routes/route");
+
 
 
 // Start the server + database
@@ -48,3 +52,6 @@ mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.
 .catch((err) => {console.log(err)});
 
 //const Data = require('./models/data');
+
+// use the  routes 
+app.use(routes);
