@@ -3,182 +3,131 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilgrim-sign up</title>
     <link rel="shortcut icon" href="/public/Images/Faridah app Logo.png" type="image/png">
     <link rel="stylesheet" href="/public/Css/style-signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
   <body>
-    <title>Pilgrim-sign up</title>
- <div class="container"> 
-<h1>Sign up</h1>
-<form method = "post" action="show-data.php" enctype="multipart/form-data">
-<p class = "row">
-<label class="label">First name:</label>
-<input type="dataname" name="firstName" required="required" id="first" placeholder="Enter your first name">
-</p>
-
-<p class = "row">
-<label class="label">Last name:</label>
-<input type="dataname" name="lastName" required="required" id = "last" placeholder="Enter your last name"></p>
-
-<p class = "row">
-    <label class="label">Date of birth:</label>
-    <input type="date" name="dob"required="required" id = "dob" placeholder="Enter your date of birth"></p>  
-
-<p class = "row">
-    <label class="label">Email address:</label>
-    <input type="email" name="email" required="required" id="email" placeholder="Example@gmail.com">
-</input type>
-</p>
-
-<p class = "row">
-    <label class="label">Phone number:</label>
-<input type = "tel" name="phoneNumber" id ="phoneNumber" required="required" placeholder="Enter phone number">
-</p>
-
-
-<p class = "row">
-    <label class="label">Nationaliy:</label>
-<select name="nationality" id="country" required class="nat">
-    <option value="">Nationaliy</option>
-</select>
-</p>
-
-<p class = "row">
-    <label class="label">Province:</label>
-    <input type="text" name="province" required="required" id ="prov" placeholder="Enter your Province">
-</input type>
-</p>
-
-<p class = "row">
-    <label class="label" >Username:</label>
-    <input type="text" name="username" id ="un" required="required" placeholder="Enter your username">
-</input type>
-</p>
-
-<p class = "row">
-    <label class="label">Password:</label>
-    <input type="password" name="password" id="pass" placeholder="Password" required="required" size="20" maxlength="8"/> 
-
-</form>
-<div  class="lower">
-<p class ="row">
-    <button type="button" class="Button1"  onclick="signUp()">Create account</button>
-    </p>
-    <p id="log">Already have an account? <a href="login pilgrim.html">Log in</a></p>
-</div>
- </div>
-<script src="/public/JavaScript/script-signup-pil.js"></script>
-  </body>
-</html>
-
-
-
-
-<!--<section class="vh-100 gradient-custom">
-    <div class="container py-5 h-100">
-      <div class="row justify-content-center align-items-center h-100">
-        <div class="col-12 col-lg-9 col-xl-7">
-          <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-            <div class="card-body p-4 p-md-5">
-              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-              <form>
-  
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-  
-                    <div data-mdb-input-init class="form-outline">
-                      <input type="text" id="firstName" class="form-control form-control-lg" />
-                      <label class="form-label" for="firstName">First Name</label>
+    <section class="vh-100 gradient-custom">
+      <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+          <div class="col-12 col-lg-9 col-xl-7">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+              <div class="card-body p-4 p-md-5">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create Account</h3>
+                <form method="post" action="show-data.php" enctype="multipart/form-data">
+                  
+                  <!-- First Name and Last Name -->
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="First name" class="form-control form-control-lg" required />
+                      </div>
                     </div>
-  
-                  </div>
-                  <div class="col-md-6 mb-4">
-  
-                    <div data-mdb-input-init class="form-outline">
-                      <input type="text" id="lastName" class="form-control form-control-lg" />
-                      <label class="form-label" for="lastName">Last Name</label>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Last name" class="form-control form-control-lg" required />
+                      </div>
                     </div>
-  
                   </div>
+  
+                  <!-- Date of Birth -->
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline datepicker w-100">
+                        <label for="dob" class="form-label">Date of Birth</label>
+                        <input type="date" id="dob" name="dob"  class="form-control form-control-lg" required />
+                      </div>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="col-md-6 mb-4">
+                      <h6 class="mb-2 pb-1">Gender:</h6>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="femaleGender" value="female" required />
+                        <label class="form-check-label" for="femaleGender">Female</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="maleGender" value="male" />
+                        <label class="form-check-label" for="maleGender">Male</label>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <!-- Email and Phone Number -->
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Email@example.com" class="form-control form-control-lg "/>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4 pb-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone number" class="form-control form-control-lg" required />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Nationality Dropdown -->
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label" for="nationality">Nationality</label>
+                        <select class="form-control form-control-lg" id="nationality" name="nationality" required >
+                            <option value="">Nationaliy</option>
+                        </select>
+                    </div>
+
+                    <!-- Province -->
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="province">Province</label>
+                        <input type="text" id="province" name="province" placeholder="Province" class="form-control form-control-lg" required />
+                      </div>
+                    </div>
+                  </div>
+  
+                  <!-- Username and Password -->
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Username" class="form-control form-control-lg" required />
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4 pb-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Password" class="form-control form-control-lg" required />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Submit Button -->
+                  <div class="mt-4 pt-2">
+                    <button type="submit" onclick="signUp()"class="btn btn-primary btn-lg" id="bt">Create Account</button>
+                  </div>
+  
+                </form>
+                <div class="mt-3" >
+                  <p>Already have an account? <a href="login pilgrim.html" id="log">Log in</a></p>
                 </div>
-  
-                <div class="row">
-                  <div class="col-md-6 mb-4 d-flex align-items-center">
-  
-                    <div data-mdb-input-init class="form-outline datepicker w-100">
-                      <input type="text" class="form-control form-control-lg" id="birthdayDate" />
-                      <label for="birthdayDate" class="form-label">Birthday</label>
-                    </div>
-  
-                  </div>
-                  <div class="col-md-6 mb-4">
-  
-                    <h6 class="mb-2 pb-1">Gender: </h6>
-  
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                        value="option1" checked />
-                      <label class="form-check-label" for="femaleGender">Female</label>
-                    </div>
-  
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                        value="option2" />
-                      <label class="form-check-label" for="maleGender">Male</label>
-                    </div>
-  
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                        value="option3" />
-                      <label class="form-check-label" for="otherGender">Other</label>
-                    </div>
-  
-                  </div>
-                </div>
-  
-                <div class="row">
-                  <div class="col-md-6 mb-4 pb-2">
-  
-                    <div data-mdb-input-init class="form-outline">
-                      <input type="email" id="emailAddress" class="form-control form-control-lg" />
-                      <label class="form-label" for="emailAddress">Email</label>
-                    </div>
-  
-                  </div>
-                  <div class="col-md-6 mb-4 pb-2">
-  
-                    <div data-mdb-input-init class="form-outline">
-                      <input type="tel" id="phoneNumber" class="form-control form-control-lg" />
-                      <label class="form-label" for="phoneNumber">Phone Number</label>
-                    </div>
-  
-                  </div>
-                </div>
-  
-                <div class="row">
-                  <div class="col-12">
-  
-                    <select class="select form-control-lg">
-                      <option value="1" disabled>Choose option</option>
-                      <option value="2">Subject 1</option>
-                      <option value="3">Subject 2</option>
-                      <option value="4">Subject 3</option>
-                    </select>
-                    <label class="form-label select-label">Choose option</label>
-  
-                  </div>
-                </div>
-  
-                <div class="mt-4 pt-2">
-                  <input data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Submit" />
-                </div>
-  
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <%- include('./component/footer.ejs') %>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/public/JavaScript/script-signup-pil.js"></script>
+  </body>
+</html>

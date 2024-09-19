@@ -1,12 +1,13 @@
 function signUp(){
-    var firstName = document.getElementById('first');
-    var lastName = document.getElementById('last');
-    var nationality= document.getElementById('country');
-    var province = document.getElementById('prov');
-    var username = document.getElementById('un');
+    var firstName = document.getElementById('firstName');
+    var lastName = document.getElementById('lastName');
+    var dob = document.getElementById('dob');
+    var nationality= document.getElementById('nationality');
+    var province = document.getElementById('province');
+    var username = document.getElementById('username');
     var email = document.getElementById('email');
     var phoneNumber = document.getElementById('phoneNumber');
-    var password = document.getElementById('pass');
+    var password = document.getElementById('password');
     var msg = document.getElementById('msg');
 
     // Reset styles and messages
@@ -110,7 +111,7 @@ function isPasswordValid(value) {
 
  // country dropdown list
     document.addEventListener('DOMContentLoaded', function() {
-        const countryDropdown = document.getElementById('country');
+        const countryDropdown = document.getElementById('nationality');
         
         fetch('https://restcountries.com/v3.1/all')
             .then(response => response.json())

@@ -1,11 +1,11 @@
- function signUp(){
-    var firstName = document.getElementById('first');
-    var lastName = document.getElementById('last');
+ function signUpOrg(){
+    var firstName = document.getElementById('firstName');
+    var lastName = document.getElementById('lastName');
     var orgname = document.getElementById('orgname');
     var orgNum = document.getElementById('orgnum');
     var email = document.getElementById('email');
     var phoneNumber = document.getElementById('phoneNumber');
-    var password = document.getElementById('pass');
+    var password = document.getElementById('password');
     var msg = document.getElementById('msg');
 
     // Reset styles and messages

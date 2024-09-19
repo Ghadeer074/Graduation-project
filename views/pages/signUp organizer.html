@@ -1,62 +1,104 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilgrim-sign up</title>
     <link rel="shortcut icon" href="/public/Images/Faridah app Logo.png" type="image/png">
     <link rel="stylesheet" href="/public/Css/style-signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
   <body>
-    <title>Organizer-sign up</title>
-<div class="container"> 
-<h1>Sign up</h1>
-<form method = "post" id="form" action="show-data.php" enctype="multipart/form-data">
-<p class = "row">
-<label  class="label">First name:</label>
-<input type="dataname" name="firstName" required="required" id="first" placeholder="Enter your first name">
-</p>
+    <section class="vh-100 gradient-custom" id="orgc">
+      <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+          <div class="col-12 col-lg-9 col-xl-7">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+              <div class="card-body p-4 p-md-5">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create Account</h3>
+                <form method="post" action="show-data.php" enctype="multipart/form-data">
+                  
+                  <!-- First Name and Last Name -->
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="First name" class="form-control form-control-lg" required />
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Last name" class="form-control form-control-lg" required />
+                      </div>
+                    </div>
+                  </div>
+  
 
-<p class = "row">
-<label  class="label">Last name:</label>
-<input type="dataname" name="lastName" required="required" id = "last" placeholder="Enter your last name"></p>
+                  <!-- Organization Name and Organization Number -->
+                  <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <label class="form-label" for="orgname">Organization Name:</label>
+                          <input type="text" name="OrganizationtName" required="required" id ="orgname" placeholder=" Organization Name" class="form-control form-control-lg" required />
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <label class="form-label" for="orgnum">Organization Number</label>
+                          <input type="text" name="OrganizationNumber" required="required" id ="orgnum" placeholder=" Organization Number" class="form-control form-control-lg" required />
+                        </div>
+                      </div>
+                    </div>
 
-<p class = "row">
-    <label  class="label" >Email address:</label>
-    <input type="email" name="email" required="required" id="email" placeholder="Example@gmail.com">
-</input type>
-</p>
+                  <!-- Email and Phone Number -->
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Email@example.com" class="form-control form-control-lg "/>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4 pb-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone number" class="form-control form-control-lg" required />
+                      </div>
+                    </div>
+                  </div>
 
-<p class = "row">
-    <label class="label">Phone number:</label>
-<input type = "tel" name="phoneNumber" id ="phoneNumber" required="required" placeholder="Enter phone number">
-</p>
-
-<p class = "row">
-    <label class="label">Organization Name:</label>
-    <input type="text" name="OrganizationtName" required="required" id ="orgname" placeholder="Enter Organization Name">
-</input type>
-</p>
-
-
-<p class = "row">
-    <label  class="label">Organization Number:</label>
-    <input type="text" name="OrganizationNumber" required="required" id ="orgnum" placeholder="Enter Organization Number">
-</input type>
-</p>
-
-<p class = "row">
-    <label  class="label">Enter your Password:</label>
-    <input type="password" name="password" id="pass" placeholder="Password" required="required" size="20" maxlength="8"/> 
-   
-</form>
-<div  class="lower">
-    <p class ="row">
-        <button type="button" class="Button1"  onclick="signUp()">Create account</button>
-        </p>
-        <p id="log">Already have an account? <a href="login pilgrim.html">Log in</a></p>
-    </div>
-</div>
-<script src="/public/JavaScript/script-signup-org.js"></script>
+                  <!-- Password -->
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Password" class="form-control form-control-lg" required />
+                      </div>
+                    </div>
+                  </div>
+                
+                  <!-- Submit Button -->
+                  <div class="mt-4 pt-2">
+                    <button type="submit" onclick="signUpOrg()"class="btn btn-primary btn-lg" id="bt">Create Account</button>
+                  </div>
+  
+                </form>
+                <div class="mt-3" >
+                  <p>Already have an account? <a href="login organizer.html" id="log">Log in</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./component/footer.ejs') %>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/public/JavaScript/script-signup-pil.js"></script>
   </body>
 </html>
