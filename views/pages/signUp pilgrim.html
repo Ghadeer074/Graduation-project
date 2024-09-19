@@ -13,52 +13,52 @@
 <form method = "post" action="show-data.php" enctype="multipart/form-data">
 <p class = "row">
 <label class="label">First name:</label>
-<input type="dataname" required="required" id="first" placeholder="Enter your first name">
+<input type="dataname" name="firstName" required="required" id="first" placeholder="Enter your first name">
 </p>
 
 <p class = "row">
 <label class="label">Last name:</label>
-<input type="dataname" required="required" id = "last" placeholder="Enter your last name"></p>
+<input type="dataname" name="lastName" required="required" id = "last" placeholder="Enter your last name"></p>
 
 <p class = "row">
     <label class="label">Date of birth:</label>
-    <input type="date" required="required" id = "dob" placeholder="Enter your date of birth"></p>
+    <input type="date" name="dob"required="required" id = "dob" placeholder="Enter your date of birth"></p>
     
 
 <p class = "row">
     <label class="label">Email address:</label>
-    <input type="email" required="required" id="email" placeholder="Example@gmail.com">
+    <input type="email" name="email" required="required" id="email" placeholder="Example@gmail.com">
 </input type>
 </p>
 
 <p class = "row">
     <label class="label">Phone number:</label>
-<input type = "tel" id ="phoneNumber" required="required" placeholder="Enter phone number">
+<input type = "tel" name="phoneNumber" id ="phoneNumber" required="required" placeholder="Enter phone number">
 </p>
 
 
 <p class = "row">
     <label class="label">Nationaliy:</label>
-<select name="country" id="country" required class="nat">
+<select name="nationality" id="country" required class="nat">
     <option value="">Nationaliy</option>
 </select>
 </p>
 
 <p class = "row">
     <label class="label">Province:</label>
-    <input type="text" required="required" id ="prov" placeholder="Enter your Province">
+    <input type="text" name="province" required="required" id ="prov" placeholder="Enter your Province">
 </input type>
 </p>
 
 <p class = "row">
     <label class="label" >Username:</label>
-    <input type="text" id ="un" required="required" placeholder="Enter your username">
+    <input type="text" name="username" id ="un" required="required" placeholder="Enter your username">
 </input type>
 </p>
 
 <p class = "row">
     <label class="label">Password:</label>
-    <input type="password" name="dataPassword" id="pass" placeholder="Password" required="required" size="20" maxlength="8"/> 
+    <input type="password" name="password" id="pass" placeholder="Password" required="required" size="20" maxlength="8"/> 
 
 </form>
 <div  class="lower">
