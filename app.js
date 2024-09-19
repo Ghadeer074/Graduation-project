@@ -36,8 +36,10 @@ app.post('/submit', (req, res) => {
 
 //import routes 
 const routes = require("./routes/landing route");
+const PilgrimRoute = require("./routes/Pilgrim route");
 // use the routes 
 app.use(routes);
+app.use(PilgrimRoute);
 
 // Start the server + database
 mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
