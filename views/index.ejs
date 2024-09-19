@@ -13,8 +13,6 @@
 
 
 <body>
- 
-
     <header class="hero">
         <div class="hero-content">   
             <i class="bi bi-globe"></i>
@@ -23,47 +21,14 @@
             </div>
             <h1 class="hero-title">Welcome to Faridah!</h1>
             <p class="hero-subtitle">Enhance your Hajj experience, with GPS tracking, direct chatting, and more!</p>
-            <a href="#" class="hero-button Org">Get Started</a>
-            <a href="#" class="hero-button Pil">Get Started</a>
+            <a href="/views/pages/login organizer.html" class="hero-button Org">Organizer</a>
+            <a href="/views/pages/login pilgrim.html" class="hero-button Pil">Pilgrim</a>
         </div>
     </header>
 
 
         <!-- Bootstrap Footer -->
-        <footer class="text-white pt-4">
-            <div class="container">
-                <div class="row">
-                    <!-- Logo Section -->
-                    <div class="col-md-3 mb-4">
-                        <img src="./Images/Faridah app Logo.png" alt="Logo" class="img-fluid">
-                    </div>
-    
-                    <!-- About Us -->
-                    <div class="col-md-3 mb-4">
-                        <h5>About Us</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    </div>
-    
-                    <!-- Contact Us -->
-                    <div class="col-md-3 mb-4">
-                        <h5>Contact Us</h5>
-                        <ul class="list-unstyled">
-                            <li>Email: contact@example.com</li>
-                            <li>Address: 123 Main St, City, Country</li>
-                        </ul>
-                    </div>
-    
-                    <!-- Terms and Conditions -->
-                    <div class="col-md-3 mb-4">
-                        <h5>Terms and Conditions</h5>
-                        <p><a href="#" class="text-white">Read our Terms and Conditions</a></p>
-                    </div>
-                </div>
-                <div class="text-center py-3">
-                    <p>&copy; 2024 Faridah. All Rights Reserved.</p>
-                </div>
-            </div>
-        </footer>
+        <%- include('./component/footer.ejs') %>
     
         <!-- Add Bootstrap CSS and JS (if not already included in your project) -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -71,6 +36,5 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
-</body>
-
+  </body>
 </html>
