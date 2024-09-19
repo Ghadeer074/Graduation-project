@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const control = require("./controllers/Controller");
+const control = require("./controller");
 
 // reandring request page (landing page) - get request 
 app.get('/',(req,res)=> { 
