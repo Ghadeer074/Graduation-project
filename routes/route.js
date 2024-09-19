@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const control = require("./controller");
+const control = require("../controllers/controller.js");
 
 // reandring request page (landing page) - get request 
-app.get('/',(req,res)=> { 
+/*app.get('/',(req,res)=> { 
  res.sendFile("./views/index.ejs")
-})
-router.get('/',controller.landing);
+})*/
 
-router.post('/index',controller.index);
+router.get('/', control.landing);
+module.exports = router;
 
-//module.exports = router;
+//router.post('/index',control.index);
+

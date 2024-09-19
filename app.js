@@ -39,9 +39,7 @@ app.post('/submit', (req, res) => {
 
 
 //import routes 
-const routes = require("./routes/route");
-
-
+const routes = require("./routes/route");//
 
 // Start the server + database
 mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
@@ -53,5 +51,5 @@ mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.
 
 //const Data = require('./models/data');
 
-// use the  routes 
+// use the routes 
 app.use(routes);
