@@ -1,48 +1,8 @@
-/* General Body Styling */
+
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #E2C6A7, #D1A97D, #C99766);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Transparent Hajj Image as Background */
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('/Images/Hajj.jpg') no-repeat center center;
-    background-size: cover;
-    opacity: 0.15;
-    z-index: 1;
-}
-
-/* Main Container */
-.container {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-}
-
-/* Language Switch Icon */
-.language-switch {
-    position:fixed;
-    top: 29px;
-    right: 100px;
-
-}
-
-.language-icon {
-    width: 50px;
-    height: 50px;
-    background-color: #bc8339;
+    font-family: 'Arial', sans-serif;
 }
 
 /* Logo Styling */
@@ -56,47 +16,89 @@ body::before {
 
 }
 
-/* Welcome Text */
-.welcome-text h1 {
-    margin-top: -16px;
-    font-size: 2.5em;
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2; /* Content stays on top */
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    background: url('/Images/Hajj.jpg') center/cover no-repeat;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; /* Ensure the image is behind the gradient and content */
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    background: linear-gradient(135deg, #E2C6A7, #D1A97D, #C99766);
+    opacity: 0.85;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure the gradient is between the image and content */
+}
+
+
+.hero-content {
+    text-align: center;
     color: #333;
+    z-index: 2; /* Ensure the content is on top of the overlay */
 }
 
-.welcome-text p {
+.hero-title {
+    font-size: 3em;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.hero-subtitle {
     font-size: 1.5em;
-    color: #555;
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease-in-out 0.5s;
 }
 
-/* Buttons */
-.button-container {
-    margin-top: 30px;
-}
-
-.pilgrim-button, .organizer-button {
+.hero-button {
+    display: inline-block;
     padding: 10px 20px;
     font-size: 1.2em;
-    border: none;
-    cursor: pointer;
-    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color:  #bc8339;
     border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
 }
 
-.pilgrim-button {
-    background-color: #bc8339;
-    color: white;
+
+.Org {
+    background-color:  #c5893b;
 }
 
-.organizer-button {
-    background-color: #bc7223;
-    color: white;
+
+.hero-button:hover {
+    background-color: #dcbb79;
 }
 
-/* Hover Effects */
-.pilgrim-button:hover {
-    background-color: #a47d50;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+footer{
+     background-color: #7c5b2f; 
 
-.organizer-button:hover {
-    background-color: #b48b64;
 }

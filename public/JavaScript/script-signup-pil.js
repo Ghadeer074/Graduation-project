@@ -87,7 +87,7 @@ function isNumeric(value) {
 }
 
 function isPasswordValid(value) {
-    if (value.length < 8 && value.length > 10 || value.length > 12){
+    if (value.length < 8 && value.length > 12){
         return false;
     }
 
