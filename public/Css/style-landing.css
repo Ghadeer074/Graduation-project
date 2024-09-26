@@ -51,19 +51,20 @@ body {
 
 .hero-content {
     text-align: center;
+    margin-bottom: 80px;
     color: #333;
     z-index: 2; /* Ensure the content is on top of the overlay */
 }
 
 .hero-title {
     font-size: 3em;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
     animation: fadeInUp 1s ease-in-out;
 }
 
 .hero-subtitle {
     font-size: 1.5em;
-    margin-bottom: 30px;
+    margin-bottom: 100px;
     animation: fadeInUp 1s ease-in-out 0.5s;
 }
 
@@ -71,6 +72,8 @@ body {
     display: inline-block;
     padding: 10px 20px;
     font-size: 1.2em;
+    margin: 20px;
+    margin-bottom: 100px;
     text-decoration: none;
     color: #333;
     background-color:  #c58d43;
