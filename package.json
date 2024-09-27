@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
   "dev": "nodemon app.js",
-  "sync": "browser-sync start --proxy localhost:2002 --files 'public/css/**/*.css, public/JavaScript/**/*.js, views/index.ejs'",
+  "sync": "browser-sync start --proxy 'localhost:2002' --files 'public/css/**/*.css, public/JavaScript/**/*.js, views/**/*.ejs' --open",
   "start": "npm-run-all --parallel dev sync"
   },
   "keywords": [],
