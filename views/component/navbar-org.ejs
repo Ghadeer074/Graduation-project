@@ -1,142 +1,97 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary" id="nav">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-      <!-- Toggle button -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <style>
+      #nav {
+        background-color: #bb8c4e;
+      }
 
-         <style>#nav{  background-color:#bb8c4e;}
-         .nav-link{ font-size: large;
-         }
-         #lanicon{
-           margin:30px;
-           
-         }
-         </style>
+      .nav-link {
+        font-size: large;
+      }
 
-      <button
-        data-mdb-collapse-init
-        class="navbar-toggler"
-        type="button"
-        data-mdb-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
+      #lanicon {
+        margin: 0 15px;
+      }
 
-      <!-- Collapsible wrapper -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0" href="#">
-          <img
-            src="./Images/Faridah app Logo.png"
-            height="95"
-            alt="Faridah Logo"
-            loading="lazy"
-          />
-        </a>
-        <!-- Left links -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Track</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pligrims</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Flights</a>
-          </li>
-        </ul>
-        <!-- Left links -->
-      </div>
-      <!-- Collapsible wrapper -->
-  
-      <!-- Right elements -->
-      <div class="d-flex align-items-center">
-        <!-- Icon -->
-        <a class="link-secondary me-3" href="#">
-          <i class="fas fa-shopping-cart"></i>
-        </a>
-  
-        <!-- Notifications -->
-       <!-- <div class="dropdown">
-          <a
-            data-mdb-dropdown-init
-            class="link-secondary me-3 dropdown-toggle hidden-arrow"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            aria-expanded="false"
-          >
-            <i class="fas fa-bell"></i>
-            <span class="badge rounded-pill badge-notification bg-danger">1</span>
-          </a>
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="navbarDropdownMenuLink"
-          >
-            <li>
-              <a class="dropdown-item" href="#">Some news</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Another news</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </li>
-          </ul>
-        </div>-->
+      body {
+        overflow-x: hidden; /* Prevent horizontal scroll */
+      }
 
-       <!--change language icon-->
-           <i class="bi bi-globe fs-1" style="font-size: 1.7rem;" id="lanicon"></i>
-        <!-- Avatar -->
-        <div class="dropdown">
-          <a
-            data-mdb-dropdown-init
-            class="dropdown-toggle d-flex align-items-center hidden-arrow"
-            href="#"
-            id="navbarDropdownMenuAvatar"
-            role="button"
-            aria-expanded="false"
-          >
-            <img
-              src="https://via.placeholder.com/150"
-              class="rounded-circle"
-              height="45"
-              alt="profile photo"
-              loading="lazy"
-            />
-          </a>
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="navbarDropdownMenuAvatar"
-          >
-            <li>
-              <a class="dropdown-item" href="#">My profile</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Settings</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Logout</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- Right elements -->
+      /* Ensuring the dropdown stays within the viewport */
+      .dropdown-menu {
+        right: 0;
+        left: auto;
+      }
+
+      /* Prevent dropdown overflow */
+      .dropdown-menu-end {
+        transform: translateX(-50%); /* Ensure dropdown stays within page bounds */
+      }
+    </style>
+
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <img src="./Images/Faridah app Logo.png" height="95" alt="Faridah Logo" loading="lazy" />
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Track</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pilgrims</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Flights</a>
+        </li>
+      </ul>
+      <!-- Left links -->
     </div>
-    <!-- Container wrapper -->
+    <!-- Collapsible wrapper -->
 
-    <script>// Initialization for ES Users
-        import { Dropdown, Collapse, initMDB } from "mdb-ui-kit";
-        
-        initMDB({ Dropdown, Collapse });</script>
-  </nav>
-  <!-- Navbar -->
-   <!-- data-mdb-dropdown-init
-            class="dropdown-toggle d-flex align-items-center hidden-arrow"-->
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+      <!-- Icon -->
+      <a class="link-secondary me-3" href="#">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+
+      <!-- Change language icon -->
+      <i class="bi bi-globe fs-1" style="font-size: 1.7rem;" id="lanicon"></i>
+
+      <!-- Avatar Dropdown -->
+      <div class="dropdown">
+        <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
+          role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+          <img src="https://via.placeholder.com/150" class="rounded-circle" height="35" alt="profile photo" loading="lazy" />
+        </a>
+        <!-- Key Fix: Align the dropdown properly and prevent overflow -->
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar" data-popper-config='{"modifiers": [{"name": "preventOverflow", "options": {"boundary": "viewport"}}]}'>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Right elements -->
+  </div>
+  <!-- Container wrapper -->
+
+  <!-- MDB Bootstrap JS -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
+</nav>
+<!-- Navbar -->
