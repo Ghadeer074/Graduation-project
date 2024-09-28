@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const orgdata = new Schema({
+const Orgdata = new Schema({
   firstName: String,
   lasttName: String,
   orgName: String,
@@ -11,6 +11,6 @@ const orgdata = new Schema({
   password: String 
 });
 
-const UserData = mongoose.model("UserData",orgdata);
+const UserData = mongoose.model("UserData",Orgdata);
 
-module.exports = orgdata;
+module.exports = Orgdata;

@@ -3,7 +3,7 @@ const express = require('express');
 //const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
-const orgdata = require("./models/userorg");
+const  Orgdata = require("./models/userorg");
 
 // Create an Express app
 const app = express();
