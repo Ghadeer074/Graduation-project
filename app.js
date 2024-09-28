@@ -38,11 +38,15 @@ app.post('/submit', (req, res) => {
 const routes = require("./routes/landing route");
 const PilgrimRoute = require("./routes/Pilgrim route");
 const orgRoute = require("./routes/org route");
+const homeOrga = require("./routes/home-org route");
+const homepilg = require("./routes/home-pil route");
 
 // use the routes 
 app.use(routes);
 app.use(PilgrimRoute);
 app.use(orgRoute);
+app.use(homeOrga);
+app.use(homepilg);
 
 
 // Start the server + database
