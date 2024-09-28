@@ -1,4 +1,5 @@
-// basic starting file will be modified later 
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 //app.post('/api/data', (req, res) => {
    // const newData = new Data(req.body);
