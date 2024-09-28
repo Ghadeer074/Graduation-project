@@ -125,3 +125,27 @@ function isPasswordValid(value) {
             })
             .catch(error => console.error('Error fetching country data:', error));
     });
+
+
+    // Enable 'Agree and Continue' button when checkbox is checked in the modal
+document.getElementById('agreeCheckbox').addEventListener('change', function() {
+    const agreeButton = document.getElementById('agreeButton');
+    if (this.checked) {
+        agreeButton.classList.remove('btn-disabled');
+        agreeButton.disabled = false;
+    } else {
+        agreeButton.classList.add('btn-disabled');
+        agreeButton.disabled = true;
+    }
+});
+
+// Close the modal when the 'Agree and Continue' button is clicked
+document.getElementById('agreeButton').addEventListener('click', function() {
+    $('#termsModal').modal('hide');
+});
+
+// Enable the signup button once the user has agreed to terms
+document.getElementById('agreeCheckboxSignup').addEventListener('change', function() {
+    const signupButton = document.getElementById('signupButton');
+    signupButton.disabled = !this.checked;
+});
