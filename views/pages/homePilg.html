@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilgrim Home Page </title>
+    <link rel="stylesheet" href="homePilgStyle.css">
+</head>
+<body>
+
+    <!-- Header with two buttons -->
+    <header>
+        <button id="accountButton"> <img id="profileButton" src="pIcon.png" alt="Profile" class="icon" height="45" width="45"> </button>
+        <button id="notificationButton"><img id="profileButton" src="notification-icon.png" alt="Profile" class="icon" height="40" width="40"></button>
+    </header>
+
+    <!-- Pilgrim Information -->
+    <div class="container">
+        <div class="card pilgrim-info">
+            <img src="pilgrim.jpg" alt="Pilgrim Photo" class="pilgrim-photo">
+            <div>
+                <p>Name:</p>
+                <p>Gender: </p>
+                <p>Birthday: </p>
+                <p>Passport No: </p>
+                <p>Organization: </p>
+                <p>Hotel Name: </p>
+            </div>
+        </div>
+
+        <!-- Hajj Guide Button -->
+        <button class="button" id="guideButton">
+            <span>Hajj Guide</span>
+        </button>
+
+        <!-- Flight Information -->
+        <div class="card flight-info">
+            <p><strong>Flight details:</strong></p>
+            <p>Flight Number: </p>
+            <p>Date: </p>
+            <p>Time: </p>
+            <p>Destination: </p>
+        </div>
+
+        <!-- Chat with Organizers Button -->
+        <button class="button" id="chatButton">
+            <span>Chat with the Organizer</span>
+        </button>
+    </div>
+
+    <script src="homePilgScript.js"></script>
+
+</body>
+</html>
