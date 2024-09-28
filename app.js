@@ -52,3 +52,12 @@ mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.
 .catch((err) => {console.log(err)});
 
 //const Data = require('./models/data');
+
+////////////////////////////////////////////////////////////////
+//s//
+// استيراد التوجيهات
+const groupRoutes = require('./routes/groupRoutes');
+app.use('/', groupRoutes);
+
+
+

@@ -1,0 +1,163 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8ebe4; 
+    margin: 0;
+    padding: 20px;
+    color: #4e3621; /* لون النص */
+}
+
+/* العنوان */
+h1 {
+    color: #a86f3e; 
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #d3b8a3;
+    padding-bottom: 10px;
+}
+
+
+#addGroupBtn {
+    display: block;
+    margin-left: auto; /* محاذاة الزر لليمين */
+    margin-bottom: 20px;
+    background-color: #a86f3e; 
+    color: white;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#addGroupBtn:hover {
+    background-color: #8f6033; /* لون أغمق عند التمرير */
+}
+
+/* الجدول */
+table {
+    width: 80%; /* تقليل عرض الجدول */
+    margin: 20px auto; /* محاذاة الجدول في المنتصف */
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظل للجدول */
+    border-radius: 15px; /* زوايا مستديرة للجدول */
+    overflow: hidden; /* إزالة الزوايا المدببة */
+}
+
+table, th, td {
+    border: 1px solid #e0d5c4; /* لون الحدود فاتح */
+    padding: 10px; /* تقليل padding للخلايا */
+    text-align: left;
+}
+
+th {
+    background-color: #d7b9a3; /* خلفية رأس الجدول   */
+    color: #4d3c30; /* نص بني غامق */
+    font-size: 1rem; /* تقليل حجم الخط */
+}
+
+td {
+    background-color: #fff; /* خلفية الخلايا */
+    color: #4d3c30;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f3ede8; /* تناوب الخلفيات */
+}
+
+tbody tr:hover {
+    background-color: #f0d9c9; /* خلفية عند التمرير */
+}
+
+/* الأزرار في الجدول */
+table .button {
+    padding: 6px 10px; /* تقليل padding للأزرار */
+    font-size: 0.9rem;
+    background-color: #a86f3e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+table .button:hover {
+    background-color: #8f6033;
+}
+
+/* النوافذ المنبثقة */
+.popup {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* محاذاة النص لليسار داخل النافذة المنبثقة */
+.popup h2 {
+    color: #a86f3e; /* لون العنوان داخل النافذة */
+    margin-bottom: 20px;
+    text-align: left; /* محاذاة العنوان لليسار */
+}
+
+.popup .close {
+    cursor: pointer;
+    color: #a86f3e;
+    float: right;
+    font-size: 24px;
+    margin-top: -10px;
+}
+
+.popup .close:hover {
+    color: #8f6033;
+}
+
+.popup-content form {
+    text-align: left; /* محاذاة محتويات النموذج لليسار */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #4d3c30;
+}
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #b8a191;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+button[type="submit"] {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+    background-color: #a86f3e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #8f6033;
+}
