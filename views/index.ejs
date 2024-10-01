@@ -19,8 +19,10 @@
             </div>
             <h1 class="hero-title">Welcome to Faridah!</h1>
             <p class="hero-subtitle">Enhance your Hajj experience, with GPS tracking, direct chatting, and more!</p>
-            <a href="/views/pages/login organizer.html" class="hero-button Org">Organizer</a>
-            <a href="/views/pages/login pilgrim.html" class="hero-button Pil">Pilgrim</a>
+            <div class="btn-group">
+                <a href="/views/pages/login organizer.html" class="hero-button Org">Organizer</a>
+                <a href="/views/pages/login pilgrim.html" class="hero-button Pil">Pilgrim</a>
+            </div>
         </div>
     </header>
 
@@ -31,16 +33,19 @@
     </section>
 
     <!-- Our Team Section -->
-    <section class="team-section" id="oteam-section">
+    <section class="team-section" id="team-section">
         <h2>Our Team</h2>
-        <p>Our team consists of dedicated developers and professionals passionate about using technology to improve the Hajj experience. Together, we strive to create innovative solutions that bring convenience and peace of mind to all users.</p>
+        <p>Our team consists of dedicated developers passionate about using technology to improve the Hajj experience. We strive to create innovative solutions that bring convenience and peace of mind to all users.</p>
     </section>
 
     <!-- Bootstrap Footer -->
     <%- include('./component/footer.ejs') %>
 
-    <!-- Add Bootstrap CSS and JS (if not already included in your project) -->
+    <!-- Bootstrap CSS and JS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.j
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
