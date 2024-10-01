@@ -1,4 +1,3 @@
-
 body {
     margin: 0;
     padding: 0;
@@ -8,12 +7,10 @@ body {
 /* Logo Styling */
 .logo {
     margin-top: 20px;
-   
 }
 
 .logo-img {
     width: 320px;
-
 }
 
 .hero {
@@ -48,23 +45,22 @@ body {
     z-index: -1; /* Ensure the gradient is between the image and content */
 }
 
-
 .hero-content {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 40px; /* Reduced margin to bring text closer */
     color: #333;
     z-index: 2; /* Ensure the content is on top of the overlay */
 }
 
 .hero-title {
     font-size: 3em;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     animation: fadeInUp 1s ease-in-out;
 }
 
 .hero-subtitle {
     font-size: 1.5em;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     animation: fadeInUp 1s ease-in-out 0.5s;
 }
 
@@ -73,7 +69,6 @@ body {
     padding: 10px 20px;
     font-size: 1.2em;
     margin: 20px;
-    margin-bottom: 100px;
     text-decoration: none;
     color: #333;
     background-color:  #c58d43;
@@ -81,11 +76,9 @@ body {
     transition: background-color 0.3s ease-in-out;
 }
 
-
 .Org {
     background-color:  #BA7F37;
 }
-
 
 .hero-button:hover {
     background-color: #dcbb79;
@@ -101,14 +94,54 @@ body {
         transform: translateY(0);
     }
 }
-footer{
-     background-color: #bb8c4e; 
 
+/* About Section Styling */
+.about-section {
+    padding: 50px 100px;
+    background-color: #f3dfc6; /* Similar tone to the hero background */
+    text-align: left;
 }
-.col-md-3,.read{
+
+.about-section h2 {
+    font-size: 1.8em; /* Smaller heading */
+    margin-bottom: 15px;
+}
+
+.about-section p {
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.6;
+    margin: 0 auto;
+}
+
+/* Our Team Section Styling */
+.team-section {
+    padding: 50px 100px;
+    background-color: #e4cdb0; /* Similar tone to the hero background */
+    text-align: left;
+}
+
+.team-section h2 {
+    font-size: 1.8em; /* Smaller heading */
+    margin-bottom: 15px;
+}
+
+.team-section p {
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.6;
+    margin: 0 auto;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #bb8c4e;
+}
+
+.col-md-3, .read {
     color: #333;
 }
 
-.text-center{
+.text-center {
     color: #333;
-} 
+}

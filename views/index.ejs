@@ -1,4 +1,3 @@
-<!--Landing page the first page users will see -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +11,7 @@
 </head>
 
 <body>
+    <!-- Hero Section (Logo, Title, and Buttons) -->
     <header class="hero">
         <div class="hero-content">   
             <div class="logo">
@@ -24,15 +24,23 @@
         </div>
     </header>
 
+    <!-- About Section -->
+    <section class="about-section" id="about-section">
+        <h2>About Faridah</h2>
+        <p>Faridah is a platform dedicated to enhancing the Hajj experience for both pilgrims and organizers. With real-time GPS tracking, seamless communication tools, and optimized group coordination, Faridah ensures a safer and more organized pilgrimage journey.</p>
+    </section>
 
-        <!-- Bootstrap Footer -->
-        <%- include('./component/footer.ejs') %>
-   
-        <!-- Add Bootstrap CSS and JS (if not already included in your project) -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-  </body>
-</html>
+    <!-- Our Team Section -->
+    <section class="team-section" id="oteam-section">
+        <h2>Our Team</h2>
+        <p>Our team consists of dedicated developers and professionals passionate about using technology to improve the Hajj experience. Together, we strive to create innovative solutions that bring convenience and peace of mind to all users.</p>
+    </section>
+
+    <!-- Bootstrap Footer -->
+    <%- include('./component/footer.ejs') %>
+
+    <!-- Add Bootstrap CSS and JS (if not already included in your project) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.j
