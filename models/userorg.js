@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const Orgdata = new Schema({
   firstName: String,
-  lasttName: String,
-  orgName: String,
+  lastName: String,
+  orgname: String,
   orgnum: Number,
   email: String, 
   phoneNumber: Number,

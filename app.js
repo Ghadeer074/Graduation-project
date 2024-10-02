@@ -3,7 +3,7 @@ const express = require('express');
 //const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
-const  Orgdata = require("./models/userorg");
+const  UserData = require("./models/userorg");
 
 // Create an Express app
 const app = express();
@@ -58,13 +58,18 @@ mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.
 })
 .catch((err) => {console.log(err)});
 
+// post request for database (org account info)
 app.post('/', (req, res) => {
    console.log(req.body)
-   res.redirect("/homeOrg.html")
-})
+   const userData = new UserData(req.body);
+   userData.save().then(() =>{
+    res.redirect("/")
+   }).catch((err) =>{
+     console.log(err)
+   });
+  
+});
 
-
-//const Data = require('./models/data');
 
 ////////////////////////////////////////////////////////////////
 //s//
