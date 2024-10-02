@@ -63,7 +63,7 @@ app.post('/', (req, res) => {
    console.log(req.body)
    const userData = new UserData(req.body);
    userData.save().then(() =>{
-    res.redirect("/")
+    res.redirect("/homeOrg")
    }).catch((err) =>{
      console.log(err)
    });
