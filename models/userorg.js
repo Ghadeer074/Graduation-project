@@ -13,4 +13,4 @@ const Orgdata = new Schema({
 
 const UserData = mongoose.model("UserData",Orgdata);
 
-module.exports = Orgdata;
+module.exports = UserData;
