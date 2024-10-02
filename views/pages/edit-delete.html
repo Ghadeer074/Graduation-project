@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Dialog</title>
+    <link type="text/css" rel="stylesheet" href="popups.css">
+    
+</head>
+<body>
+    <button id="showEditPopupBtn"> Edit Pilgrim</button>
+    <button id="showDeletePopupBtn"> Delete Pilgrim</button>
+
+    <div class="edit-popup" id="edit-popup">
+        <h2>Confirm edit pilgrim</h2>
+        <p>Are you sure you want to edit "Fatima Ali"?</p>
+        <div class="popup-buttons">
+            <button class="popup-button cancel" onclick="closeEditPopup()">Cancel</button>
+            <button class="popup-button confirm" onclick="confirmEditAction()">Confirm</button>
+        </div>
+    </div>
+
+    <div class="delete-popup" id="delete-popup">
+        <h2>Confirm delete pilgrim</h2>
+        <p>Are you sure you want to delete "Fatima Ali"?</p>
+        <div class="popup-buttons">
+            <button class="popup-button cancel" onclick="closeDeletePopup()">Cancel</button>
+            <button class="popup-button confirm" onclick="confirmDeleteAction()">Confirm</button>
+        </div>
+    </div>
+
+    <script src="popups.js"></script>
+</body>
+</html>
