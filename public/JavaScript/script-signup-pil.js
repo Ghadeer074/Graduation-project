@@ -1,8 +1,11 @@
-function signUp(){
+// Frontend JavaScript for Sign-Up Validation and Terms Modal Interaction
+
+// Function to handle the form validation for the sign-up page
+function signUp() {
     var firstName = document.getElementById('firstName');
     var lastName = document.getElementById('lastName');
     var dob = document.getElementById('dob');
-    var nationality= document.getElementById('nationality');
+    var nationality = document.getElementById('nationality');
     var province = document.getElementById('province');
     var username = document.getElementById('username');
     var email = document.getElementById('email');
@@ -13,54 +16,65 @@ function signUp(){
     // Reset styles and messages
     resetStyles();
 
-    if (firstName.value.trim().isEmpty()) {
+    // Add form validation checks for each field
+    if (firstName.value.trim() === '') {
         setStyleAndMsg(firstName, "You must enter your first name.");
     } else if (!isAlpha(firstName.value)) {
         setStyleAndMsg(firstName, "First name must contain letters.");
     }
 
-    if (lastName.value.trim().isEmpty()) {
+    if (lastName.value.trim() === '') {
         setStyleAndMsg(lastName, "You must enter your last name.");
     } else if (!isAlpha(lastName.value)) {
         setStyleAndMsg(lastName, "Last name must contain letters.");
     }
 
-    if (nationality.value.trim().isEmpty()) {
+    if (nationality.value.trim() === '') {
         setStyleAndMsg(nationality, "You must select your nationality.");
-    } else if (!isAlpha(nationality.value)) {
-        setStyleAndMsg(nationality, "nationality must contain letters.");
     }
 
-    if (province.value.trim().isEmpty()) {
+    if (province.value.trim() === '') {
         setStyleAndMsg(province, "You must enter your province.");
     } else if (!isAlpha(province.value)) {
-        setStyleAndMsg(province, "province must contain letters.");
+        setStyleAndMsg(province, "Province must contain letters.");
     }
 
-    if (username.value.trim().isEmpty()) {
+    if (username.value.trim() === '') {
         setStyleAndMsg(username, "You must enter a username.");
     } else if (!isAlphaNumeric(username.value)) {
         setStyleAndMsg(username, "Username must contain only alphanumeric characters.");
     }
 
-    if (email.value.trim().isEmpty()){
+    if (email.value.trim() === '') {
         setStyleAndMsg(email, "You must enter an email.");
     }
 
-    if (phoneNumber.value.trim().isEmpty()){
+    if (phoneNumber.value.trim() === '') {
         setStyleAndMsg(phoneNumber, "You must enter your phone number.");
     } else if (!isNumeric(phoneNumber.value) || phoneNumber.value.length !== 10) {
         setStyleAndMsg(phoneNumber, "Phone number must be 10 digits.");
     }
 
-    if (password.value.trim().isEmpty()){
+    if (password.value.trim() === '') {
         setStyleAndMsg(password, "You must enter a password.");
     } else if (!isPasswordValid(password.value)) {
-        setStyleAndMsg(password, "Password must be between 8 and 12 characters long , have at least one uppercase letter, one lowercase letter, and must have digits.");
+        setStyleAndMsg(password, "Password must be between 8 and 12 characters long, have at least one uppercase letter, one lowercase letter, and must have digits.");
     }
 }
 
-function resetStyles(){
+// Enable the "Create Account" button only when the user agrees to the terms
+document.getElementById('agreeCheckbox').addEventListener('change', function() {
+    const createAccountButton = document.getElementById('bt');
+    if (this.checked) {
+        createAccountButton.disabled = false;
+        createAccountButton.style.opacity = 1; // Make it fully visible
+    } else {
+        createAccountButton.disabled = true;
+        createAccountButton.style.opacity = 0.5; // Blur the button when disabled
+    }
+});
+
+function resetStyles() {
     var elements = document.querySelectorAll('input');
     for (var i = 0; i < elements.length; i++) {
         elements[i].style.borderColor = '';
@@ -75,11 +89,11 @@ function setStyleAndMsg(element, message) {
     msg.textContent = message;
 }
 
-function isAlpha(value){
+function isAlpha(value) {
     return /^[a-zA-Z]+$/.test(value);
 }
 
-function isAlphaNumeric(value){
+function isAlphaNumeric(value) {
     return /^[a-zA-Z0-9]+$/.test(value);
 }
 
@@ -88,46 +102,30 @@ function isNumeric(value) {
 }
 
 function isPasswordValid(value) {
-    if (value.length < 8 && value.length > 12){
-        return false;
-    }
-
-    // At least one uppercase letter
-    if (!/[A-Z]/.test(value)){
-        return false;
-    }
-
-    // At least one lowercase letter
-    if (!/[a-z]/.test(value)){
-        return false;
-    }
-
-    // At least one digit
-    if (!/\d/.test(value)){
-        return false;
-    }
-    return true; 
-} 
-
- // country dropdown list
-    document.addEventListener('DOMContentLoaded', function() {
-        const countryDropdown = document.getElementById('nationality');
-        
-        fetch('https://restcountries.com/v3.1/all')
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(country => {
-                    const option = document.createElement('option');
-                    option.value = country.name.common;
-                    option.text = country.name.common;
-                    countryDropdown.appendChild(option);
-                });
-            })
-            .catch(error => console.error('Error fetching country data:', error));
-    });
+    return value.length >= 8 && value.length <= 12 &&
+        /[A-Z]/.test(value) && /[a-z]/.test(value) && /\d/.test(value);
+}
 
 
-    // Enable 'Agree and Continue' button when checkbox is checked in the modal
+// country dropdown list
+document.addEventListener('DOMContentLoaded', function() {
+    const countryDropdown = document.getElementById('nationality');
+    
+    fetch('https://restcountries.com/v3.1/all')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(country => {
+                const option = document.createElement('option');
+                option.value = country.name.common;
+                option.text = country.name.common;
+                countryDropdown.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching country data:', error));
+});
+
+
+// Enable 'Agree and Continue' button when checkbox is checked in the modal
 document.getElementById('agreeCheckbox').addEventListener('change', function() {
     const agreeButton = document.getElementById('agreeButton');
     if (this.checked) {
@@ -142,10 +140,4 @@ document.getElementById('agreeCheckbox').addEventListener('change', function() {
 // Close the modal when the 'Agree and Continue' button is clicked
 document.getElementById('agreeButton').addEventListener('click', function() {
     $('#termsModal').modal('hide');
-});
-
-// Enable the signup button once the user has agreed to terms
-document.getElementById('agreeCheckboxSignup').addEventListener('change', function() {
-    const signupButton = document.getElementById('signupButton');
-    signupButton.disabled = !this.checked;
 });

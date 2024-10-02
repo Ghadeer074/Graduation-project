@@ -1,4 +1,6 @@
- function signUpOrg(){
+// Frontend JavaScript for Sign-Up Validation and Terms Modal Interaction
+
+function signUpOrg() {
     var firstName = document.getElementById('firstName');
     var lastName = document.getElementById('lastName');
     var orgname = document.getElementById('orgname');
@@ -24,36 +26,47 @@
     }
 
     if (orgname.value.trim().isEmpty()) {
-        setStyleAndMsg(orgname, "You must enter a organization name.");
+        setStyleAndMsg(orgname, "You must enter an organization name.");
     } else if (!isAlphaNumeric(orgname.value)) {
         setStyleAndMsg(orgname, "Organization must contain letters.");
     }
 
-    
-    if (orgNum.value.trim().isEmpty()){
-        setStyleAndMsg(orgNum, "You must enter organization number.");
+    if (orgNum.value.trim().isEmpty()) {
+        setStyleAndMsg(orgNum, "You must enter the organization number.");
     } else if (!isNumeric(orgNum.value) || orgNum.value.length !== 10) {
-        setStyleAndMsg(orgNum, "organization must be 10 digits.");
+        setStyleAndMsg(orgNum, "Organization number must be 10 digits.");
     }
 
-    if (email.value.trim().isEmpty()){
+    if (email.value.trim().isEmpty()) {
         setStyleAndMsg(email, "You must enter an email.");
     }
 
-    if (phoneNumber.value.trim().isEmpty()){
+    if (phoneNumber.value.trim().isEmpty()) {
         setStyleAndMsg(phoneNumber, "You must enter your phone number.");
     } else if (!isNumeric(phoneNumber.value) || phoneNumber.value.length !== 10) {
         setStyleAndMsg(phoneNumber, "Phone number must be 10 digits.");
     }
 
-    if (password.value.trim().isEmpty()){
+    if (password.value.trim().isEmpty()) {
         setStyleAndMsg(password, "You must enter a password.");
     } else if (!isPasswordValid(password.value)) {
         setStyleAndMsg(password, "Password must be 8 digits, have at least one uppercase letter, one lowercase letter, and one digit.");
     }
 }
 
-function resetStyles(){
+// Enable the "Create Account" button only when the user agrees to the terms
+document.getElementById('agreeCheckbox').addEventListener('change', function() {
+    const createAccountButton = document.getElementById('bt');
+    if (this.checked) {
+        createAccountButton.disabled = false;
+        createAccountButton.style.opacity = 1; // Make it fully visible
+    } else {
+        createAccountButton.disabled = true;
+        createAccountButton.style.opacity = 0.5; // Blur the button when disabled
+    }
+});
+
+function resetStyles() {
     var elements = document.querySelectorAll('input');
     for (var i = 0; i < elements.length; i++) {
         elements[i].style.borderColor = '';
@@ -68,11 +81,11 @@ function setStyleAndMsg(element, message) {
     msg.textContent = message;
 }
 
-function isAlpha(value){
+function isAlpha(value) {
     return /^[a-zA-Z]+$/.test(value);
 }
 
-function isAlphaNumeric(value){
+function isAlphaNumeric(value) {
     return /^[a-zA-Z0-9]+$/.test(value);
 }
 
@@ -81,28 +94,40 @@ function isNumeric(value) {
 }
 
 function isPasswordValid(value) {
-    if (value.length < 8){
+    if (value.length < 8) {
         return false;
     }
 
     // At least one uppercase letter
-    if (!/[A-Z]/.test(value)){
+    if (!/[A-Z]/.test(value)) {
         return false;
     }
 
     // At least one lowercase letter
-    if (!/[a-z]/.test(value)){
+    if (!/[a-z]/.test(value)) {
         return false;
     }
 
     // At least one digit
-    if (!/\d/.test(value)){
+    if (!/\d/.test(value)) {
         return false;
     }
-    return true; 
-} 
+    return true;
+}
 
-// Enable 'Agree and Continue' button when checkbox is checked in the modal
+// Enable the "Create Account" button only when the user agrees to the terms
+document.getElementById('agreeCheckbox').addEventListener('change', function() {
+    const createAccountButton = document.getElementById('bt');
+    if (this.checked) {
+        createAccountButton.disabled = false;
+        createAccountButton.style.opacity = 1; // Make it fully visible
+    } else {
+        createAccountButton.disabled = true;
+        createAccountButton.style.opacity = 0.5; // Blur the button when disabled
+    }
+});
+
+// Enable the 'Agree and Continue' button only when the checkbox inside the modal is checked
 document.getElementById('agreeCheckbox').addEventListener('change', function() {
     const agreeButton = document.getElementById('agreeButton');
     if (this.checked) {
@@ -114,13 +139,12 @@ document.getElementById('agreeCheckbox').addEventListener('change', function() {
     }
 });
 
-// Close the modal when the 'Agree and Continue' button is clicked
+// Close the modal and enable the "Create Account" button when "Agree" is clicked
 document.getElementById('agreeButton').addEventListener('click', function() {
+    // Close the modal
     $('#termsModal').modal('hide');
-});
-
-// Enable the signup button once the user has agreed to terms
-document.getElementById('agreeCheckboxSignup').addEventListener('change', function() {
-    const signupButton = document.getElementById('signupButton');
-    signupButton.disabled = !this.checked;
+    
+    // Enable the sign-up button
+    document.getElementById('bt').disabled = false;
+    document.getElementById('bt').style.opacity = 1; // Make the button fully visible
 });
