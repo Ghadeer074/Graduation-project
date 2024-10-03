@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const  UserData = require("./models/userorg");
+const  UserData = require("./models/userpil");
 
 // Create an Express app
 const app = express();
@@ -69,6 +70,18 @@ app.post('/signUp organizer', (req, res) => {
    });
   
 });
+
+// post request for database (pil account info)
+app.post('/signUp pilgrim', (req, res) => {
+    console.log(req.body)
+    const userData1 = new UserData(req.body);
+    userData1.save().then(() =>{
+     res.redirect("/homeOrg")
+    }).catch((err) =>{
+      console.log(err)
+    });
+   
+ });
 
 
 ////////////////////////////////////////////////////////////////
