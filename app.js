@@ -59,7 +59,7 @@ mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.
 .catch((err) => {console.log(err)});
 
 // post request for database (org account info)
-app.post('/', (req, res) => {
+app.post('/signUp organizer', (req, res) => {
    console.log(req.body)
    const userData = new UserData(req.body);
    userData.save().then(() =>{
