@@ -37,11 +37,11 @@ app.post('/submit', (req, res) => {
 
 
 //import routes 
-const routes = require("./routes/landing route");
-const PilgrimRoute = require("./routes/Pilgrim route");
+const routes = require("./routes/landing-route");
+const PilgrimRoute = require("./routes/pilgrim-route");
 const orgRoute = require("./routes/org-route");
-const homeOrga = require("./routes/home-org route");
-const homepilg = require("./routes/home-pil route");
+const homeOrga = require("./routes/homeorg-route");
+const homepilg = require("./routes/homepil-route");
 
 // use the routes 
 app.use(routes);
