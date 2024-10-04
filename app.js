@@ -20,6 +20,7 @@ app.use(express.static('public'));
 
 // Basic route to render index.ejs
 // Set EJS as the templating engine
+app.set('views', path.join(__dirname, 'views')); 
 app.set('view engine', 'ejs');
 
 
@@ -46,7 +47,7 @@ const homepilg = require("./routes/homepil-route");
 // use the routes 
 app.use(routes);
 app.use(PilgrimRoute);
-app.use('/signup-organizer',orgRoute);
+app.use("/signup-organizer",orgRoute);
 app.use(homeOrga);
 app.use(homepilg);
 
