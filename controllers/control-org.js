@@ -1,6 +1,6 @@
 //Handle a GET request for signUp oranizer.ejs (Sign up page - organizer)
 const signOrgGet = (req, res) => {
-    res.render("signUp organizer",{});
+    res.render("/signup-organizer",{});
 };
 
 // handle post request for signUp organizer.ejs

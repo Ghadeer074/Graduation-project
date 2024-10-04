@@ -39,14 +39,14 @@ app.post('/submit', (req, res) => {
 //import routes 
 const routes = require("./routes/landing route");
 const PilgrimRoute = require("./routes/Pilgrim route");
-const orgRoute = require("./routes/org route");
+const orgRoute = require("./routes/org-route");
 const homeOrga = require("./routes/home-org route");
 const homepilg = require("./routes/home-pil route");
 
 // use the routes 
 app.use(routes);
 app.use(PilgrimRoute);
-app.use(orgRoute);
+app.use('/signup-organizer',orgRoute);
 app.use(homeOrga);
 app.use(homepilg);
 
@@ -60,7 +60,7 @@ mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.
 .catch((err) => {console.log(err)});
 
 // post request for database (org account info)
-app.post('/signUp organizer', (req, res) => {
+app.post('/signup-organizer', (req, res) => {
    console.log(req.body)
    const userData = new UserData(req.body);
    userData.save().then(() =>{
