@@ -14,6 +14,6 @@ const Pildata = new Schema({
   password: String 
 });
 
-const UserData = mongoose.model("UserData",Pildata);
+//const UserData = mongoose.model("UserData",Pildata);
 
 module.exports = UserData;
