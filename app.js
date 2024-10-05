@@ -3,8 +3,8 @@ const express = require('express');
 //const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
-const  UserData = require("./models/userorg");
-//const  UserData = require("./models/userpil");
+const  Organizer = require("./models/userorg");
+//const  Pilgrim = require("./models/userpil");
 
 // Create an Express app
 const app = express();
@@ -63,26 +63,32 @@ mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.
 // post request for database (org account info)
 app.post('/signup-organizer', (req, res) => {
    console.log(req.body)
-   const userData = new UserData(req.body);
-   userData.save().then(() =>{
-    res.redirect("/homeOrg")
-   }).catch((err) =>{
-     console.log(err)
+   const organizer = new Organizer(req.body);
+   organizer.save().then(() => res.redirect("/homeOrg"))
+   .catch((err) => {
+     if (err.code === 11000) {  // Duplicate key error for unique fields
+       res.send("Duplicate entry detected (email or organization number or password already exists)");
+     } else {
+       console.log(err);
+       res.send("An error occurred while saving the data");
+     }
    });
-  
 });
 
 // post request for database (pil account info)
-/*app.post('/signUp pilgrim', (req, res) => {
+/*app.post('/signup-pilgrim', (req, res) => {
     console.log(req.body)
-    const userData1 = new UserData(req.body);
-    userData1.save().then(() =>{
-     res.redirect("/homeOrg")
-    }).catch((err) =>{
-      console.log(err)
-    });
-   
- });*/
+    const pilgrim = new Pilgrim(req.body);
+    pilgrim.save().then(() => res.redirect("/homeOrg"))
+   .catch((err) => {
+     if (err.code === 11000) {  // Duplicate key error for unique fields
+       res.send("Duplicate entry detected (email or username or password already exists)");
+     } else {
+       console.log(err);
+       res.send("An error occurred while saving the data");
+     }
+   });
+});*/
 
 
 ////////////////////////////////////////////////////////////////
