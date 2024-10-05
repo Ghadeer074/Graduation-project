@@ -46,7 +46,7 @@ const homepilg = require("./routes/homepil-route");
 
 // use the routes 
 app.use(routes);
-app.use(PilgrimRoute);
+app.use("/signup-pilgrim",PilgrimRoute);
 app.use("/signup-organizer",orgRoute);
 app.use(homeOrga);
 app.use(homepilg);

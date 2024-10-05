@@ -1,6 +1,6 @@
 //Handle a GET request for signUp piligrm.ejs (Sign up page - pilgrim)
 const signPilGet = (req, res) => {
-    res.render("signUp pilgrim",{});
+    res.render("signup-pilgrim",{});
 };
 
 // handle post request for signUp piligrm.ejs
