@@ -14,6 +14,6 @@ const Pildata = new Schema({
   password:{ type: String, required: true, unique: true } 
 });
 
-//const Pilgrim = mongoose.model("Pilgrim",Pildata);
+const Pilgrim = mongoose.model("Pilgrim",Pildata);
 
 module.exports = Pilgrim;

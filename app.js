@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const  Organizer = require("./models/userorg");
-//const  Pilgrim = require("./models/userpil");
+const  Pilgrim = require("./models/userpil");
 
 // Create an Express app
 const app = express();
@@ -76,10 +76,10 @@ app.post('/signup-organizer', (req, res) => {
 });
 
 // post request for database (pil account info)
-/*app.post('/signup-pilgrim', (req, res) => {
+app.post('/signup-pilgrim', (req, res) => {
     console.log(req.body)
     const pilgrim = new Pilgrim(req.body);
-    pilgrim.save().then(() => res.redirect("/homeOrg"))
+    pilgrim.save().then(() => res.redirect("/homePilg"))
    .catch((err) => {
      if (err.code === 11000) {  // Duplicate key error for unique fields
        res.send("Duplicate entry detected (email or username or password already exists)");
@@ -88,7 +88,7 @@ app.post('/signup-organizer', (req, res) => {
        res.send("An error occurred while saving the data");
      }
    });
-});*/
+});
 
 
 ////////////////////////////////////////////////////////////////
