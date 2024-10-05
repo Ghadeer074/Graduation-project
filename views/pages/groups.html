@@ -21,7 +21,23 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Dynamic content will be injected here -->
+            <% if (groups && groups.length > 0) { %>
+                <% groups.forEach(function(group) { %>
+                    <tr>
+                        <td><%= group.groupID %></td>
+                        <td><%= group.groupProvince %></td>
+                        <td><%= group.groupSize %></td>
+                        <td>
+                            <button class="button edit-btn" data-id="<%= group.groupID %>">Edit</button>
+                            <button class="button delete-btn" data-id="<%= group.groupID %>">Delete</button>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="4">No groups available.</td>
+                </tr>
+            <% } %>
         </tbody>
     </table>
 
@@ -32,11 +48,11 @@
             <h2>Add New Group</h2>
             <form id="addGroupForm">
                 <label for="groupNumber">Group id :</label>
-                <input type="text" id="groupNumber" required><br>
+                <input type="text" id="groupNumber" name="groupID" required><br>
                 <label for="governorate">province:</label>
-                <input type="text" id="governorate" required><br>
+                <input type="text" id="governorate" name="groupProvince" required><br>
                 <label for="maxMembers">Max Members:</label>
-                <input type="number" id="maxMembers" required><br>
+                <input type="number" id="maxMembers" name="groupSize" required><br>
                 <button type="submit" class="button">Add Group</button>
             </form>
         </div>
@@ -60,11 +76,11 @@
             <h2>Edit Group</h2>
             <form id="editGroupForm">
                 <label for="editGroupNumber">Group id:</label>
-                <input type="text" id="editGroupNumber" required><br>
+                <input type="text" id="editGroupNumber" name="groupID" required><br>
                 <label for="editGovernorate">province:</label>
-                <input type="text" id="editGovernorate" required><br>
+                <input type="text" id="editGovernorate" name="groupProvince" required><br>
                 <label for="editMaxMembers">Max Members:</label>
-                <input type="number" id="editMaxMembers" required><br>
+                <input type="number" id="editMaxMembers" name="groupSize" required><br>
                 <button type="submit" class="button">Update Group</button>
             </form>
         </div>
