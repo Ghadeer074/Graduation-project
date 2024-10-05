@@ -1,96 +1,105 @@
- // JavaScript to handle popups and CRUD operations
- const addGroupBtn = document.getElementById('addGroupBtn');
- const addGroupPopup = document.getElementById('addGroupPopup');
- const closeAddPopup = document.getElementById('closeAddPopup');
- const deleteGroupPopup = document.getElementById('deleteGroupPopup');
- const closeDeletePopup = document.getElementById('closeDeletePopup');
- const editGroupPopup = document.getElementById('editGroupPopup');
- const closeEditPopup = document.getElementById('closeEditPopup');
+  // تعريف العناصر
+const addGroupBtn = document.getElementById('addGroupBtn');
+const addGroupPopup = document.getElementById('addGroupPopup');
+const closeAddPopup = document.getElementById('closeAddPopup');
+const addGroupForm = document.getElementById('addGroupForm');
+const deleteGroupPopup = document.getElementById('deleteGroupPopup');
+const closeDeletePopup = document.getElementById('closeDeletePopup');
+const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+const editGroupPopup = document.getElementById('editGroupPopup');
+const closeEditPopup = document.getElementById('closeEditPopup');
+const editGroupForm = document.getElementById('editGroupForm');
 
- let groups = []; // This will hold our group data
- let currentGroupId = null;
+// تعريف متغير لتخزين ID المجموعة التي سيتم حذفها
+let groupIdToDelete;
 
- addGroupBtn.onclick = () => {
-     addGroupPopup.style.display = 'flex';
- };
+// إظهار نافذة إضافة المجموعة
+addGroupBtn.addEventListener('click', () => {
+    addGroupPopup.style.display = 'block';
+});
 
- closeAddPopup.onclick = () => {
-     addGroupPopup.style.display = 'none';
- };
+// إغلاق نافذة إضافة المجموعة
+closeAddPopup.addEventListener('click', () => {
+    addGroupPopup.style.display = 'none';
+});
 
- closeDeletePopup.onclick = () => {
-     deleteGroupPopup.style.display = 'none';
- };
+// إضافة مجموعة جديدة
+addGroupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(addGroupForm);
+    const response = await fetch('/groups', {
+        method: 'POST',
+        body: formData
+    });
+    if (response.ok) {
+        location.reload(); // إعادة تحميل الصفحة بعد الإضافة
+    }
+});
 
- closeEditPopup.onclick = () => {
-     editGroupPopup.style.display = 'none';
- };
+// إغلاق نافذة حذف المجموعة
+closeDeletePopup.addEventListener('click', () => {
+    deleteGroupPopup.style.display = 'none';
+});
 
- // Add Group form submission
- document.getElementById('addGroupForm').onsubmit = (e) => {
-     e.preventDefault();
-     const groupNumber = document.getElementById('groupNumber').value;
-     const governorate = document.getElementById('governorate').value;
-     const maxMembers = document.getElementById('maxMembers').value;
+// تأكيد حذف مجموعة
+confirmDeleteBtn.addEventListener('click', async () => {
+    const response = await fetch(`/groups/${groupIdToDelete}`, {
+        method: 'DELETE'
+    });
+    if (response.ok) {
+        location.reload(); // إعادة تحميل الصفحة بعد الحذف
+    }
+});
 
-     const newGroup = { id: Date.now(), groupNumber, governorate, maxMembers };
-     groups.push(newGroup);
-     renderGroups();
-     addGroupPopup.style.display = 'none';
- };
+// إغلاق نافذة تعديل المجموعة
+closeEditPopup.addEventListener('click', () => {
+    editGroupPopup.style.display = 'none';
+});
 
- function renderGroups() {
-     const tbody = document.getElementById('groupsTable').getElementsByTagName('tbody')[0];
-     tbody.innerHTML = ''; // Clear existing groups
-     groups.forEach(group => {
-         const row = tbody.insertRow();
-         row.insertCell(0).innerText = group.groupNumber;
-         row.insertCell(1).innerText = group.governorate;
-         row.insertCell(2).innerText = group.maxMembers;
+// إظهار نافذة تعديل المجموعة
+document.querySelectorAll('.edit-btn').forEach(button => {
+    button.addEventListener('click', async (e) => {
+        const groupId = e.target.getAttribute('data-id');
+        const response = await fetch(`/groups/${groupId}`);
+        const group = await response.json();
+        
+        // ملء الحقول في نموذج التعديل
+        document.getElementById('editGroupNumber').value = group.groupID;
+        document.getElementById('editGovernorate').value = group.groupProvince;
+        document.getElementById('editMaxMembers').value = group.groupSize;
 
-         const actionsCell = row.insertCell(3);
-         actionsCell.innerHTML = `
-             <button class="button" onclick="confirmDelete(${group.id})">Delete</button>
-             <button class="button" onclick="openEditGroupPopup(${group.id})">Edit</button>
-         `;
-     });
- }
+        // تعيين ID المجموعة للتحديث
+        editGroupForm.setAttribute('data-id', groupId);
+        
+        // إظهار نافذة تعديل المجموعة
+        editGroupPopup.style.display = 'block';
+    });
+});
 
- function confirmDelete(id) {
-     currentGroupId = id;
-     const groupToDelete = groups.find(g => g.id === id);
-     document.getElementById('deleteConfirmationMessage').innerText = `Are you sure you want to delete the group "${groupToDelete.groupNumber}"?`;
-     deleteGroupPopup.style.display = 'flex';
- }
+// تحديث مجموعة
+editGroupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const groupId = editGroupForm.getAttribute('data-id');
+    const formData = new FormData(editGroupForm);
+    const response = await fetch(`/groups/${groupId}`, {
+        method: 'PUT',
+        body: formData
+    });
+    if (response.ok) {
+        location.reload(); // إعادة تحميل الصفحة بعد التحديث
+    }
+});
 
- document.getElementById('confirmDeleteBtn').onclick = () => {
-     groups = groups.filter(g => g.id !== currentGroupId);
-     renderGroups();
-     deleteGroupPopup.style.display = 'none';
- };
+// إظهار نافذة حذف المجموعة
+document.querySelectorAll('.delete-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        groupIdToDelete = e.target.getAttribute('data-id');
+        deleteGroupPopup.style.display = 'block';
+    });
+});
 
- document.getElementById('cancelDeleteBtn').onclick = () => {
-     deleteGroupPopup.style.display = 'none';
- };
-
- function openEditGroupPopup(id) {
-     const groupToEdit = groups.find(g => g.id === id);
-     document.getElementById('editGroupNumber').value = groupToEdit.groupNumber;
-     document.getElementById('editGovernorate').value = groupToEdit.governorate;
-     document.getElementById('editMaxMembers').value = groupToEdit.maxMembers;
-     currentGroupId = id;
-     editGroupPopup.style.display = 'flex';
- }
-
- document.getElementById('editGroupForm').onsubmit = (e) => {
-     e.preventDefault();
-     const updatedGroup = {
-         id: currentGroupId,
-         groupNumber: document.getElementById('editGroupNumber').value,
-         governorate: document.getElementById('editGovernorate').value,
-         maxMembers: document.getElementById('editMaxMembers').value,
-     };
-     groups = groups.map(g => (g.id === currentGroupId ? updatedGroup : g));
-     renderGroups();
-     editGroupPopup.style.display = 'none';
- };
+// إغلاق نافذة حذف المجموعة
+cancelDeleteBtn.addEventListener('click', () => {
+    deleteGroupPopup.style.display = 'none';
+});
