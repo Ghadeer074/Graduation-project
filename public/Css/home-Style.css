@@ -1,0 +1,111 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #F5F5F5;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo img {
+    width: 150px;
+}
+
+.nav-menu {
+    margin-top: 50px;
+    width: 100%;
+}
+
+.menu-item {
+    display: block;
+    padding: 15px;
+    background-color: #E0A660;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.menu-item:hover {
+    background-color: #d18e48;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Center the content horizontally */
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+}
+
+.user-info-section,
+.flight-info-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1.4em;
+    color: #333;
+    align-self: flex-start; /* Align the title to the left */
+    margin-left: 20%;  /* Shift the title to the left */
+    margin-bottom: 10px;
+}
+
+/* Card Styling */
+.info-card {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 60%;
+}
+
+.info-logo img {
+    width: 100px;
+    margin-right: 30px;
+}
+
+.info-details {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.info-details p {
+    margin: 10px 0;
+}
+
+.info-details strong {
+    color: #333;
+}

@@ -3,44 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organizer Home Page</title>
-    <link rel="stylesheet" href="/public/Css/homeOrgStyle.css">
+    <title>Organizer Homepage</title>
+    <link rel="stylesheet" href="/public/Css/home-Style">
     <%- include('./component/navbar-org.ejs') %>
 </head>
 <body>
-
- <!-- Header profile button -->
-     <header>
-        <button id="accountButton"> <img id="profileButton" src="pIcon.png" 
-            alt="Profile" class="accountButton" height="45" width="45"> </button>
-    </header>
     <div class="container">
-        <!-- Display Info of Organization -->
-        <div class="card">
-            <div>
-                <p><strong>Organization Name:</strong> </p>
-                <p><strong>Organization Number:</strong> </p>
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="logo.png" alt="Site Logo">
             </div>
-        </div>
-
-        <!-- Tracking Button -->
-        <button class="button" id="trackingButton">
-            <span>Tracking</span>
-        </button>
-
-        <!-- Pilgrim Group Button -->
-        <button class="button" id="pilgrimGroupButton">
-            <span>Pilgrim Group</span>
-        </button>
-
-        <!-- Chat with Pilgrims Button -->
-        <button class="button" id="chatButton">
-            <span>Chat with the Pilgrims</span>
-        </button>
+            <nav class="nav-menu">
+                <a href="#" class="menu-item home">Flight</a>
+                <a href="#" class="menu-item">Tracking</a>
+                <a href="#" class="menu-item">Pilgrim Group</a>
+                <a href="#" class="menu-item">Chat with Pilgrim</a>
+            </nav>
+        </aside>
+        <main class="content">         
+            <!-- Organization Information Section -->
+            <section class="user-info-section">
+                <h2 class="section-title">Organization Information</h2>
+                <div class="info-card">
+                    <div class="info-details">
+                        <p><strong>Organization Name:</strong> <!--from Database--></p>
+                        <p><strong>Organization Number:</strong> <!--from Database--></p>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
     <%- include('./component/footer.ejs') %>
-
     <script src="/public/JavaScript/homeOrgScript.js"></script>
-
 </body>
 </html>

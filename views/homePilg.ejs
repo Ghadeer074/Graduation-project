@@ -3,53 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pilgrim Home Page </title>
-    <link rel="stylesheet" href="/public/Css/homePilgStyle.css">
-    <%- include('./component/navbar-pil.ejs') %>
+    <title>Pilgrim Homepage</title>
+    <link rel="stylesheet" href="/public/Css/home-Style">
+    <%- include('./component/navbar-org.ejs') %>
 </head>
 <body>
-
-    <!-- Header with two buttons -->
-    <header>
-        <button id="accountButton"> <img id="profileButton" src="pIcon.png" alt="Profile" class="icon" height="45" width="45"> </button>
-        <button id="notificationButton"><img id="profileButton" src="notification-icon.png" alt="Profile" class="icon" height="40" width="40"></button>
-    </header>
-
-    <!-- Pilgrim Information -->
     <div class="container">
-        <div class="card pilgrim-info">
-            <img src="pilgrim.jpg" alt="Pilgrim Photo" class="pilgrim-photo">
-            <div>
-                <p>Name:</p>
-                <p>Gender: </p>
-                <p>Birthday: </p>
-                <p>Passport No: </p>
-                <p>Organization: </p>
-                <p>Hotel Name: </p>
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="logo.png" alt="Site Logo">
             </div>
-        </div>
+            <nav class="nav-menu">
+                <a href="#" class="menu-item">Hajj Guide</a>
+                <a href="#" class="menu-item">Chat with Organizer</a>
+            </nav>
+        </aside>
+        <main class="content">
+            <!-- Title and User Info Card -->
+            <section class="user-info-section">
+                <h2 class="section-title">Pilgrim Information</h2>
+                <div class="info-card">
+                   <!-- <div class="info-logo">
+                        <img src="logo.PNG" alt="Info Logo">
+                    </div>-->
+                    <div class="info-details">
+                        <p><strong>Name:</strong> <!--database--></p>
+                        <p><strong>Gender:</strong> </p>
+                        <p><strong>Birthday:</strong> </p>
+                        <p><strong>Nationality:</strong> </p>
+                        <p><strong>Province:</strong> </p>
+                    </div>
+                </div>
+            </section>
 
-        <!-- Hajj Guide Button -->
-        <button class="button" id="guideButton">
-            <span>Hajj Guide</span>
-        </button>
-
-        <!-- Flight Information -->
-        <div class="card flight-info">
-            <p><strong>Flight details:</strong></p>
-            <p>Flight Number: </p>
-            <p>Date: </p>
-            <p>Time: </p>
-            <p>Destination: </p>
-        </div>
-
-        <!-- Chat with Organizers Button -->
-        <button class="button" id="chatButton">
-            <span>Chat with the Organizer</span>
-        </button>
+            <!-- Title and Flight Info Card -->
+            <section class="flight-info-section">
+                <h2 class="section-title">Flight Information</h2>
+                <div class="info-card">
+                    <div class="info-details">
+                        <p><strong>Flight Number:</strong> <!--database--></p>
+                        <p><strong>Date:</strong> </p>
+                        <p><strong>Time:</strong> </p>
+                        <p><strong>Destination:</strong> </p>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
     <%- include('./component/footer.ejs') %>
-    <script src="/public/JavaScript/homepilgScript.js"></script>
-
+    <script src="/public/JavaScript/homePilgScript.js"></script>
 </body>
 </html>

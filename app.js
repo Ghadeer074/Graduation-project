@@ -5,6 +5,14 @@ const path = require('path');
 const mongoose = require('mongoose');
 const  Organizer = require("./models/userorg");
 const  Pilgrim = require("./models/userpil");
+const Chat = require('./models/chat');
+
+//socket
+const http = require('http');
+const socketIo = require('socket.io');
+const server = http.createServer(app); // إنشاء خادم HTTP باستخدام Express
+const io = socketIo(server);
+
 
 // Create an Express app
 const app = express();
@@ -58,7 +66,12 @@ mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.
     console.log(`http://localhost:${port}`);
 });
 })
-.catch((err) => {console.log(err)});
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+}).catch((err) => {
+console.log('Failed to connect to MongoDB:', err);
+});
+
 
 // post request for database (org account info)
 app.post('/signup-organizer', (req, res) => {
@@ -89,6 +102,67 @@ app.post('/signup-pilgrim', (req, res) => {
      }
    });
 });
+
+// send and receive message in chat
+const users = {};  // كائن لتخزين معرف الـ socket بناءً على الـ userId أو الـ username
+
+io.on('connection', (socket) => {
+  console.log('A user connected:', socket.id);
+
+  // استقبال بيانات تسجيل الدخول من العميل عند الاتصال
+  socket.on('login', (userData) => {
+      // هنا "userData" يحتوي على معلومات المستخدم مثل "userId" أو "username" و "role"
+      users[userData.userId] = socket.id;  // تخزين معرف الـ socket بناءً على userId أو username
+      console.log(`User ${userData.username} connected with socket id: ${socket.id}`);
+  });
+
+  // استقبال الرسالة من العميل
+  socket.on('sendMessage', async (data) => {
+      try {
+          // حفظ الرسالة في قاعدة البيانات
+          const newMessage = new Chat({
+              senderId: data.senderId,
+              receiverId: data.receiverId,
+              message: data.message,
+              timestamp: Date.now()  // استخدام `Date.now()` للطابع الزمني
+          });
+
+          await newMessage.save();  // حفظ الرسالة في قاعدة البيانات
+
+          // التحقق من أن المستلم متصل
+          const targetSocketId = users[data.receiverId];  // الحصول على معرف الـ socket الخاص بالمستلم
+          if (targetSocketId) {
+              // إرسال الرسالة فقط إلى المستخدم المستلم
+              socket.to(targetSocketId).emit('receiveMessage', {
+                  senderId: data.senderId,
+                  message: data.message
+              });
+              console.log(`Message sent from ${data.senderId} to ${data.receiverId}`);
+          } else {
+              console.log(`User ${data.receiverId} is not connected`);
+          }
+
+          console.log('Message saved:', newMessage);
+      } catch (err) {
+          console.error('Error saving message:', err);
+      }
+  });
+
+  // عند انقطاع الاتصال
+  socket.on('disconnect', () => {
+      console.log('A user disconnected:', socket.id);
+      
+      // إزالة المستخدم من القائمة عند انقطاعه
+      for (const userId in users) {
+          if (users[userId] === socket.id) {
+              delete users[userId];  // حذف المستخدم من القائمة
+              console.log(`User ${userId} disconnected`);
+              break;
+          }
+      }
+  });
+});
+
 
 
 ////////////////////////////////////////////////////////////////
