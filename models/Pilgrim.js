@@ -5,7 +5,6 @@ const pilgrimSchema = new mongoose.Schema({
     password: { type: String, required: true },
 });
 
-// تحقق مما إذا كان النموذج موجودًا بالفعل
 const Pilgrim = mongoose.models.Pilgrim || mongoose.model('Pilgrim', pilgrimSchema);
 
 module.exports = Pilgrim;
