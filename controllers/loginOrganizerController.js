@@ -9,7 +9,7 @@ exports.login = async (req, res) => {
             return res.status(400).send('Invalid credentials');
         }
         // Set up session or JWT here as needed
-        res.redirect('/homepage'); // Redirect to homepage after successful login
+        res.redirect('/homeOrg'); // Redirect to homepage after successful login
     } catch (error) {
         res.status(500).send('Server error');
     }
