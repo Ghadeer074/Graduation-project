@@ -43,6 +43,8 @@ const PilgrimRoute = require("./routes/pilgrim-route");
 const orgRoute = require("./routes/org-route");
 const homeOrga = require("./routes/homeorg-route");
 const homepilg = require("./routes/homepil-route");
+const loginRoutes = require('./routes/loginRoutes');
+
 
 // use the routes 
 app.use(routes);
@@ -50,6 +52,8 @@ app.use("/signup-pilgrim",PilgrimRoute);
 app.use("/signup-organizer",orgRoute);
 app.use(homeOrga);
 app.use(homepilg);
+app.use('/', loginRoutes); 
+
 
 
 // Start the server + database
@@ -64,7 +68,7 @@ mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.
 app.post('/signup-organizer', (req, res) => {
    console.log(req.body)
    const organizer = new Organizer(req.body);
-   organizer.save().then(() => res.redirect("/homeOrg"))
+   organizer.save().then(() => res.redirect("/login-organizer"))
    .catch((err) => {
      if (err.code === 11000) {  // Duplicate key error for unique fields
        res.send("Duplicate entry detected (email or organization number or password already exists)");
@@ -79,7 +83,7 @@ app.post('/signup-organizer', (req, res) => {
 app.post('/signup-pilgrim', (req, res) => {
     console.log(req.body)
     const pilgrim = new Pilgrim(req.body);
-    pilgrim.save().then(() => res.redirect("/homePilg"))
+    pilgrim.save().then(() => res.redirect("/login-pilgrim"))
    .catch((err) => {
      if (err.code === 11000) {  // Duplicate key error for unique fields
        res.send("Duplicate entry detected (email or username or password already exists)");
