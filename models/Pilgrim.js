@@ -1,11 +1,16 @@
 const mongoose = require('mongoose');
 
 const pilgrimSchema = new mongoose.Schema({
-    username: { type: String, required: true },
-    password: { type: String, required: true },
+    passportNumber: { type: String, required: true, unique: true },
+    name: { type: String, required: true },
+    dateOfBirth: { type: Date, required: true },
+    nationality: { type: String, required: true },
+    province: { type: String, required: true },
+    flightNumber: { type: String, required: true },
+    dateAndTime: { type: Date, required: true },
+    destination: { type: String, required: true }
 });
 
-const Pilgrim = mongoose.models.Pilgrim || mongoose.model('Pilgrim', pilgrimSchema);
+const PilgrimModel = mongoose.model('PilgrimModel', pilgrimSchema);
 
-module.exports = Pilgrim;
-
+module.exports = PilgrimModel;
