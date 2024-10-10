@@ -15,9 +15,6 @@ const port = 2002;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-
-
 const apiKey = process.env.TRANSLATOR_API_KEY;
 const apiRegion = process.env.TRANSLATOR_REGION;
 
@@ -44,11 +41,6 @@ app.post('/translate', async (req, res) => {
         res.status(500).json({ error: 'Translation failed' });
     }
 });
-
-
-
-
-
 
 
 // Serve static files from the 'public' folder
