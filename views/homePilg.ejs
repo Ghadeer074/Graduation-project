@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pilgrim Homepage</title>
-    <link rel="stylesheet" href="/public/Css/home-Style">
-    <%- include('./component/navbar-org.ejs') %>
+    <link rel="stylesheet" href="/public/Css/style-homePil.css">
+    <%- include('./component/navbar-pil.ejs') %>
 </head>
 <body>
     <div class="container">
@@ -14,43 +14,55 @@
                 <img src="logo.png" alt="Site Logo">
             </div>
             <nav class="nav-menu">
+                <a href="#" class="menu-item">Home</a>
                 <a href="#" class="menu-item">Hajj Guide</a>
                 <a href="#" class="menu-item">Chat with Organizer</a>
             </nav>
         </aside>
-        <main class="content">
-            <!-- Title and User Info Card -->
-            <section class="user-info-section">
-                <h2 class="section-title">Pilgrim Information</h2>
-                <div class="info-card">
-                   <!-- <div class="info-logo">
-                        <img src="logo.PNG" alt="Info Logo">
-                    </div>-->
-                    <div class="info-details">
-                        <p><strong>Name:</strong> <!--database--></p>
-                        <p><strong>Gender:</strong> </p>
-                        <p><strong>Birthday:</strong> </p>
-                        <p><strong>Nationality:</strong> </p>
-                        <p><strong>Province:</strong> </p>
-                    </div>
-                </div>
-            </section>
+       <main class="content">
+    <header class="header">
+        <!--naaaav-->
+    </header>
 
-            <!-- Title and Flight Info Card -->
-            <section class="flight-info-section">
-                <h2 class="section-title">Flight Information</h2>
-                <div class="info-card">
-                    <div class="info-details">
-                        <p><strong>Flight Number:</strong> <!--database--></p>
-                        <p><strong>Date:</strong> </p>
-                        <p><strong>Time:</strong> </p>
-                        <p><strong>Destination:</strong> </p>
-                    </div>
-                </div>
-            </section>
-        </main>
+    <!-- Title and User Info Card -->
+    <section class="user-info-section" id="user-info-section">
+        <h2 class="section-title">Pilgrim Information</h2>
+        <div class="info-card">
+            <div class="info-details">
+                <p><strong>Name:</strong> <!--database--></p>
+                <p><strong>Gender:</strong> </p>
+                <p><strong>Birthday:</strong> </p>
+                <p><strong>Nationality:</strong> </p>
+                <p><strong>Province:</strong> </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Title and Flight Info Card -->
+    <section class="flight-info-section" id="flight-info-section">
+        <h2 class="section-title">Flight Information</h2>
+        <div class="info-card">
+            <div class="info-details">
+                <p><strong>Flight Number:</strong> <!--database--></p>
+                <p><strong>Date:</strong> </p>
+                <p><strong>Time:</strong> </p>
+                <p><strong>Destination:</strong> </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat with Organizer Section (Initially Hidden) -->
+    <section class="chat-section" id="chatSection" style="display: none;">
+    <h2 class="section-title">Chat with Organizer</h2>
+    <div class="chat-box" id="chat-box"></div>
+    <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Type your message here">
+        <button id="sendButton">Send</button>
+    </div>
+</section>
+</main>
     </div>
     <%- include('./component/footer.ejs') %>
-    <script src="/public/JavaScript/homePilgScript.js"></script>
+    <script src="/public/JavaScript/homePilgScript"></script>
 </body>
 </html>
