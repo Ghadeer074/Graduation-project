@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organizer Homepage</title>
-    <link rel="stylesheet" href="/public/Css/home-Style">
+    <link rel="stylesheet" href="/public/Css/style-homeOrg.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <%- include('./component/navbar-org.ejs') %>
 </head>
 <body>
@@ -14,15 +15,16 @@
                 <img src="logo.png" alt="Site Logo">
             </div>
             <nav class="nav-menu">
+                <a href="#" class="menu-item home" onclick="showDashboard()">Home</a>
                 <a href="#" class="menu-item home">Flight</a>
                 <a href="#" class="menu-item">Tracking</a>
                 <a href="#" class="menu-item">Pilgrim Group</a>
-                <a href="#" class="menu-item">Chat with Pilgrim</a>
+                <a href="#" class="menu-item" onclick="showChat()">Chat with Pilgrim</a>
             </nav>
         </aside>
-        <main class="content">         
+        <main class="content">
             <!-- Organization Information Section -->
-            <section class="user-info-section">
+            <section class="user-info-section" id="infoSection">
                 <h2 class="section-title">Organization Information</h2>
                 <div class="info-card">
                     <div class="info-details">
@@ -31,9 +33,25 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Dashboard for Pilgrim and Group Numbers -->
+            <div class="dashboard" id="dashboardSection">
+                <h3 class="dashboard-title">Dashboard</h3>
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <!-- Chat Section (Hidden by default) -->
+            <section class="chat-section" id="chatSection" style="display: none;">
+                <h2 class="section-title">Chat with Pilgrim</h2>
+                <div class="chat-box" id="chatBox"></div>
+                <div class="chat-input">
+                    <input type="text" id="messageInput" placeholder="Type your message here">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </section>
         </main>
     </div>
     <%- include('./component/footer.ejs') %>
-    <script src="/public/JavaScript/homeOrgScript.js"></script>
+    <script src="/public/JavaScript/homeOrgScript"></script>
 </body>
 </html>
