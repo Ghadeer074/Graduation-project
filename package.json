@@ -13,10 +13,15 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.0",
     "mongoose": "^8.6.1",
+<<<<<<< HEAD
     "socket.io": "^4.8.0"
+=======
+    "node-fetch": "^3.3.2"
+>>>>>>> 883ae155492e051e29f651d792171ed5939aa264
   },
   "devDependencies": {
     "browser-sync": "^3.0.3",

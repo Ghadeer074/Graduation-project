@@ -9,6 +9,10 @@
 </head>
 <body>
     <h1>Pilgrim Groups</h1>
+<<<<<<< HEAD
+=======
+    <a href="/" class="button">Home</a>
+>>>>>>> 883ae155492e051e29f651d792171ed5939aa264
     <button class="button" id="addGroupBtn">Add Group</button>
     
     <table id="groupsTable">
@@ -28,8 +32,13 @@
                         <td><%= group.groupProvince %></td>
                         <td><%= group.groupSize %></td>
                         <td>
+<<<<<<< HEAD
                             <button class="button edit-btn" data-id="<%= group.groupID %>">Edit</button>
                             <button class="button delete-btn" data-id="<%= group.groupID %>">Delete</button>
+=======
+                            <button class="button edit-btn" data-id="<%= group._id %>">Edit</button>
+                            <button class="button delete-btn" data-id="<%= group._id %>">Delete</button>
+>>>>>>> 883ae155492e051e29f651d792171ed5939aa264
                         </td>
                     </tr>
                 <% }) %>

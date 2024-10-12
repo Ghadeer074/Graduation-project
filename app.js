@@ -1,5 +1,6 @@
 // Import required modules
 const express = require('express');
+require('dotenv').config();
 //const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -21,6 +22,33 @@ const port = 2002;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const apiKey = process.env.TRANSLATOR_API_KEY;
+const apiRegion = process.env.TRANSLATOR_REGION;
+
+// Translation route (server-side)
+app.post('/translate', async (req, res) => {
+    const { text, targetLanguage } = req.body;
+
+    try {
+        const response = await fetch(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${targetLanguage}`, {
+            method: 'POST',
+            headers: {
+                'Ocp-Apim-Subscription-Key': apiKey,
+                'Ocp-Apim-Subscription-Region': apiRegion,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify([{ Text: text }]),
+        });
+
+        const data = await response.json();
+        const translatedText = data[0]?.translations[0]?.text || text;
+        res.json({ translatedText });
+    } catch (error) {
+        console.error('Translation error:', error);
+        res.status(500).json({ error: 'Translation failed' });
+    }
+});
 
 
 // Serve static files from the 'public' folder
@@ -51,6 +79,8 @@ const PilgrimRoute = require("./routes/pilgrim-route");
 const orgRoute = require("./routes/org-route");
 const homeOrga = require("./routes/homeorg-route");
 const homepilg = require("./routes/homepil-route");
+const loginRoutes = require('./routes/loginRoutes');
+
 
 // use the routes 
 app.use(routes);
@@ -58,6 +88,8 @@ app.use("/signup-pilgrim",PilgrimRoute);
 app.use("/signup-organizer",orgRoute);
 app.use(homeOrga);
 app.use(homepilg);
+app.use('/', loginRoutes); 
+
 
 
 // Start the server + database
@@ -77,7 +109,7 @@ console.log('Failed to connect to MongoDB:', err);
 app.post('/signup-organizer', (req, res) => {
    console.log(req.body)
    const organizer = new Organizer(req.body);
-   organizer.save().then(() => res.redirect("/homeOrg"))
+   organizer.save().then(() => res.redirect("/login-organizer"))
    .catch((err) => {
      if (err.code === 11000) {  // Duplicate key error for unique fields
        res.send("Duplicate entry detected (email or organization number or password already exists)");
@@ -92,7 +124,7 @@ app.post('/signup-organizer', (req, res) => {
 app.post('/signup-pilgrim', (req, res) => {
     console.log(req.body)
     const pilgrim = new Pilgrim(req.body);
-    pilgrim.save().then(() => res.redirect("/homePilg"))
+    pilgrim.save().then(() => res.redirect("/login-pilgrim"))
    .catch((err) => {
      if (err.code === 11000) {  // Duplicate key error for unique fields
        res.send("Duplicate entry detected (email or username or password already exists)");

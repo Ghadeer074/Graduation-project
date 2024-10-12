@@ -1,17 +1,22 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary" id="nav">
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary" style="background-color: #bb8c4e !important;" id="nav">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
     <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Toggle button -->
       <style>
         #nav {
-          background-color: #bb8c4e;
+          background-color: #bb8c4e !important;
         }
   
         .nav-link {
           font-size: large;
         }
+
+        .fixed-navbar {
+    background-color: #bb8c4e !important; /* Force the background color */
+}
+
   
         #lanicon {
           margin: 0 15px;
@@ -49,33 +54,22 @@
       
       <a>Welcome!</a>
        
-        <!-- Change language icon -->
-
-         <!-- Globe icon with dropdown for language selection -->
+     <!-- Change language icon -->
+<!-- Globe icon with dropdown for language selection -->
 <div class="dropdown">
-    <i id="lanicon" class="bi bi-globe fs-1 dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></i>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#" data-lang="en">English</a>
-      <a class="dropdown-item" href="#" data-lang="ar">Arabic</a>
-    </div>
+  <i id="lanicon" class="bi bi-globe fs-1 dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></i>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#" data-lang="en">English</a>
+    <a class="dropdown-item" href="#" data-lang="ar">Arabic</a>
   </div>
-  
-  <!-- Hidden Google Translate container -->
-  <div id="google_translate_container" style="display: none;"></div>
-  
-    
-      </div>
-      <!-- Right elements -->
-    </div>
-    <!-- Container wrapper -->
-  
-    <!-- MDB Bootstrap JS -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
-    <!-- Include Google Translate API -->
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</div>
+
+
+<!-- MDB Bootstrap JS -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
 
 <!-- Include your custom translate.js file -->
-<script src="/public/JavaScript/translate.js"></script>
+<script src="/JavaScript/translate.js"></script>
 
 
   </nav>
