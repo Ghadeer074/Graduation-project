@@ -81,7 +81,8 @@ const PilgrimRoute = require("./routes/pilgrim-route");
 const orgRoute = require("./routes/org-route");
 const homeOrga = require("./routes/homeorg-route");
 const homepilg = require("./routes/homepil-route");
-const loginRoutes = require('./routes/loginRoutes');
+const loginOrganizer = require('./routes/loginOrganizer');
+const loginPilgrim = require('./routes/loginPilgrim');
 
 
 // use the routes 
@@ -90,7 +91,8 @@ app.use("/signup-pilgrim",PilgrimRoute);
 app.use("/signup-organizer",orgRoute);
 app.use(homeOrga);
 app.use(homepilg);
-app.use('/', loginRoutes); 
+app.use('/login-pilgrim', loginPilgrim); 
+app.use(loginOrganizer);
 
 
 
