@@ -183,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('editNationality').value = pilgrim.nationality;
             populateProvinceDropdown(pilgrim.nationality, document.getElementById('editProvince'));
             document.getElementById('editProvince').value = pilgrim.province;
-            document.getElementById('editFlightNumber').value = pilgrim.flightNumber;
             document.getElementById('editDateAndTime').value = pilgrim.dateAndTime;
             document.getElementById('editDestination').value = pilgrim.destination;
             
