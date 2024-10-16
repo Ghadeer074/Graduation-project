@@ -100,6 +100,7 @@ app.use(loginOrganizer);
 mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.net/all-data?retryWrites=true&w=majority&appName=Cluster0")
 .then(() => {app.listen(port, () => {
     console.log(`http://localhost:${port}`);
+    writeConcern: { w: "majority" }
 });
 })
 
@@ -125,6 +126,41 @@ app.post('/signup-organizer', (req, res) => {
             }
         });
 });
+
+// test data base 
+
+
+app.get('/test-insert', (req, res) => {
+    const testData = new Organizer({
+      firstName: 'Test',
+      lastName: 'User',
+      OrganizationName: 'Test Org',
+      OrganizationNumber: 12345,
+      email: 'testuser@example.com',
+      phoneNumber: 1234567890,
+      password: 'password123'
+    });
+  
+    testData.save()
+      .then(() => res.send('Data saved!'))
+      .catch(err => {
+        console.log('Error:', err);
+        res.send('Failed to save data.');
+      });
+  });
+  
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // post request for database (pil account info)
