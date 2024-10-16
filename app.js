@@ -130,7 +130,7 @@ app.post('/signup-organizer', (req, res) => {
 // test data base 
 
 
-app.get('/test-insert', (req, res) => {
+/*app.get('/test-insert', (req, res) => {
     const testData = new Organizer({
       firstName: 'Test',
       lastName: 'User',
@@ -147,19 +147,8 @@ app.get('/test-insert', (req, res) => {
         console.log('Error:', err);
         res.send('Failed to save data.');
       });
-  });
+  });*/
   
-
-
-
-
-
-
-
-
-
-
-
 
 
 
