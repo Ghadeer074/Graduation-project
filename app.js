@@ -91,7 +91,7 @@ app.use("/signup-pilgrim",PilgrimRoute);
 app.use("/signup-organizer",orgRoute);
 app.use(homeOrga);
 app.use(homepilg);
-app.use('/login-pilgrim', loginPilgrim); 
+app.use(loginPilgrim); 
 app.use(loginOrganizer);
 
 
@@ -115,56 +115,28 @@ server.listen(port, '127.0.0.1', () => {
 app.post('/signup-organizer', (req, res) => {
     const organizer = new Organizer(req.body);
     organizer.save()
-        .then(() => res.redirect("/login-organizer"))
+        .then(() => {
+            console.log('Redirecting to login-organizer');  // Add this log
+            res.redirect("/login-organizer");
+        })
         .catch((err) => {
-            if (err.code === 11000) {  // Duplicate key error
-                console.log("Duplicate error:", err.keyValue);  // Log the duplicate field causing the error
-                res.send("Duplicate entry detected (email or organization number already exists)");
-            } else {
-                console.log(err);
-                res.send("An error occurred while saving the data");
-            }
+            console.log('Error:', err);
+            res.send("An error occurred while saving the data");
         });
 });
 
-// test data base 
-
-
-/*app.get('/test-insert', (req, res) => {
-    const testData = new Organizer({
-      firstName: 'Test',
-      lastName: 'User',
-      OrganizationName: 'Test Org',
-      OrganizationNumber: 12345,
-      email: 'testuser@example.com',
-      phoneNumber: 1234567890,
-      password: 'password123'
-    });
-  
-    testData.save()
-      .then(() => res.send('Data saved!'))
-      .catch(err => {
-        console.log('Error:', err);
-        res.send('Failed to save data.');
-      });
-  });*/
-  
-
-
-
 // post request for database (pil account info)
 app.post('/signup-pilgrim', (req, res) => {
-    console.log(req.body)
     const pilgrim = new Pilgrim(req.body);
-    pilgrim.save().then(() => res.redirect("/login-pilgrim"))
-   .catch((err) => {
-     if (err.code === 11000) {  // Duplicate key error for unique fields
-       res.send("Duplicate entry detected (email or username or password already exists)");
-     } else {
-       console.log(err);
-       res.send("An error occurred while saving the data");
-     }
-   });
+    pilgrim.save()
+        .then(() => {
+            console.log('Redirecting to login-pilgrim');  // Add this log
+            res.redirect("/login-pilgrim");
+        })
+        .catch((err) => {
+            console.log('Error:', err);
+            res.send("An error occurred while saving the data");
+        });
 });
 
 // send and receive message in chat
