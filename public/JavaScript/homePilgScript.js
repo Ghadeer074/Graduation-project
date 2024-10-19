@@ -1,3 +1,5 @@
+const socket = io(); // إنشاء اتصال مع الخادم
+
 document.addEventListener('DOMContentLoaded', function() {
     const homeButton = document.querySelector('.menu-item:nth-child(1)'); // Home button
     const chatButton = document.querySelector('.menu-item:nth-child(3)'); // Chat with Organizer button
@@ -22,23 +24,39 @@ document.addEventListener('DOMContentLoaded', function() {
         chatSection.style.display = 'block'; // إظهار قسم الدردشة
     });
 
-    // دالة إرسال الرسالة
+    // تسجيل الدخول عند تحميل الصفحة
+    window.onload = function() {
+        const userData = {
+            userId: 'pilgrim_id', // استبدل بـ ID الحاج الحقيقي
+            username: 'Pilgrim' // استبدل باسم المستخدم الحقيقي
+        };
+        socket.emit('login', userData);
+    };
+
+    // دالة لإرسال الرسالة
     sendButton.addEventListener('click', function() {
-        const message = messageInput.value.trim(); // تم التعديل
+        const message = messageInput.value.trim();
         if (message !== "") {
             const newMessage = document.createElement('p');
             newMessage.textContent = message;
-            chatBox.appendChild(newMessage); // تم التعديل
-            messageInput.value = ''; // تفريغ الحقل بعد الإرسال
-            chatBox.scrollTop = chatBox.scrollHeight; // تمرير الشاشة للأسفل تلقائيًا عند إرسال الرسالة
+            chatBox.appendChild(newMessage);
+            messageInput.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // إرسال الرسالة إلى المنظم
+            socket.emit('sendMessage', {
+                senderId: 'pilgrim_id', // استبدل بـ ID الحاج الحقيقي
+                receiverId: 'organizer_id', // استبدل بـ ID المنظم الحقيقي
+                message: message
+            });
         }
     });
-    
-    // إرسال الرسالة عند الضغط على Enter
-    messageInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault(); // منع الانتقال لسطر جديد
-            sendButton.click(); // استدعاء زر الإرسال
-        }
+
+    // استقبال الرسالة من المنظم
+    socket.on('receiveMessage', function(data) {
+        const newMessage = document.createElement('p');
+        newMessage.textContent = data.message;
+        chatBox.appendChild(newMessage);
+        chatBox.scrollTop = chatBox.scrollHeight; // تمرير الشاشة للأسفل
     });
-});
+}); 

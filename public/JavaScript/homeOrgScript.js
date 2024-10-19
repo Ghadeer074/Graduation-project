@@ -48,6 +48,18 @@ function showDashboard() {
 }
 
 
+const socket = io(); // إنشاء اتصال مع الخادم
+
+// تسجيل الدخول عند تحميل الصفحة
+window.onload = function() {
+    const userData = {
+        userId: 'organizer_id', // استبدل بـ ID المنظم الحقيقي
+        username: 'Organizer' // استبدل باسم المستخدم الحقيقي
+    };
+    socket.emit('login', userData);
+};
+
+// دالة لإرسال الرسالة
 function sendMessage() {
     var messageInput = document.getElementById("messageInput");
     var messageText = messageInput.value;
@@ -59,9 +71,26 @@ function sendMessage() {
         messageDiv.textContent = messageText;
         chatBox.appendChild(messageDiv);
         messageInput.value = "";
-        chatBox.scrollTop = chatBox.scrollHeight;  // Scroll to bottom
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // إرسال الرسالة إلى الحاج
+        socket.emit('sendMessage', {
+            senderId: 'organizer_id', // استبدل بـ ID المنظم الحقيقي
+            receiverId: 'pilgrim_id', // استبدل بـ ID الحاج الحقيقي
+            message: messageText
+        });
     }
 }
+
+// استقبال الرسالة من الحاج
+socket.on('receiveMessage', function(data) {
+    var chatBox = document.getElementById("chatBox");
+    var messageDiv = document.createElement("div");
+    messageDiv.classList.add("chat-message");
+    messageDiv.textContent = data.message;
+    chatBox.appendChild(messageDiv);
+    chatBox.scrollTop = chatBox.scrollHeight; // تمرير الشاشة للأسفل
+});
 
 
 
