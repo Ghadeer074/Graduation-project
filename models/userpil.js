@@ -8,10 +8,10 @@ const Pildata = new Schema({
   gender: { type: String, required: true},
   nationality:{ type: String, required: true},
   province: { type: String, required: true}, 
-  username: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true }, 
+  username: { type: String, required: true, unique: true,lowercase: true },
+  email: { type: String, required: true, unique: true,lowercase: true }, 
   phoneNumber: { type: Number, required: true},
-  password:{ type: String, required: true, unique: true } 
+  password:{ type: String, required: true} 
 });
 
 const Pilgrim = mongoose.model("Pilgrim",Pildata);

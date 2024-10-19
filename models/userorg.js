@@ -6,9 +6,9 @@ const Orgdata = new Schema({
   lastName: { type: String, required: true },
   OrganizationtName: { type: String, required: true },
   OrganizationNumber: { type: Number, required: true, unique: true },  // Ensure unique org number
-  email: { type: String, required: true, unique: true },   // Ensure unique email
+  email: { type: String, required: true, unique: true ,lowercase: true},   // Ensure unique email
   phoneNumber: { type: Number, required: true },
-  password: { type: String, required: true ,unique: true }
+  password: { type: String, required: true}
 });
 
 

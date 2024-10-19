@@ -1,23 +1,26 @@
 // Import required modules
 const express = require('express');
-require('dotenv').config();
-//const bodyParser = require('body-parser');
-const path = require('path');
-const mongoose = require('mongoose');
-const  Organizer = require("./models/userorg");
-const  Pilgrim = require("./models/userpil");
-const Chat = require('./models/chat');
-
-//socket
 const http = require('http');
-const socketIo = require('socket.io');
-const server = http.createServer(app); // إنشاء خادم HTTP باستخدام Express
-const io = socketIo(server);
 
 
 // Create an Express app
 const app = express();
 const port = 2002; 
+
+
+require('dotenv').config();
+//const bodyParser = require('body-parser');
+const path = require('path');
+const mongoose = require('mongoose');
+const Organizer = require("./models/userorg");
+const Pilgrim = require("./models/userpil");
+const Chat = require('./models/chat');
+
+//socket
+const socketIo = require('socket.io');
+const server = http.createServer(app); // إنشاء خادم HTTP باستخدام Express
+const io = socketIo(server);
+
 
 // Middleware
 app.use(express.json());
@@ -29,7 +32,6 @@ const apiRegion = process.env.TRANSLATOR_REGION;
 // Translation route (server-side)
 app.post('/translate', async (req, res) => {
     const { text, targetLanguage } = req.body;
-
     try {
         const response = await fetch(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${targetLanguage}`, {
             method: 'POST',
@@ -79,7 +81,8 @@ const PilgrimRoute = require("./routes/pilgrim-route");
 const orgRoute = require("./routes/org-route");
 const homeOrga = require("./routes/homeorg-route");
 const homepilg = require("./routes/homepil-route");
-const loginRoutes = require('./routes/loginRoutes');
+const loginOrganizer = require('./routes/loginOrganizer');
+const loginPilgrim = require('./routes/loginPilgrim');
 
 
 // use the routes 
@@ -88,7 +91,8 @@ app.use("/signup-pilgrim",PilgrimRoute);
 app.use("/signup-organizer",orgRoute);
 app.use(homeOrga);
 app.use(homepilg);
-app.use('/', loginRoutes); 
+app.use(loginPilgrim); 
+app.use(loginOrganizer);
 
 
 
@@ -96,43 +100,43 @@ app.use('/', loginRoutes);
 mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.net/all-data?retryWrites=true&w=majority&appName=Cluster0")
 .then(() => {app.listen(port, () => {
     console.log(`http://localhost:${port}`);
+    writeConcern: { w: "majority" }
 });
 })
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-}).catch((err) => {
-console.log('Failed to connect to MongoDB:', err);
+
+server.listen(port, '127.0.0.1', () => {
+    console.log(`Server running at http://localhost:${port}`);
 });
+
+
 
 
 // post request for database (org account info)
 app.post('/signup-organizer', (req, res) => {
-   console.log(req.body)
-   const organizer = new Organizer(req.body);
-   organizer.save().then(() => res.redirect("/login-organizer"))
-   .catch((err) => {
-     if (err.code === 11000) {  // Duplicate key error for unique fields
-       res.send("Duplicate entry detected (email or organization number or password already exists)");
-     } else {
-       console.log(err);
-       res.send("An error occurred while saving the data");
-     }
-   });
+    const organizer = new Organizer(req.body);
+    organizer.save()
+        .then(() => {
+            console.log('Redirecting to login-organizer');  // Add this log
+            res.redirect("/login-organizer");
+        })
+        .catch((err) => {
+            console.log('Error:', err);
+            res.send("An error occurred while saving the data");
+        });
 });
 
 // post request for database (pil account info)
 app.post('/signup-pilgrim', (req, res) => {
-    console.log(req.body)
     const pilgrim = new Pilgrim(req.body);
-    pilgrim.save().then(() => res.redirect("/login-pilgrim"))
-   .catch((err) => {
-     if (err.code === 11000) {  // Duplicate key error for unique fields
-       res.send("Duplicate entry detected (email or username or password already exists)");
-     } else {
-       console.log(err);
-       res.send("An error occurred while saving the data");
-     }
-   });
+    pilgrim.save()
+        .then(() => {
+            console.log('Redirecting to login-pilgrim');  // Add this log
+            res.redirect("/login-pilgrim");
+        })
+        .catch((err) => {
+            console.log('Error:', err);
+            res.send("An error occurred while saving the data");
+        });
 });
 
 // send and receive message in chat
@@ -183,7 +187,6 @@ io.on('connection', (socket) => {
   // عند انقطاع الاتصال
   socket.on('disconnect', () => {
       console.log('A user disconnected:', socket.id);
-      
       // إزالة المستخدم من القائمة عند انقطاعه
       for (const userId in users) {
           if (users[userId] === socket.id) {
@@ -196,12 +199,8 @@ io.on('connection', (socket) => {
 });
 
 
-
 ////////////////////////////////////////////////////////////////
 //s//
 // استيراد التوجيهات
 const groupRoutes = require('./routes/groupRoutes');
 app.use('/', groupRoutes);
-
-
-
