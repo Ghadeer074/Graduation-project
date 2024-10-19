@@ -1,16 +1,19 @@
-const Pilgrim = require('../models/Pilgrim'); // Import your Pilgrim model
+const Pilgrim = require('../models/userpil'); 
 
 exports.login = async (req, res) => {
     const { username, password } = req.body;
 
     try {
         const pilgrim = await Pilgrim.findOne({ username, password });
+        
         if (!pilgrim) {
-            return res.status(400).send('Invalid credentials');
+            return res.status(400).send('Invalid credentials');  
         }
-        // Set up session or JWT here as needed
-        res.redirect('/homePlig'); // Redirect to homepage after successful login
+
+        res.redirect('/homePilg'); 
     } catch (error) {
-        res.status(500).send('Server error');
+        console.error('Error occurred during login:', error); 
+        res.status(500).send('Server error'); 
     }
 };
+

@@ -5,31 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Images/Faridah app Logo.png" type="image/png">
     <title>Login Page</title>
-    <link rel="stylesheet" href="/Css/style-login.css">
+    <link rel="stylesheet" href="\Css\style-login.css">
 </head>
 <body>
     <div class="container">
         <h1>Hello</h1>
-        <form id="loginForm" aria-labelledby="loginFormTitle" method="post" action="/login-organizer">
+        <form id="orgLoginForm" method="post" action="/login-organizer">
             <div class="form-group">
                 <label for="organization">Organization Number</label>
-                <input type="text" id="organization" aria-required="true" placeholder="Enter Organization Number" autocomplete="off" autocapitalize="none" spellcheck="false">
+                <input type="text" id="organization" name="organization" aria-required="true" placeholder="Enter Organization Number" autocomplete="off" autocapitalize="none" spellcheck="false" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" aria-required="true" placeholder="Enter Password" autocomplete="off"autocapitalize="none" spellcheck="false">
+                <input type="password" id="password" name="password" aria-required="true" placeholder="Enter Password" autocomplete="off" autocapitalize="none" spellcheck="false" required>
             </div>
             <div class="options">
                 <label for="rememberMe">Remember Me <input type="checkbox" id="rememberMe"></label>
                 <div class="forgot-password"><a href="#">Forgot password?</a></div>
             </div>
-            <button type="button" class="login-btn" onclick="validateForm()">Log in</button>
+            <button type="submit" class="login-btn">Log in</button>
             <div class="error" id="errorMessage"></div>
         </form>
         <div class="create-account">
             Don't have an account? <a href="signUp-organizer">Create</a>
         </div>
     </div>
-    <script src="\public\JavaScript\script-login.js></script>
+
+    <script src="\public\JavaScript\script-login.js"></script>
 </body>
 </html>
+
