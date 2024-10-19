@@ -9,6 +9,9 @@ router.get('/login-organizer', (req, res) => {
     res.render('login-organizer');
 });
 
+router.get('/signup-organizer', (req, res) => {
+    res.render('signup-organizer'); // تأكد من أن لديك صفحة signUp-pilgrim.ejs
+});              
 // Routes for Organizer login
 router.post('/login-organizer', loginOrganizerController.login);
 
