@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Images/Faridah app Logo.png" type="image/png">
     <title>Pilgrim Homepage</title>
-    <link rel="stylesheet" href="/Css/style-homePil.css">
+    <link rel="stylesheet" href="/css/style-homePil.css">
     <%- include('./component/navbar-pil.ejs') %>
 </head>
 <body>
     <div class="container">
         <aside class="sidebar">
             <div class="logo">
-                <img src="logo.png" alt="Site Logo">
+                <img src="/Images/Faridah app Logo.png" alt="Site Logo">
             </div>
             <nav class="nav-menu">
                 <a href="#" class="menu-item">Home</a>
@@ -65,6 +65,6 @@
     </div>
     <%- include('./component/footer.ejs') %>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/public/JavaScript/homePilgScript"></script>
+    <script src="/JavaScript/homePilgScript.js"></script>
 </body>
 </html>

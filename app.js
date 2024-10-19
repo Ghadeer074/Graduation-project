@@ -83,7 +83,7 @@ const homeOrga = require("./routes/homeorg-route");
 const homepilg = require("./routes/homepil-route");
 const loginOrganizer = require('./routes/loginOrganizer');
 const loginPilgrim = require('./routes/loginPilgrim');
-
+const flights = require('./routes/flights');
 
 // use the routes 
 app.use(routes);
@@ -93,7 +93,7 @@ app.use(homeOrga);
 app.use(homepilg);
 app.use(loginPilgrim); 
 app.use(loginOrganizer);
-
+app.use(flights);
 
 
 // Start the server + database
@@ -107,8 +107,6 @@ mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.
 server.listen(port, '127.0.0.1', () => {
     console.log(`Server running at http://localhost:${port}`);
 });
-
-
 
 
 // post request for database (org account info)
@@ -138,6 +136,19 @@ app.post('/signup-pilgrim', (req, res) => {
             res.send("An error occurred while saving the data");
         });
 });
+
+
+// add flight data/info and save them to the database
+//app.post('/flights', (req,res) => {
+
+//});
+
+// fetch flight data to show for organizer
+
+
+// delete flights data/info 
+
+
 
 // send and receive message in chat
 const users = {};  // كائن لتخزين معرف الـ socket بناءً على الـ userId أو الـ username

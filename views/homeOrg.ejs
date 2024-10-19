@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Images/Faridah app Logo.png" type="image/png">
     <title>Organizer Homepage</title>
-    <link rel="stylesheet" href="/Css/style-homeOrg.css">
+    <link rel="stylesheet" href="/css/style-homeOrg.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <%- include('./component/navbar-org.ejs') %>
 </head>
@@ -13,12 +13,11 @@
     <div class="container">
         <aside class="sidebar">
             <div class="logo">
-                <img src="logo.png" alt="Site Logo">
+                <img src="/Images/Faridah app Logo.png" alt="Site Logo">
             </div>
             <nav class="nav-menu">
                 <a href="#" class="menu-item home" onclick="showDashboard()">Home</a>
-                <a href="#" class="menu-item home">Flight</a>
-                <a href="#" class="menu-item">Tracking</a>
+                <a href="/flights" class="menu-item home">Flight</a>
                 <a href="#" class="menu-item">Pilgrim Group</a>
                 <a href="#" class="menu-item" onclick="showChat()">Chat with Pilgrim</a>
             </nav>
@@ -54,6 +53,6 @@
     </div>
     <%- include('./component/footer.ejs') %>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/public/JavaScript/homeOrgScript"></script>
+    <script src="/JavaScript/homeOrgScript.js"></script>
 </body>
 </html>
