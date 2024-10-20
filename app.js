@@ -150,64 +150,60 @@ app.post('/signup-pilgrim', (req, res) => {
 
 
 
-// send and receive message in chat
+// send and receive message in chat **********************************
 const users = {};  // كائن لتخزين معرف الـ socket بناءً على الـ userId أو الـ username
 
 io.on('connection', (socket) => {
-  console.log('A user connected:', socket.id);
+    console.log('A user connected:', socket.id);
 
-  // استقبال بيانات تسجيل الدخول من العميل عند الاتصال
-  socket.on('login', (userData) => {
-      // هنا "userData" يحتوي على معلومات المستخدم مثل "userId" أو "username" و "role"
-      users[userData.userId] = socket.id;  // تخزين معرف الـ socket بناءً على userId أو username
-      console.log(`User ${userData.username} connected with socket id: ${socket.id}`);
-  });
+    // تسجيل المستخدم عند الاتصال
+    socket.on('login', (userData) => {
+        users[userData.userId] = socket.id;  // تخزين socket.id للمستخدم
+        console.log(`User ${userData.username} connected with socket id: ${socket.id}`);
+    });
 
-  // استقبال الرسالة من العميل
-  socket.on('sendMessage', async (data) => {
-      try {
-          // حفظ الرسالة في قاعدة البيانات
-          const newMessage = new Chat({
-              senderId: data.senderId,
-              receiverId: data.receiverId,
-              message: data.message,
-              timestamp: Date.now()  // استخدام `Date.now()` للطابع الزمني
-          });
+    // استقبال الرسائل من العميل
+    socket.on('sendMessage', async (data) => {
+        try {
+            // حفظ الرسالة في قاعدة البيانات
+            const newMessage = new Chat({
+                senderId: data.senderId,
+                receiverId: data.receiverId,
+                message: data.message,
+                timestamp: Date.now()
+            });
 
-          await newMessage.save();  // حفظ الرسالة في قاعدة البيانات
+            await newMessage.save();  // حفظ الرسالة
 
-          // التحقق من أن المستلم متصل
-          const targetSocketId = users[data.receiverId];  // الحصول على معرف الـ socket الخاص بالمستلم
-          if (targetSocketId) {
-              // إرسال الرسالة فقط إلى المستخدم المستلم
-              socket.to(targetSocketId).emit('receiveMessage', {
-                  senderId: data.senderId,
-                  message: data.message
-              });
-              console.log(`Message sent from ${data.senderId} to ${data.receiverId}`);
-          } else {
-              console.log(`User ${data.receiverId} is not connected`);
-          }
+            // إرسال الرسالة إلى المستلم إذا كان متصلاً
+            const targetSocketId = users[data.receiverId];
+            if (targetSocketId) {
+                io.to(targetSocketId).emit('receiveMessage', {
+                    senderId: data.senderId,
+                    message: data.message
+                });
+                console.log(`Message sent from ${data.senderId} to ${data.receiverId}`);
+            } else {
+                console.log(`User ${data.receiverId} is not connected`);
+            }
+        } catch (err) {
+            console.error('Error saving message:', err);
+        }
+    });
 
-          console.log('Message saved:', newMessage);
-      } catch (err) {
-          console.error('Error saving message:', err);
-      }
-  });
-
-  // عند انقطاع الاتصال
-  socket.on('disconnect', () => {
-      console.log('A user disconnected:', socket.id);
-      // إزالة المستخدم من القائمة عند انقطاعه
-      for (const userId in users) {
-          if (users[userId] === socket.id) {
-              delete users[userId];  // حذف المستخدم من القائمة
-              console.log(`User ${userId} disconnected`);
-              break;
-          }
-      }
-  });
+    // عند انقطاع الاتصال
+    socket.on('disconnect', () => {
+        console.log('A user disconnected:', socket.id);
+        for (const userId in users) {
+            if (users[userId] === socket.id) {
+                delete users[userId];
+                console.log(`User ${userId} disconnected`);
+                break;
+            }
+        }
+    });
 });
+
 
 
 ////////////////////////////////////////////////////////////////

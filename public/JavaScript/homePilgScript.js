@@ -24,39 +24,41 @@ document.addEventListener('DOMContentLoaded', function() {
         chatSection.style.display = 'block'; // إظهار قسم الدردشة
     });
 
-    // تسجيل الدخول عند تحميل الصفحة
+    // تسجيل الدخول عند تحميل الصفحة **************
     window.onload = function() {
         const userData = {
-            userId: 'pilgrim_id', // استبدل بـ ID الحاج الحقيقي
-            username: 'Pilgrim' // استبدل باسم المستخدم الحقيقي
+            userId: 'pilgrim_username',  // معرف يونيك للحاج
+            username: 'Pilgrim' 
         };
-        socket.emit('login', userData);
-    };
+        socket.emit('login', userData); // إرسال بيانات المستخدم عند الاتصال
+    };    
 
-    // دالة لإرسال الرسالة
+    // دالة لإرسال الرسالة *************************
     sendButton.addEventListener('click', function() {
         const message = messageInput.value.trim();
         if (message !== "") {
             const newMessage = document.createElement('p');
-            newMessage.textContent = message;
+            newMessage.textContent = `You: ${message}`;  // عرض الرسالة مع مصدرها
             chatBox.appendChild(newMessage);
             messageInput.value = '';
             chatBox.scrollTop = chatBox.scrollHeight;
-
-            // إرسال الرسالة إلى المنظم
+    
+            // إرسال الرسالة إلى المنظم عبر Socket.io
             socket.emit('sendMessage', {
-                senderId: 'pilgrim_id', // استبدل بـ ID الحاج الحقيقي
-                receiverId: 'organizer_id', // استبدل بـ ID المنظم الحقيقي
+                senderId: 'pilgrim_username',  // معرف الحاج
+                receiverId: 'organization_number',  // رقم المنظمة
                 message: message
             });
         }
     });
+    
 
-    // استقبال الرسالة من المنظم
+    // استقبال الرسالة من المنظم *************************
     socket.on('receiveMessage', function(data) {
         const newMessage = document.createElement('p');
-        newMessage.textContent = data.message;
+        newMessage.textContent = `${data.senderId}: ${data.message}`;  // عرض الرسالة مع مصدرها
         chatBox.appendChild(newMessage);
-        chatBox.scrollTop = chatBox.scrollHeight; // تمرير الشاشة للأسفل
+        chatBox.scrollTop = chatBox.scrollHeight;
     });
+    
 }); 
