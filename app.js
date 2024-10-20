@@ -15,6 +15,7 @@ const mongoose = require('mongoose');
 const Organizer = require("./models/userorg");
 const Pilgrim = require("./models/userpil");
 const Chat = require('./models/chat');
+const FlightModel = require('./models/flight')
 
 //socket
 const socketIo = require('socket.io');
@@ -143,8 +144,16 @@ app.post('/signup-pilgrim', (req, res) => {
 
 //});
 
-// fetch flight data to show for organizer
-
+// fetch and display flight data in flights page 
+/*app.get('/flights', (req,res) => {
+    FlightModel.find()
+    .then((results)=> {
+    res.render("flights",{});
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+});*/
 
 // delete flights data/info 
 
@@ -210,4 +219,5 @@ io.on('connection', (socket) => {
 //s//
 // استيراد التوجيهات
 const groupRoutes = require('./routes/groupRoutes');
+const { parseArgs } = require('util');
 app.use('/', groupRoutes);
