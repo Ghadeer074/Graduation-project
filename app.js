@@ -84,6 +84,9 @@ const homeOrga = require("./routes/homeorg-route");
 const homepilg = require("./routes/homepil-route");
 const loginOrganizer = require('./routes/loginOrganizer');
 const loginPilgrim = require('./routes/loginPilgrim');
+const loginPilgrim = require('./routes/loginPilgrim');
+const group = require('./routes/groupRoutes');
+
 
 // use the routes 
 app.use(routes);
@@ -93,6 +96,8 @@ app.use(homeOrga);
 app.use(homepilg);
 app.use(loginPilgrim); 
 app.use(loginOrganizer);
+app.use(group);
+
 
 
 
