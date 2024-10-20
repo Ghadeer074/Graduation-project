@@ -16,7 +16,6 @@ h1 {
     padding-bottom: 10px;
 }
 
-
 #addGroupBtn {
     display: block;
     margin-left: auto; /* محاذاة الزر لليمين */
@@ -87,7 +86,7 @@ table .button:hover {
 
 /* النوافذ المنبثقة */
 .popup {
-    display: none;
+    display: none; /* عدم عرض النافذة بشكل افتراضي */
     position: fixed;
     left: 0;
     top: 0;
@@ -104,6 +103,10 @@ table .button:hover {
     border-radius: 8px;
     width: 400px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: absolute; /* تغيير من fixed إلى absolute */
+    top: 50%; /* المحاذاة العمودية */
+    left: 50%; /* المحاذاة الأفقية */
+    transform: translate(-50%, -50%); /* سحب المحتوى لأعلى ولليسار بمقدار نصف الارتفاع والعرض */
 }
 
 /* محاذاة النص لليسار داخل النافذة المنبثقة */
@@ -161,3 +164,4 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #8f6033;
 }
+

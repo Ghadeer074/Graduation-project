@@ -86,6 +86,7 @@ const loginOrganizer = require('./routes/loginOrganizer');
 const loginPilgrim = require('./routes/loginPilgrim');
 const group = require('./routes/groupRoutes');
 
+
 const hujjguide = require('./routes/hajjGuideRoute');
 
 // use the routes 
@@ -223,6 +224,6 @@ io.on('connection', (socket) => {
 ////////////////////////////////////////////////////////////////
 //s//
 // استيراد التوجيهات
-const groupRoutes = require('./routes/groupRoutes');
+//const groupRoutes = require('./routes/groupRoutes');
 const { parseArgs } = require('util');
-app.use('/', groupRoutes);
+//app.use('/', groupRoutes);
