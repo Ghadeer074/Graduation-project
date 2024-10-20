@@ -98,16 +98,14 @@ app.use(homepilg);
 app.use(loginPilgrim); 
 app.use(loginOrganizer);
 app.use(group);
-
-
-app.use(hujjguide);
+app.use('/hujjGuide',hujjguide);
 
 
 // Start the server + database
 mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.net/all-data?retryWrites=true&w=majority&appName=Cluster0")
 .then(() => {app.listen(port, () => {
     console.log(`http://localhost:${port}`);
-    writeConcern: { w: "majority" }
+    { w: "majority" }
 });
 })
 
