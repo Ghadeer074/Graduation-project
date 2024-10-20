@@ -83,7 +83,7 @@ const homeOrga = require("./routes/homeorg-route");
 const homepilg = require("./routes/homepil-route");
 const loginOrganizer = require('./routes/loginOrganizer');
 const loginPilgrim = require('./routes/loginPilgrim');
-const flights = require('./routes/flights');
+const flights = require('./routes/flightsRoute');
 
 // use the routes 
 app.use(routes);
