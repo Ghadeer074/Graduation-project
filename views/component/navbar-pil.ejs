@@ -1,109 +1,70 @@
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary" id="nav" style="background-color: #bb8c4e !important;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav"> <!-- Added the id="nav" -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
-  <!-- Container wrapper -->
+  
+  <!-- Inline Style Block -->
+  <style>
+    #nav {
+      background-color: #bb8c4e !important;
+    }
+
+    .nav-link {
+      font-size: large !important;
+      color:black; /* Add more custom styling here */
+    }
+
+    #lanicon {
+      margin: 0 15px;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .dropdown-menu {
+      right: 0;
+      left: auto;
+    }
+
+    .dropdown-menu-end {
+      transform: translateX(-50%);
+    }
+  </style>
+
   <div class="container-fluid">
-    <!-- Toggle button -->
-    <style>
-      #nav {
-        background-color: #bb8c4e;
-      }
+    <img src="./Images/Faridah app Logo.png" height="95" alt="Faridah Logo" loading="lazy"/>
+    <a class="navbar-brand" href="#"></a>
 
-      .nav-link {
-        font-size: large;
-      }
-
-      #lanicon {
-        margin: 0 15px;
-      }
-
-      body {
-        overflow-x: hidden; /* Prevent horizontal scroll */
-      }
-
-      /* Ensuring the dropdown stays within the viewport */
-      .dropdown-menu {
-        right: 0;
-        left: auto;
-      }
-
-      /* Prevent dropdown overflow */
-      .dropdown-menu-end {
-        transform: translateX(-50%); /* Ensure dropdown stays within page bounds */
-      }
-    </style>
-
-    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- Navbar brand -->
-      <a class="navbar-brand mt-2 mt-lg-0" href="#">
-        <img src="./Images/Faridah app Logo.png" height="95" alt="Faridah Logo" loading="lazy" />
-      </a>
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/homePilg">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Hajj guide</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">My flight</a>
+          <a class="nav-link" href="/hujjGuide">Hajj guide</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Chat</a>
         </li>
       </ul>
-      <!-- Left links -->
     </div>
-    <!-- Collapsible wrapper -->
-
-    <!-- Right elements -->
-    <div class="d-flex align-items-center">
-      <!-- Icon -->
-      <a class="link-secondary me-3" href="#">
-        <i class="fas fa-shopping-cart"></i>
-      </a>
-
-      <!-- Change language icon -->
-       
-     <!-- Change language icon -->
-<!-- Globe icon with dropdown for language selection -->
-<div class="dropdown">
-  <i id="lanicon" class="bi bi-globe fs-1 dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></i>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#" data-lang="en">English</a>
-    <a class="dropdown-item" href="#" data-lang="ar">Arabic</a>
   </div>
-</div>
 
-
-      <!-- Avatar Dropdown -->
-      <div class="dropdown">
-        <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
-          role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-          <img src="https://via.placeholder.com/150" class="rounded-circle" height="35" alt="profile photo" loading="lazy" />
-        </a>
-        <!-- Key Fix: Align the dropdown properly and prevent overflow -->
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar" data-popper-config='{"modifiers": [{"name": "preventOverflow", "options": {"boundary": "viewport"}}]}'>
-          <li><a class="dropdown-item" href="#">Logout</a></li>
-        </ul>
-      </div>
+  <!-- Change language icon -->
+  <div class="dropdown">
+    <i id="lanicon" class="bi bi-globe fs-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></i> <!-- Adjusted fs-3 for size -->
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#" data-lang="en">English</a>
+      <a class="dropdown-item" href="#" data-lang="ar">Arabic</a>
     </div>
-    <!-- Right elements -->
   </div>
-  <!-- Container wrapper -->
 
-  <!-- MDB Bootstrap JS -->
+  <!-- JavaScript includes -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
-<!-- Include your custom translate.js file -->
-<script src="/JavaScript/translate.js"></script>
-
-
+  <script src="/JavaScript/translate.js"></script> <!-- Correctly linking the custom translate.js file -->
 </nav>
-<!-- Navbar -->

@@ -7,9 +7,10 @@
     <title>Hajj Guide</title>
     <!-- css ربط ملف -->
     <link rel="stylesheet" href="/css/style-hujjGuide.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <%- include('./component/navbar-pil.ejs') %>
 </head>
 <body>
-
     <!-- الهيدر الرئيسي للصفحة -->
     <div class="header">
         Hajj Guide
@@ -137,11 +138,10 @@
                 <button class="toggle-details" onclick="toggleDetails(6)"> Details</button>
             </div>
         </div>
-
     </div>
 
     <!-- JavaScript ربط ملف لتحكم في إظهار وإخفاء التفاصيل -->
     <script src="/JavaScript/script-hujjGuide.js"></script>
-
+    <%- include('./component/footer.ejs') %>
 </body>
 </html>

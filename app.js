@@ -158,6 +158,9 @@ app.post('/signup-pilgrim', (req, res) => {
 });*/
 
 // delete flights data/info 
+app.get('/navbar-test', (req, res) => {
+    res.render('navbar-test');
+});
 
 
 
