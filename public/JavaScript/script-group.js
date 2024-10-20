@@ -1,5 +1,5 @@
-  // تعريف العناصر
-const addGroupBtn = document.getElementById('addGroupBtn');
+ // تعريف العناصر
+/*const addGroupBtn = document.getElementById('addGroupBtn');
 const addGroupPopup = document.getElementById('addGroupPopup');
 const closeAddPopup = document.getElementById('closeAddPopup');
 const addGroupForm = document.getElementById('addGroupForm');
@@ -89,17 +89,193 @@ editGroupForm.addEventListener('submit', async (e) => {
     if (response.ok) {
         location.reload(); // إعادة تحميل الصفحة بعد التحديث
     }
+});*/
+
+
+function validateGroupForm(groupNumber, governorate, groupSize) {
+    // Use greedy validation approach to check inputs
+    return [
+        /^\d{1,10}$/.test(groupNumber) ? null : "Group Number must be a number and up to 10 digits.",
+        /^[a-zA-Z\s]+$/.test(governorate) ? null : "Governorate must contain only letters.",
+        (groupSize >= 1 && groupSize <= 60) ? null : "Group Size must be a number between 1 and 60."
+    ].filter(Boolean); // Filter out null values
+}
+
+// Show Add Group Popup
+document.getElementById("addGroupBtn").onclick = function () {
+    document.getElementById("addGroupPopup").style.display = "block";
+};
+
+// Close Add Group Popup
+document.getElementById("closeAddPopup").onclick = function () {
+    document.getElementById("addGroupPopup").style.display = "none";
+};
+
+// Handle Add Group Form Submission
+document.getElementById("addGroupForm").onsubmit = function (event) {
+    event.preventDefault();  // Prevent default form submission behavior
+
+    const groupNumber = document.getElementById("groupNumber").value;
+    const governorate = document.getElementById("governorate").value;
+    const groupSize = document.getElementById("groupSize").value;
+
+    const errors = validateGroupForm(groupNumber, governorate, groupSize);
+
+    if (errors.length > 0) {
+        alert(errors.join('\n')); // Show error messages
+    } else {
+        // Prepare the data to be sent in the add request
+        const newGroupData = {
+            groupNumber: groupNumber,
+            governorate: governorate,
+            groupSize: groupSize
+        };
+
+        // Send the add group request to the server
+        fetch('/groups', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newGroupData)
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById("addGroupPopup").style.display = "none"; // Hide popup after success
+                location.reload(); // Reload the page to see the new group
+            } else {
+                throw new Error('Failed to add the group.');
+            }
+        })
+        .catch(error => {
+            console.error('Error adding group:', error);
+            alert('An error occurred while adding the group.');
+        });
+    }
+};
+
+// Handle Edit Group functionality
+const editBtns = document.querySelectorAll(".edit-btn");
+editBtns.forEach(btn => {
+    btn.onclick = function () {
+        const groupId = this.getAttribute("data-id");
+        document.getElementById("editGroupId").value = groupId;
+
+        // Fetch group data and populate the form
+        fetch(`/groups/${groupId}`)
+            .then(response => response.json())
+            .then(group => {
+                document.getElementById("editGroupNumber").value = group.groupNumber;
+                document.getElementById("editGovernorate").value = group.governorate;
+                document.getElementById("editGroupSize").value = group.groupSize;
+                document.getElementById("editGroupPopup").style.display = "block";
+            })
+            .catch(error => {
+                console.error('Error fetching group data:', error);
+                alert('An error occurred while fetching the group data.');
+            });
+    };
 });
 
-// إظهار نافذة حذف المجموعة
-document.querySelectorAll('.delete-btn').forEach(button => {
-    button.addEventListener('click', (e) => {
-        groupIdToDelete = e.target.getAttribute('data-id');
-        deleteGroupPopup.style.display = 'block';
-    });
+// Close Edit Group Popup
+document.getElementById("closeEditPopup").onclick = function () {
+    document.getElementById("editGroupPopup").style.display = "none";
+};
+
+// Handle Edit Group Form Submission
+document.getElementById("editGroupForm").onsubmit = function (event) {
+    event.preventDefault();  // Prevent default form submission behavior
+
+    const groupId = document.getElementById("editGroupId").value;
+    const groupNumber = document.getElementById("editGroupNumber").value;
+    const governorate = document.getElementById("editGovernorate").value;
+    const groupSize = document.getElementById("editGroupSize").value;
+
+    const errors = validateGroupForm(groupNumber, governorate, groupSize);
+
+    if (errors.length > 0) {
+        alert(errors.join('\n')); // Show error messages
+    } else {
+        // Prepare the data to be sent in the edit request
+        const editedGroupData = {
+            groupNumber: groupNumber,
+            governorate: governorate,
+            groupSize: groupSize
+        };
+
+        // Send the update request
+        fetch(`/editGroup/${groupId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(editedGroupData)
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById("editGroupPopup").style.display = "none"; // Hide popup after success
+                location.reload(); // Reload the page to see the changes
+            } else {
+                throw new Error('Failed to update the group.');
+            }
+        })
+        .catch(error => {
+            console.error('Error updating group:', error);
+            alert('An error occurred while updating the group.');
+        });
+    }
+};
+
+// Show Delete Confirmation Popup
+const deleteBtns = document.querySelectorAll(".delete-btn");
+let groupIdToDelete;
+deleteBtns.forEach(btn => {
+    btn.onclick = function () {
+        groupIdToDelete = this.getAttribute("data-id");
+
+        // Fetch group details and show Group Number in delete confirmation
+        fetch(`/groups/${groupIdToDelete}`)
+            .then(response => response.json())
+            .then(group => {
+                document.getElementById("deleteConfirmationMessage").innerText = `Are you sure you want to delete Group Number: ${group.groupNumber}?`;
+                document.getElementById("deleteGroupPopup").style.display = "block";
+            })
+            .catch(error => {
+                console.error('Error fetching group data for deletion:', error);
+                alert('An error occurred while fetching group data.');
+            });
+    };
 });
 
-// إغلاق نافذة حذف المجموعة
-cancelDeleteBtn.addEventListener('click', () => {
-    deleteGroupPopup.style.display = 'none';
-});
+// Close Delete Confirmation Popup
+document.getElementById("closeDeletePopup").onclick = function () {
+    document.getElementById("deleteGroupPopup").style.display = "none";
+};
+
+// Confirm Deletion
+document.getElementById("confirmDeleteBtn").onclick = function () {
+    fetch(`/deleteGroup/${groupIdToDelete}`, { method: 'POST' })
+        .then(() => {
+            document.getElementById("deleteGroupPopup").style.display = "none"; // Hide popup
+            location.reload(); // Reload the page to reflect changes
+        })
+        .catch(error => {
+            console.error('Error deleting group:', error);
+            alert('An error occurred while deleting the group.');
+        });
+};
+
+// Cancel Deletion
+document.getElementById("cancelDeleteBtn").onclick = function () {
+    document.getElementById("deleteGroupPopup").style.display = "none";
+};
+
+
+
+
+
+
+
+
+
+

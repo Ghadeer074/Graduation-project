@@ -85,6 +85,8 @@ const homepilg = require("./routes/homepil-route");
 const loginOrganizer = require('./routes/loginOrganizer');
 const loginPilgrim = require('./routes/loginPilgrim');
 const group = require('./routes/groupRoutes');
+
+
 const hujjguide = require('./routes/hajjGuideRoute');
 
 // use the routes 
@@ -103,7 +105,7 @@ app.use('/hujjGuide',hujjguide);
 mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.net/all-data?retryWrites=true&w=majority&appName=Cluster0")
 .then(() => {app.listen(port, () => {
     console.log(`http://localhost:${port}`);
-    writeConcern: { w: "majority" }
+    { w: "majority" }
 });
 })
 
@@ -223,6 +225,6 @@ io.on('connection', (socket) => {
 ////////////////////////////////////////////////////////////////
 //s//
 // استيراد التوجيهات
-const groupRoutes = require('./routes/groupRoutes');
+//const groupRoutes = require('./routes/groupRoutes');
 const { parseArgs } = require('util');
-app.use('/', groupRoutes);
+//app.use('/', groupRoutes);
