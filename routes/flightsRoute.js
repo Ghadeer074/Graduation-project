@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const flightsController = require('../controllers/flightsController');
+const flightsController = require('../controllers/flights');
 
 // Route to display the flights management page
 router.get('/', flightsController.getFlights);
