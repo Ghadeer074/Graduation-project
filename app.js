@@ -84,6 +84,7 @@ const homeOrga = require("./routes/homeorg-route");
 const homepilg = require("./routes/homepil-route");
 const loginOrganizer = require('./routes/loginOrganizer');
 const loginPilgrim = require('./routes/loginPilgrim');
+const hujjguide = require('./routes/hajjGuideRoute');
 
 // use the routes 
 app.use(routes);
@@ -93,7 +94,7 @@ app.use(homeOrga);
 app.use(homepilg);
 app.use(loginPilgrim); 
 app.use(loginOrganizer);
-
+app.use(hujjguide);
 
 
 // Start the server + database
