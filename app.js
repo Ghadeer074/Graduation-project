@@ -15,7 +15,7 @@ const mongoose = require('mongoose');
 const Organizer = require("./models/userorg");
 const Pilgrim = require("./models/userpil");
 const Chat = require('./models/chat');
-const FlightModel = require('./models/flight')
+const flights = require('./routes/flightsRoute');
 
 //socket
 const socketIo = require('socket.io');
@@ -61,7 +61,7 @@ app.use(express.static('public'));
 // Set EJS as the templating engine
 app.set('views', path.join(__dirname, 'views')); 
 app.set('view engine', 'ejs');
-
+app.use('/flights',flights);
 
 // Handle a GET request (for AJAX)
 app.get('/data', (req, res) => {
@@ -84,7 +84,6 @@ const homeOrga = require("./routes/homeorg-route");
 const homepilg = require("./routes/homepil-route");
 const loginOrganizer = require('./routes/loginOrganizer');
 const loginPilgrim = require('./routes/loginPilgrim');
-const flights = require('./routes/flightsRoute');
 
 // use the routes 
 app.use(routes);
@@ -94,7 +93,7 @@ app.use(homeOrga);
 app.use(homepilg);
 app.use(loginPilgrim); 
 app.use(loginOrganizer);
-app.use(flights);
+
 
 
 // Start the server + database

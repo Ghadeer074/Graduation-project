@@ -5,7 +5,11 @@ exports.getFlights = async (req, res) => {
         const flights = await FlightModel.find();
         res.render('flights', { flights });
     } catch (error) {
-        res.status(500).send(error);
+        console.error('Error fetching flights:', error);
+        res.status(500).render('error', { 
+            message: 'Failed to fetch flights', 
+            error: error 
+        });
     }
 };
 
@@ -15,7 +19,8 @@ exports.addFlight = async (req, res) => {
         await newFlight.save();
         res.status(201).json({ message: 'Flight added successfully' });
     } catch (error) {
-        res.status(500).json({ error: 'Failed to add flight' });
+        console.error('Error adding flight:', error);
+        res.status(500).json({ error: 'Failed to add flight', details: error.message });
     }
 };
 
@@ -27,7 +32,8 @@ exports.getFlightById = async (req, res) => {
         }
         res.json(flight);
     } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch flight' });
+        console.error('Error fetching flight by ID:', error);
+        res.status(500).json({ error: 'Failed to fetch flight', details: error.message });
     }
 };
 
@@ -39,7 +45,8 @@ exports.editFlight = async (req, res) => {
         }
         res.json({ message: 'Flight updated successfully', flight: updatedFlight });
     } catch (error) {
-        res.status(500).json({ error: 'Failed to update flight' });
+        console.error('Error updating flight:', error);
+        res.status(500).json({ error: 'Failed to update flight', details: error.message });
     }
 };
 
@@ -51,6 +58,7 @@ exports.deleteFlight = async (req, res) => {
         }
         res.json({ message: 'Flight deleted successfully' });
     } catch (error) {
-        res.status(500).json({ error: 'Failed to delete flight' });
+        console.error('Error deleting flight:', error);
+        res.status(500).json({ error: 'Failed to delete flight', details: error.message });
     }
 };
