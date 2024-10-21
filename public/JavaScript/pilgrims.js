@@ -72,11 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const countriesData = {
         "US": {
             name: "United States",
-            provinces: ["Alabama", "Alaska", "Arizona", /* ... other US states ... */]
+            provinces: ["Alabama", "Alaska", "Arizona","Atlanta","Austin","Baltimore","Boston","Charlotte",
+                "Chicago","Cincinnati","Cleveland","Dallas","Denver","Detroit","El Paso","Fort Worth","Fresno",
+                "Houston","Indianapolis","Jacksonville","Kansas City","Las Vegas","Los Angeles", /* ... other US states ... */]
         },
         "SA": {
             name: "Saudi Arabia",
-            provinces: ["Riyadh", "Makkah", "Madinah", /* ... other Saudi provinces ... */]
+            provinces: ["Riyadh", "Makkah", "Madinah","Jeddah","Dammam","Abha","Al-Ahsa","Taif","Tayma",
+            "Unayzah","Wadi Al-Dawasir","Al Jaef","Al Kharj ","Muhayil Asir","Najra","Qalwa","Qassim","Jizan","Yanbu","Sakaka",/* ... other Saudi provinces ... */]
         },
         // ... Add other countries here ...
     };

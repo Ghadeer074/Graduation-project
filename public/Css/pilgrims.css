@@ -164,7 +164,7 @@ table .button:hover {
 }
 
 .form-group {
-    flex: 0 0 48%;
+    flex: 0 0 31%; /* Changed from 48% to 31% to fit 3 fields */
     margin-bottom: 15px;
 }
 
@@ -242,43 +242,42 @@ table .button:hover {
         margin-bottom: 20px;
     }
 }
-.edit-btn{
-    background-color:#01ace5 !important;
-    
+
+.edit-btn {
+    background-color: #01ace5 !important;
 }
+
 td > .button {
     display: inline-block;
     margin-right: 5px;
     width: auto;
-
 }
-.delete-btn{
-    background-color:#e5011f !important;
 
-
+.delete-btn {
+    background-color: #e5011f !important;
 }
 
 /* Add this to ensure buttons don't wrap to next line */
 td {
     white-space: nowrap;
 }
-.pop-delete-btn{
-    background-color:#e5011f !important;
-    color:white;
-    height:45px;
-    width:100px;
-    border:none;
-    border-radius:10px;
-    font-weight:bold;
 
-}.pop-cancel-btn{
-    background-color:#b7854c !important;
-    color:white;
-    height:45px;
-    width:100px;
-    font-weight:bold;
-    border:none;
-    border-radius:10px;
+.pop-delete-btn {
+    background-color: #e5011f !important;
+    color: white;
+    height: 45px;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
 
-
+.pop-cancel-btn {
+    background-color: #b7854c !important;
+    color: white;
+    height: 45px;
+    width: 100px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
 }
