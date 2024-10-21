@@ -22,6 +22,7 @@ module.exports = router;*/
 const express = require('express');
 const router = express.Router();
 const Group = require('../models/group');
+const Pilgrim = require('../models/pilgrim'); // Ensure this is the correct path for your Pilgrim model
 
 // Add a new group
 router.post('/groups', async (req, res) => {
@@ -68,6 +69,19 @@ router.get('/groups', async (req, res) => {
     }
 });
 
+// Fetch users in a specific group
+router.get('/groups/:id/users', async (req, res) => {
+    try {
+        // Make sure to adjust the query to fetch users related to the specific group
+        const pilgrims = await Pilgrim.find({ groupId: req.params.id }); // Adjust according to your Pilgrim model
+        res.render('pilgrims', { pilgrims }); // Pass 'pilgrims' to the view
+    } catch (error) {
+        console.error("Error fetching users:", error);
+        res.status(500).send("Error fetching users");
+    }
+});
+
+
 // Fetch group details for editing
 router.get('/groups/:id', async (req, res) => {
     try {
@@ -79,5 +93,7 @@ router.get('/groups/:id', async (req, res) => {
     }
 });
 
-module.exports = router; 
+module.exports = router;
+
+
 
