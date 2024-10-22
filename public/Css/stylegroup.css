@@ -1,8 +1,9 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8ebe4; 
+    background-color: #f8ebe4 !important; 
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    overflow-x: hidden;
     color: #4e3621; /* لون النص */
 }
 
@@ -13,13 +14,17 @@ h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     border-bottom: 2px solid #d3b8a3;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #addGroupBtn {
     display: block;
     margin-left: auto; /* محاذاة الزر لليمين */
     margin-bottom: 20px;
+    margin-right: 24px;
+    margin-top: 15px;
     background-color: #a86f3e; 
     color: white;
     padding: 12px 24px;

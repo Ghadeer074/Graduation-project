@@ -1,11 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav"> <!-- Added the id="nav" -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav" style="background-color: #bb8c4e !important;"> <!-- Added the id="nav" -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
   
   <!-- Inline Style Block -->
   <style>
     #nav {
-      background-color: #bb8c4e !important;
+    background-color: #bb8c4e !important;
+    margin-bottom: 10px;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%; 
     }
 
     .nav-link {
@@ -15,6 +22,7 @@
 
     #lanicon {
       margin: 0 15px;
+      margin-right: 55px !important;
     }
 
     body {
@@ -29,9 +37,15 @@
     .dropdown-menu-end {
       transform: translateX(-50%);
     }
+    .container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px; /* Set a max-width to keep it aligned */
+}
+
   </style>
 
-  <div class="container-fluid">
+  <div class="container-fluid" id="container">
     <img src="./Images/Faridah app Logo.png" height="95" alt="Faridah Logo" loading="lazy"/>
     <a class="navbar-brand" href="#"></a>
 
