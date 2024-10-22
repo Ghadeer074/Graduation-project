@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/css/stylegroup.css"> 
     <link rel="stylesheet" href="/css/footer.css">
+<<<<<<< HEAD
     <%- include('./component/navbar-org.ejs') %>
+=======
+>>>>>>> c38f0bad98156d3d66726c06ef66d0e832096415
 </head>
 <body>
     <h1>Pilgrim Groups</h1>
@@ -26,7 +29,7 @@
         <tbody>
             <% if (groups && groups.length > 0) { %>
                 <% groups.forEach(function(group) { %>
-                    <tr>
+                    <tr data-id="<%= group._id %>">
                         <td><%= group.groupNumber %></td>
                         <td><%= group.governorate %></td>
                         <td><%= group.groupSize %></td>
@@ -89,7 +92,27 @@
             </form>
         </div>
     </div>
+<<<<<<< HEAD
     <script src="/JavaScript/script-group.js"></script> 
     <%- include('./component/footer.ejs') %>
+=======
+
+    <script src="/JavaScript/script-group.js"></script>
+    <script>
+        // JavaScript to handle row click
+        document.querySelectorAll('#groupsTable tbody tr').forEach(row => {
+            row.addEventListener('click', (event) => {
+                // Check if the click is not on a button
+                if (!event.target.matches('.edit-btn') && !event.target.matches('.delete-btn')) {
+                    const groupId = row.getAttribute('data-id');
+                    window.location.href = '/groups/' + groupId + '/users';
+                }
+            });
+        });
+    </script>
+>>>>>>> c38f0bad98156d3d66726c06ef66d0e832096415
 </body>
 </html>
+
+
+
