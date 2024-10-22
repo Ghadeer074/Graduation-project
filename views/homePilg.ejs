@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="/Images/Faridah app Logo.png" type="image/png">
     <title>Pilgrim Homepage</title>
     <link rel="stylesheet" href="/css/style-homePil.css">
-    <%- include('./component/navbar-pil.ejs') %>
+ 
 </head>
 <body>
     <div class="container">
@@ -54,16 +54,16 @@
 
     <!-- Chat with Organizer Section (Initially Hidden) -->
     <section class="chat-section" id="chatSection" style="display: none;">
-    <h2 class="section-title">Chat with Organizer</h2>
-    <div class="chat-box" id="chat-box"></div>
-    <div class="chat-input">
-        <input type="text" id="messageInput" placeholder="Type your message here">
-        <button id="sendButton">Send</button>
-    </div>
-</section>
+        <h2 class="section-title">Chat with Organizer</h2>
+        <div class="chat-box" id="chat-box"></div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Type your message here">
+            <button id="sendButton">Send</button>
+        </div>
+    </section>
 </main>
     </div>
-    <%- include('./component/footer.ejs') %>
+   
     <script src="/socket.io/socket.io.js"></script>
     <script src="/JavaScript/homePilgScript.js"></script>
 </body>
