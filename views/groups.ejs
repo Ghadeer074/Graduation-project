@@ -6,14 +6,11 @@
     <link rel="shortcut icon" href="/Images/Faridah app Logo.png" type="image/png">
     <title>Pilgrim Groups Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/public/Css/stylegroup.css"> 
+    <link rel="stylesheet" href="/css/stylegroup.css"> 
+    <link rel="stylesheet" href="/css/footer.css">
 </head>
 <body>
     <h1>Pilgrim Groups</h1>
-<<<<<<< HEAD
-=======
-    <a href="/" class="button">Home</a>
->>>>>>> 883ae155492e051e29f651d792171ed5939aa264
     <button class="button" id="addGroupBtn">Add Group</button>
     
     <table id="groupsTable">
@@ -28,18 +25,13 @@
         <tbody>
             <% if (groups && groups.length > 0) { %>
                 <% groups.forEach(function(group) { %>
-                    <tr>
-                        <td><%= group.groupID %></td>
-                        <td><%= group.groupProvince %></td>
+                    <tr data-id="<%= group._id %>">
+                        <td><%= group.groupNumber %></td>
+                        <td><%= group.governorate %></td>
                         <td><%= group.groupSize %></td>
                         <td>
-<<<<<<< HEAD
-                            <button class="button edit-btn" data-id="<%= group.groupID %>">Edit</button>
-                            <button class="button delete-btn" data-id="<%= group.groupID %>">Delete</button>
-=======
                             <button class="button edit-btn" data-id="<%= group._id %>">Edit</button>
                             <button class="button delete-btn" data-id="<%= group._id %>">Delete</button>
->>>>>>> 883ae155492e051e29f651d792171ed5939aa264
                         </td>
                     </tr>
                 <% }) %>
@@ -56,19 +48,19 @@
         <div class="popup-content">
             <span class="close" id="closeAddPopup">&times;</span>
             <h2>Add New Group</h2>
-            <form id="addGroupForm">
-                <label for="groupNumber">Group id :</label>
-                <input type="text" id="groupNumber" name="groupID" required><br>
-                <label for="governorate">province:</label>
-                <input type="text" id="governorate" name="groupProvince" required><br>
-                <label for="maxMembers">Max Members:</label>
-                <input type="number" id="maxMembers" name="groupSize" required><br>
+            <form id="addGroupForm" action="/groups" method="POST">
+                <label for="groupNumber">Group Number:</label>
+                <input type="text" id="groupNumber" name="groupNumber" required><br>
+                <label for="governorate">Governorate:</label>
+                <input type="text" id="governorate" name="governorate" required><br>
+                <label for="groupSize">Max Members:</label>
+                <input type="number" id="groupSize" name="groupSize" required><br>
                 <button type="submit" class="button">Add Group</button>
             </form>
         </div>
     </div>
 
-    <!-- Delete Group Popup -->
+    <!-- Delete Group Confirmation Popup -->
     <div class="popup" id="deleteGroupPopup">
         <div class="popup-content">
             <span class="close" id="closeDeletePopup">&times;</span>
@@ -84,18 +76,34 @@
         <div class="popup-content">
             <span class="close" id="closeEditPopup">&times;</span>
             <h2>Edit Group</h2>
-            <form id="editGroupForm">
-                <label for="editGroupNumber">Group id:</label>
-                <input type="text" id="editGroupNumber" name="groupID" required><br>
-                <label for="editGovernorate">province:</label>
-                <input type="text" id="editGovernorate" name="groupProvince" required><br>
-                <label for="editMaxMembers">Max Members:</label>
-                <input type="number" id="editMaxMembers" name="groupSize" required><br>
-                <button type="submit" class="button">Update Group</button>
+            <form id="editGroupForm" method="POST">
+                <input type="hidden" id="editGroupId" name="groupId" required>
+                <label for="editGroupNumber">Group Number:</label>
+                <input type="text" id="editGroupNumber" name="groupNumber" required>
+                <label for="editGovernorate">Governorate:</label>
+                <input type="text" id="editGovernorate" name="governorate" required>
+                <label for="editGroupSize">Max Members:</label>
+                <input type="number" id="editGroupSize" name="groupSize" required>
+                <button type="submit" class="button">Save Changes</button>
             </form>
         </div>
     </div>
 
-    <script src="/public/JavaScript/script-group.js"></script> 
+    <script src="/JavaScript/script-group.js"></script>
+    <script>
+        // JavaScript to handle row click
+        document.querySelectorAll('#groupsTable tbody tr').forEach(row => {
+            row.addEventListener('click', (event) => {
+                // Check if the click is not on a button
+                if (!event.target.matches('.edit-btn') && !event.target.matches('.delete-btn')) {
+                    const groupId = row.getAttribute('data-id');
+                    window.location.href = '/groups/' + groupId + '/users';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
+
+
+

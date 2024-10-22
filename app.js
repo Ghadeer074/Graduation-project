@@ -15,6 +15,7 @@ const mongoose = require('mongoose');
 const Organizer = require("./models/userorg");
 const Pilgrim = require("./models/userpil");
 const Chat = require('./models/chat');
+const flights = require('./routes/flightsRoute');
 
 //socket
 const socketIo = require('socket.io');
@@ -60,7 +61,7 @@ app.use(express.static('public'));
 // Set EJS as the templating engine
 app.set('views', path.join(__dirname, 'views')); 
 app.set('view engine', 'ejs');
-
+app.use('/flights',flights);
 
 // Handle a GET request (for AJAX)
 app.get('/data', (req, res) => {
@@ -83,7 +84,12 @@ const homeOrga = require("./routes/homeorg-route");
 const homepilg = require("./routes/homepil-route");
 const loginOrganizer = require('./routes/loginOrganizer');
 const loginPilgrim = require('./routes/loginPilgrim');
-const flights = require('./routes/flights');
+const group = require('./routes/groupRoutes');
+const pilgrim = require('./routes/pilgrims');
+
+
+
+const hujjguide = require('./routes/hajjGuideRoute');
 
 // use the routes 
 app.use(routes);
@@ -93,14 +99,16 @@ app.use(homeOrga);
 app.use(homepilg);
 app.use(loginPilgrim); 
 app.use(loginOrganizer);
-app.use(flights);
+app.use(group);
+app.use('/hujjGuide',hujjguide);
+app.use(pilgrim);
 
 
 // Start the server + database
 mongoose.connect("mongodb+srv://ghadeer:0iuDyICJDPAKxGur@cluster0.ifqxq.mongodb.net/all-data?retryWrites=true&w=majority&appName=Cluster0")
 .then(() => {app.listen(port, () => {
     console.log(`http://localhost:${port}`);
-    writeConcern: { w: "majority" }
+    { w: "majority" }
 });
 })
 
@@ -143,10 +151,21 @@ app.post('/signup-pilgrim', (req, res) => {
 
 //});
 
-// fetch flight data to show for organizer
-
+// fetch and display flight data in flights page 
+/*app.get('/flights', (req,res) => {
+    FlightModel.find()
+    .then((results)=> {
+    res.render("flights",{});
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+});*/
 
 // delete flights data/info 
+app.get('/navbar-test', (req, res) => {
+    res.render('navbar-test');
+});
 
 
 
@@ -209,5 +228,6 @@ io.on('connection', (socket) => {
 ////////////////////////////////////////////////////////////////
 //s//
 // استيراد التوجيهات
-const groupRoutes = require('./routes/groupRoutes');
-app.use('/', groupRoutes);
+//const groupRoutes = require('./routes/groupRoutes');
+const { parseArgs } = require('util');
+//app.use('/', groupRoutes);

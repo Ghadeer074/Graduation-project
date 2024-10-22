@@ -16,4 +16,5 @@ const Pildata = new Schema({
 
 const Pilgrim = mongoose.model("Pilgrim",Pildata);
 
+
 module.exports = Pilgrim;
