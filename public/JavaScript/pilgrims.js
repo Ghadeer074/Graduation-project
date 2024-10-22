@@ -70,16 +70,97 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Nationality and Province handling
     const countriesData = {
-        "US": {
-            name: "United States",
-            provinces: ["Alabama", "Alaska", "Arizona","Atlanta","Austin","Baltimore","Boston","Charlotte",
-                "Chicago","Cincinnati","Cleveland","Dallas","Denver","Detroit","El Paso","Fort Worth","Fresno",
-                "Houston","Indianapolis","Jacksonville","Kansas City","Las Vegas","Los Angeles", /* ... other US states ... */]
+        
+        "Saudi": {
+            name: "Saudi ",
+            provinces: ["Riyadh", "Makkah", "Madinah","Eastern Province","Tabuk","Hail","Northern Borders"
+                 ,"Al Jaef","Al Kharj "," Asir","Najra",,"Qassim","Jizan",/* ... other Saudi provinces ... */]
         },
-        "SA": {
-            name: "Saudi Arabia",
-            provinces: ["Riyadh", "Makkah", "Madinah","Jeddah","Dammam","Abha","Al-Ahsa","Taif","Tayma",
-            "Unayzah","Wadi Al-Dawasir","Al Jaef","Al Kharj ","Muhayil Asir","Najra","Qalwa","Qassim","Jizan","Yanbu","Sakaka",/* ... other Saudi provinces ... */]
+
+        "Emirati": {
+            name: "Emirati",
+            provinces: ["Abu Dhabi","Dubai","Sharjah","Ajman"," Umm Al-Quwain","Fujairah","Ras Al Khaimah", /* ... other emirati states ... */]
+        },
+        "Oman": {
+            name: "Oman",
+            provinces: ["Muscat","Dhofar","Musandam","Al Dakhiliyah","Ash Sharqiyah","Al Dhahirah","Al Batinah"
+                ,"Al Sharqiyah North","Al Sharqiyah South","Al Wusta", ]
+        },
+
+        "Yemen": {
+            name: "Yemen",
+            provinces: ["Aden","Taiz","Hadhramaut","Al Mahwit","Ibb","Saada","Raymah","Al Hudaydah","Abyan","Lahij"
+                ,"Shabwa","Al Bayda","Al Mahrah","Al Jawf","Marib","Dhamar","Al Dhalee","Socotra","Hajjah","Al Bayda", /* ... other states ... */]
+        },
+
+        "India": {
+            name: "India",
+            provinces: ["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Gujarat","Haryana","Karnataka","Kerala"
+                ,"Madhya Pradesh","Maharashtra","Rajasthan","Tamil Nadu","Telangana","Odisha","West Bengal", /* ... other states ... */]
+        },
+
+        "Bangladeshi": {
+            name: "Bangladeshi",
+            provinces: ["Dhaka","Chittagong","Khulna","Rajshahi","Sylhet","Barisal","Mymensingh","Rangpur", /* ... other states ... */]
+        },
+
+        "Egyptian": {
+            name: "Egyptian",
+            provinces: ["Cairo","Giza","Alexandria","Dakahlia","Beheira","Sharqia","Gharbia","Menoufia","Qalyubia"
+                      ,"afr El Sheikh","Fayoum","Beni Suef","Minya","Assiut","Sohag","Qena","Aswan","Luxor","Red Sea","Matruh",
+                        "New Valley","North Sinai","South Sinai","Damietta","Port Said","Ismailia","Suez", /* ... other states ... */]
+        },
+        
+            
+        "Jordanian": {
+            name: "Jordanian",
+            provinces: ["Amman","Balqa","Zarqa","Madaba","Irbid","Mafraq","Jerash","Ajloun","Karak",
+                "Tafilah","Maan","Aqaba", /* ... other states ... */]
+        },
+        "Lebanese": {
+            name: "Lebanese",
+            provinces: ["Beirut","Mount Lebanon","North Lebanon","South Lebanon","Nabatieh","Bekaa","Akkar","Jbeil", /* ... other states ... */]
+        },
+        "Syrian": {
+            name: "Syrian",
+            provinces: ["Damascus","Aleppo","Homs","Latakia","Tartus","Idlib","Daraa","As-Suwayda","Al-Hasakah","Raqqa",
+                "Deir ez-Zor","Quneitra","Hama","Rural Damascus", /* ... other  states ... */]
+        },
+
+        "Qatari": {
+            name: "Qatari",
+            provinces: ["Doha","Al Rayyan","Al Wakrah","Al Khor","Al Daayen","Umm Salal",
+                "Al Sheehaniya","Madinat ash Shamal", /* ... other  states ... */]
+        },
+
+        "Bahraini": {
+            name: "Bahraini",
+            provinces: ["Capital","Muharraq","Southern","Northern","Southern Governorate", /* ... other  states ... */]
+        },
+
+        "Moroccan": {
+            name: "Moroccan",
+            provinces: ["Tanger-Tetouan-Al Hoceima","Eastern","Fes-Meknes","Rabat-Salé-Kénitra","Béni Mellal-Khénifra",
+                "Casablanca-Settat","Marrakech-Safi","Draa-Tafilalet","Souss-Massa","Guelmim-Oued Noun","Laâyoune-Sakia El Hamra","Dakhla-Oued Ed-Dahab", /* ... other  states ... */]
+        },
+
+        "Tunisian": {
+            name: "Tunisian",
+            provinces: ["Tunis",,"Ariana","Béja","Ben Arous","Bizerte","Kasserine","Kairouan","Sfax","Sousse","Gabès","Medenine","Tozeur","Jendouba","Mahdia",
+                "Siliana","Sidi Bouzid","Nabeul","Zaghouan","Monastir","La Manouba","Gafsa","Tataouine","Ain Draham","Béja", /* ... other  states ... */]
+        },
+
+        "Algerianri": {
+            name: "Algerianri",
+            provinces: ["Algiers","Oran","Constantine","Annaba","Blida","Bordj Bou Arréridj","Batna","Sétif","Tizi Ouzou","Tlemcen","Béjaïa","Skikda"
+                ,"Chlef","Médéa","Aïn Defla","Saida","Guelma","El Oued","Tébessa","Biskra","Khenchela","Souk Ahras","Laghouat","Relizane","Tipaza","MSila","Naama","Ain Temouchent", /* ... other  states ... */]
+        },
+
+        
+        "Sudanese": {
+            name: "Sudanese",
+            provinces: ["Khartoum","North Kordofan","South Kordofan","Gedaref","Sennar","Blue Nile","White Nile","River Nile","Northern","Red Sea"
+                ,"Al Jazirah","South Darfur","West Darfur","North Darfur","East Darfur","Kassala","West Kordofan","Central Darfur","Abyei Area", /* ... other  states ... */]
         },
         // ... Add other countries here ...
     };
