@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pilgrim Management</title>
+    <link rel="shortcut icon" href="/Images/Faridah app Logo.png" type="image/png">
     <link rel="stylesheet" href="/css/pilgrims.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <nav><%- include('./component/navbar-org.ejs') %></nav> 
 </head>
 <body>
     <h1>Pilgrim Management</h1>
@@ -202,5 +205,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="/JavaScript/pilgrims.js"></script>
+    <%- include('./component/footer.ejs') %>
 </body>
 </html>
