@@ -132,3 +132,8 @@ form {
     margin-top: 10px;
     text-align: left;
 }
+
+.success-message {
+    color: green;
+    margin-bottom: 15px;
+}

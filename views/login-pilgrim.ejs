@@ -10,6 +10,9 @@
 <body>
     <div class="container">
         <h1>Hello</h1>
+        <% if (typeof message !== 'undefined') { %>
+            <div class="success-message"><%= message %></div>
+        <% } %>
         <form id="loginForm" method="post" action="/login-pilgrim">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -19,9 +22,8 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter Password" required>
             </div>
-            <div class="options">
-                <label for="rememberMe">Remember Me <input type="checkbox" id="rememberMe"></label>
-                <div class="forgot-password"><a href="#">Forgot password?</a></div>
+            <div class="forgot-password">
+                <a href="/forgot-password-pilgrim">Forgot password?</a>
             </div>
             <button type="submit" class="login-btn">Log in</button>
             <div class="error" id="errorMessage"></div>
