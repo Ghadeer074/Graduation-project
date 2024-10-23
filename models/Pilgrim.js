@@ -8,7 +8,7 @@ const pilgrimSchema = new mongoose.Schema({
     province: { type: String, required: true },
     dateAndTime: { type: Date, required: true },
     destination: { type: String, required: true },
-    groupId: { type: mongoose.Schema.Types.ObjectId, ref: 'Group', required: true } /////////
+    
 });
 
 //const PilgrimModel = mongoose.model('PilgrimModel', pilgrimSchema);

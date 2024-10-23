@@ -101,7 +101,7 @@ app.use(loginPilgrim);
 app.use(loginOrganizer);
 app.use(group);
 app.use('/hujjGuide',hujjguide);
-app.use(pilgrim);
+app.use('/pilgrims',pilgrim);
 
 
 // Start the server + database
