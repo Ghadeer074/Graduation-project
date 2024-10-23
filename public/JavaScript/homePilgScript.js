@@ -1,5 +1,10 @@
 const socket = io(); // إنشاء اتصال مع الخادم
 
+// تسجيل الحاج عند الاتصال
+const pilgrim = { name: "Pilgrim 1", socketId: socket.id };
+socket.emit('registerPilgrim', pilgrim);
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const homeButton = document.querySelector('.menu-item:nth-child(1)'); // Home button
     const chatButton = document.querySelector('.menu-item:nth-child(3)'); // Chat with Organizer button

@@ -1,3 +1,17 @@
+const socket = io(); // إنشاء اتصال مع الخادم
+
+// استقبال قائمة الحجاج المتصلين عند الاتصال
+socket.on('updatePilgrimList', function (pilgrims) {
+    const pilgrimList = document.getElementById('pilgrimList');
+    pilgrimList.innerHTML = ''; // تفريغ القائمة
+
+    pilgrims.forEach(pilgrim => {
+        const li = document.createElement('li');
+        li.textContent = pilgrim.name;
+        pilgrimList.appendChild(li);
+    });
+});
+
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'bar',
@@ -38,17 +52,13 @@ function showDashboard() {
     // إظهار الكارد والداشبورد
     document.getElementById("infoSection").style.display = "block";
     document.getElementById("dashboardSection").style.display = "block";
-    
     // إخفاء قسم الشات
     document.getElementById("chatSection").style.display = "none";
-    
     // إضافة التعديل المطلوب لإعادة تنسيق العرض للكارد والداشبورد
     document.querySelector('.user-info-section').style.display = 'flex';
     document.querySelector('.dashboard').style.display = 'flex';
 }
 
-
-const socket = io(); // إنشاء اتصال مع الخادم
 
 // تسجيل الدخول عند تحميل الصفحة ***********
 window.onload = function() {

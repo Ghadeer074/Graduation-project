@@ -117,7 +117,7 @@ canvas {
     display: flex;
     flex-direction: column;
     width: 68%;
-    margin-top: 60px;
+    margin-top: 110px;
 }
 
 .chat-section h2 {
@@ -163,6 +163,43 @@ canvas {
 }
 
 .chat-input button:hover {
+    background-color: #d18e48;
+}
+
+.pilgrim-list {
+    width: 30%;
+    float: left;
+    border-right: 1px solid #e0e0e0;
+    padding-right: 50px;
+    text-align: center;
+    
+}
+
+.chat-box-container {
+    width: 70%;
+    float: right;
+    padding-left: 50px;
+}
+
+.pilgrim-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pilgrim-list li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+}
+
+.pilgrim-list li.unread {
+    font-weight: bold;
+    background-color: #e0a660;
+    color: white;
+}
+
+.pilgrim-list li:hover {
     background-color: #d18e48;
 }
 

@@ -170,18 +170,26 @@ app.get('/navbar-test', (req, res) => {
 
 
 // send and receive message in chat **********************************
-const users = {};  // كائن لتخزين معرف الـ socket بناءً على الـ userId أو الـ username
+const users = {};  // تخزين socket بناءً على userId أو username
+let connectedPilgrims = []; // قائمة الحجاج المتصلين
 
+// إدارة اتصالات Socket.io
 io.on('connection', (socket) => {
-    console.log('A user connected:', socket.id);
+    console.log('User connected:', socket.id);
 
-    // تسجيل المستخدم عند الاتصال
+    // **تسجيل المستخدم (منظم أو حاج) عند الاتصال**
     socket.on('login', (userData) => {
         users[userData.userId] = socket.id;  // تخزين socket.id للمستخدم
         console.log(`User ${userData.username} connected with socket id: ${socket.id}`);
+        
+        // إذا كان المستخدم حاجًا، يتم إضافته إلى قائمة الحجاج المتصلين
+        if (userData.role === 'pilgrim') {
+            connectedPilgrims.push({ name: userData.username, socketId: socket.id });
+            io.emit('updatePilgrimList', connectedPilgrims); // تحديث القائمة للجميع
+        }
     });
 
-    // استقبال الرسائل من العميل
+    // **استقبال الرسائل من العميل (منظم أو حاج)**
     socket.on('sendMessage', async (data) => {
         try {
             // حفظ الرسالة في قاعدة البيانات
@@ -210,9 +218,15 @@ io.on('connection', (socket) => {
         }
     });
 
-    // عند انقطاع الاتصال
+    // **عند انقطاع الاتصال**
     socket.on('disconnect', () => {
         console.log('A user disconnected:', socket.id);
+
+        // إزالة المستخدم من قائمة الحجاج إذا كان حاجًا
+        connectedPilgrims = connectedPilgrims.filter(p => p.socketId !== socket.id);
+        io.emit('updatePilgrimList', connectedPilgrims); // تحديث القائمة
+
+        // إزالة المستخدم من قائمة المستخدمين المتصلين
         for (const userId in users) {
             if (users[userId] === socket.id) {
                 delete users[userId];
