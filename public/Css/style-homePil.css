@@ -3,17 +3,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+}*
 
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    height: 100vh;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure it fills the full viewport height */
+    margin: 0;
+    padding: 0;
+    background-color: #F7E8DE; 
 }
 
 .container {
     display: flex;
     width: 100%;
+    flex-grow: 1;
+    justify-content: space-between; 
 }
 
 .sidebar {
@@ -23,6 +29,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%; /* Ensure the sidebar stretches full height */
+    position: fixed; /* Fix the sidebar on the left */
+    top: 112px;
+    left: 0;
+    bottom: 0;
 }
 
 .logo img {
@@ -56,16 +67,25 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 80px;
 }
 
-.user-info-section,
+.user-info-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: -67px;
+}
+
 .flight-info-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     margin-bottom: 30px;
-    margin-top: 45px;
+    margin-top: -18px;
 }
 
 .section-title {
@@ -92,10 +112,6 @@ body {
     font-size: 1.2em;
     line-height: 1.5;
 }
-
-
-
-/* Chat Section Styling */
 
 
 /* Chat Section Styling */
