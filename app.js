@@ -168,6 +168,20 @@ app.get('/navbar-test', (req, res) => {
 });
 
 
+//view pilg info in home page
+app.get('/signup-pilgrim', (req, res) => {
+    Pilgrim.find()
+    .then((result) => {
+        console.log('Query Result:', result);  // Check if result contains the expected data
+        res.render('homePilg', { arr: result });
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+});
+
+
+
 
 // send and receive message in chat **********************************
 const users = {};  // تخزين socket بناءً على userId أو username
