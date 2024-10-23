@@ -10,6 +10,9 @@
 <body>
     <div class="container">
         <h1>Hello</h1>
+        <% if (typeof message !== 'undefined') { %>
+            <div class="success-message"><%= message %></div>
+        <% } %>
         <form id="orgLoginForm" method="post" action="/login-organizer">
             <div class="form-group">
                 <label for="organization">Organization Number</label>
@@ -21,13 +24,13 @@
             </div>
             <div class="options">
                 <label for="rememberMe">Remember Me <input type="checkbox" id="rememberMe"></label>
-                <div class="forgot-password"><a href="#">Forgot password?</a></div>
+                <div class="forgot-password"><a href="/forgot-password-organizer">Forgot password?</a></div>
             </div>
             <button type="submit" class="login-btn">Log in</button>
             <div class="error" id="errorMessage"></div>
         </form>
         <div class="create-account">
-            Don't have an account? <a href="signUp-organizer">Create</a>
+            Don't have an account? <a href="signup-organizer">Create</a>
         </div>
     </div>
 

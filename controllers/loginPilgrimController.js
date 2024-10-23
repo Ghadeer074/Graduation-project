@@ -50,7 +50,6 @@ exports.resetPassword = async (req, res) => {
             pilgrim.password = newPassword;
             await pilgrim.save();
             console.log('Password updated successfully');
-            // إعادة توجيه إلى صفحة تسجيل الدخول مع رسالة النجاح
             res.render('login-pilgrim', { message: 'Your password has been updated successfully. You can log in now.' });
         } else {
             return res.status(400).send('Password update error: User does not exist.');
@@ -60,6 +59,7 @@ exports.resetPassword = async (req, res) => {
         return res.status(500).send('Server error.');
     }
 };
+
 
 
 
