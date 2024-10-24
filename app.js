@@ -16,11 +16,29 @@ const Organizer = require("./models/userorg");
 const Pilgrim = require("./models/userpil");
 const Chat = require('./models/chat');
 const flights = require('./routes/flightsRoute');
+const bodyParser = require('body-parser'); ///
 
 //socket
 const socketIo = require('socket.io');
 const server = http.createServer(app); // إنشاء خادم HTTP باستخدام Express
 const io = socketIo(server);
+
+const session = require('express-session');
+
+
+/*app.use(session({
+    secret: 'your-secret-key', // يجب تغييره إلى قيمة سرية حقيقية
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // يجب أن يكون true إذا كنت تستخدم HTTPS
+}));*/
+
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // تأكد من أنك تستخدم HTTPS إذا كانت `cookie.secure` true
+}));
 
 
 // Middleware
