@@ -186,7 +186,7 @@ app.get('/navbar-test', (req, res) => {
 });
 
 
-//ابديييييت
+/*//ابديييييت
 const session = require('express-session');
 app.use(
     session({
@@ -195,7 +195,7 @@ app.use(
         saveUninitialized: true,
         cookie: { maxAge: 60000 * 60 } // ساعة واحدة
     })
-);
+);*/
 
 
 
