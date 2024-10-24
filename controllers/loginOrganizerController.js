@@ -4,21 +4,30 @@ const Organizer = require('../models/userorg');
 exports.login = async (req, res) => {
     const { password, organization } = req.body;  
     try {
+        // البحث عن المنظم باستخدام رقم المنظمة
         const organizer = await Organizer.findOne({ OrganizationNumber: organization });  
         if (!organizer) {
             return res.status(400).send('Invalid organization number');
         }
 
+        // التحقق من كلمة المرور
         if (organizer.password !== password) {
             return res.status(400).send('Invalid password');
         }
 
-        res.redirect('/homeOrg'); 
+        // تخزين رقم المنظمة وuserId في الجلسة
+        req.session.organizationNumber = organizer.OrganizationNumber; // تخزين رقم المنظمة
+        req.session.userId = organizer._id; // تخزين userId
+
+        res.redirect('/homeOrg'); // إعادة التوجيه إلى صفحة المنظم
     } catch (error) {
         console.error('Error occurred during login:', error); 
         res.status(500).send('Server error'); 
     }
 };
+
+
+
 
 // Verify Identity Controller
 exports.verifyIdentity = async (req, res) => {
