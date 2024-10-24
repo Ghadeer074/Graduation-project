@@ -168,17 +168,57 @@ app.get('/navbar-test', (req, res) => {
 });
 
 
+//ابديييييت
+const session = require('express-session');
+app.use(
+    session({
+        secret: 'your-secret-key',
+        resave: false,
+        saveUninitialized: true,
+        cookie: { maxAge: 60000 * 60 } // ساعة واحدة
+    })
+);
+
+
+
+
+
 //view pilg info in home page
 app.get('/signup-pilgrim', (req, res) => {
     Pilgrim.find()
     .then((result) => {
-        console.log('Query Result:', result);  // Check if result contains the expected data
+        console.log('Pilgrim data:', result);
         res.render('homePilg', { arr: result });
     })
     .catch((err) => {
-        console.log(err);
+        console.error('Database error:', err);
     });
 });
+
+
+
+
+
+
+
+
+// --- راوت صفحة الهوم للحاج ---
+/*app.get('/signup-pilgrim', async (req, res) => {
+    try {
+        const username = req.session.pilgrimUsername;
+        const pilgrim = await Pilgrim.findOne({ username });
+
+        if (!pilgrim) {
+            return res.status(404).send('Pilgrim not found');
+        }
+
+        res.render('homePilg', { pilgrim }); // تأكد من تمرير الكائن pilgrim هنا
+    } catch (error) {
+        console.error('Error occurred while retrieving pilgrim data:', error);
+        res.status(500).send('Server error');
+    }
+});*/
+
 
 
 
@@ -190,20 +230,18 @@ let connectedPilgrims = []; // قائمة الحجاج المتصلين
 // إدارة اتصالات Socket.io
 io.on('connection', (socket) => {
     console.log('User connected:', socket.id);
-
-    // **تسجيل المستخدم (منظم أو حاج) عند الاتصال**
     socket.on('login', (userData) => {
         users[userData.userId] = socket.id;  // تخزين socket.id للمستخدم
         console.log(`User ${userData.username} connected with socket id: ${socket.id}`);
         
-        // إذا كان المستخدم حاجًا، يتم إضافته إلى قائمة الحجاج المتصلين
+        //      إضافته الحاج إلى قائمة الحجاج المتصلين
         if (userData.role === 'pilgrim') {
             connectedPilgrims.push({ name: userData.username, socketId: socket.id });
             io.emit('updatePilgrimList', connectedPilgrims); // تحديث القائمة للجميع
         }
     });
 
-    // **استقبال الرسائل من العميل (منظم أو حاج)**
+    // **استقبال الرسائل   (منظم أو حاج)**
     socket.on('sendMessage', async (data) => {
         try {
             // حفظ الرسالة في قاعدة البيانات
@@ -216,7 +254,7 @@ io.on('connection', (socket) => {
 
             await newMessage.save();  // حفظ الرسالة
 
-            // إرسال الرسالة إلى المستلم إذا كان متصلاً
+            // إرسال الرسالة 
             const targetSocketId = users[data.receiverId];
             if (targetSocketId) {
                 io.to(targetSocketId).emit('receiveMessage', {
