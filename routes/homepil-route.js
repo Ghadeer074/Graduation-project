@@ -1,11 +1,8 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const homepil = require("../controllers/control-home-pil.js");
+const homePilController = require('../controllers/control-home-pil');
 
-// reandring request page (home-pil page) - get request 
-//router.get('/', homepil.homePil);
-router.get('/homePilg', homepil.homePil);
+// Route to display the pilgrim's homepage
+router.get('/homePilg', homePilController.homePil);
+
 module.exports = router;
-
-
-

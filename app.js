@@ -164,21 +164,6 @@ app.post('/signup-pilgrim', (req, res) => {
 });
 
 
-// add flight data/info and save them to the database
-//app.post('/flights', (req,res) => {
-
-//});
-
-// fetch and display flight data in flights page 
-/*app.get('/flights', (req,res) => {
-    FlightModel.find()
-    .then((results)=> {
-    res.render("flights",{});
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
-});*/
 
 // delete flights data/info 
 app.get('/navbar-test', (req, res) => {
@@ -186,56 +171,69 @@ app.get('/navbar-test', (req, res) => {
 });
 
 
-/*//ابديييييت
-const session = require('express-session');
-app.use(
-    session({
-        secret: 'your-secret-key',
-        resave: false,
-        saveUninitialized: true,
-        cookie: { maxAge: 60000 * 60 } // ساعة واحدة
-    })
-);*/
 
-
-
-
-
-//view pilg info in home page
-app.get('/signup-pilgrim', (req, res) => {
-    Pilgrim.find()
-    .then((result) => {
-        console.log('Pilgrim data:', result);
-        res.render('homePilg', { arr: result });
-    })
-    .catch((err) => {
-        console.error('Database error:', err);
-    });
+// Display pilgrim information on their homepage
+app.get('/homePilg', (req, res) => {
+    Pilgrim.findOne({ username: req.session.pilgrimUsername }) // Fetch based on the current session's user
+        .then((pilgrim) => {
+            if (!pilgrim) {
+                return res.status(404).send('Pilgrim not found');
+            }
+            // Render the view with pilgrim data
+            res.render('homePilg', { pilgrim });
+        })
+        .catch((err) => {
+            console.error('Database error:', err);
+            res.status(500).send('Server error');
+        });
 });
 
 
 
+app.get('/homePilg', (req, res) => {
+    Pilgrim.findOne({ username: req.session.pilgrimUsername })
+        .then((pilgrim) => {
+            if (!pilgrim) {
+                return res.status(404).send('Pilgrim not found');
+            }
+            // Fetch flight data associated with the pilgrim
+            Flight.findOne({ pilgrimId: pilgrim._id }) // Assuming pilgrimId is used to associate flights
+                .then((flight) => {
+                    res.render('homePilg', { pilgrim, flight });
+                })
+                .catch((err) => {
+                    console.error('Flight fetch error:', err);
+                    res.status(500).send('Error fetching flight data');
+                });
+        })
+        .catch((err) => {
+            console.error('Database error:', err);
+            res.status(500).send('Server error');
+        });
+});
 
 
+app.get('/homeOrg', (req, res) => {
+    const organizationNumber = req.query.organizationNumber;  // Get the organization number from the query string
 
-
-
-// --- راوت صفحة الهوم للحاج ---
-/*app.get('/signup-pilgrim', async (req, res) => {
-    try {
-        const username = req.session.pilgrimUsername;
-        const pilgrim = await Pilgrim.findOne({ username });
-
-        if (!pilgrim) {
-            return res.status(404).send('Pilgrim not found');
-        }
-
-        res.render('homePilg', { pilgrim }); // تأكد من تمرير الكائن pilgrim هنا
-    } catch (error) {
-        console.error('Error occurred while retrieving pilgrim data:', error);
-        res.status(500).send('Server error');
+    if (!organizationNumber) {
+        return res.status(400).send('No organization number provided');
     }
-});*/
+
+    Organizer.findOne({ OrganizationNumber: organizationNumber }) // Fetch the organizer based on the organization number
+        .then((organizer) => {
+            if (!organizer) {
+                return res.status(404).send('Organizer not found');
+            }
+
+            // Render the view with organizer data
+            res.render('homeOrg', { organizer });
+        })
+        .catch((err) => {
+            console.error('Database error:', err);
+            res.status(500).send('Server error');
+        });
+});
 
 
 

@@ -1,30 +1,30 @@
-const Organizer = require('../models/userorg'); 
-
+const Organizer = require('../models/userorg'); // Import the organizer model
 
 exports.login = async (req, res) => {
-    const { password, organization } = req.body;  
+    const { organization, password } = req.body;  // Fetch organization from the form (not organizationNumber)
+
+    console.log('Organization Number:', organization);  // Log the organization number for debugging
+
     try {
-        // البحث عن المنظم باستخدام رقم المنظمة
-        const organizer = await Organizer.findOne({ OrganizationNumber: organization });  
+        const organizer = await Organizer.findOne({ OrganizationNumber: organization });  // Query based on organization
+        console.log('Organizer Found:', organizer);  // Log if organizer is found
+
         if (!organizer) {
             return res.status(400).send('Invalid organization number');
         }
 
-        // التحقق من كلمة المرور
         if (organizer.password !== password) {
             return res.status(400).send('Invalid password');
         }
 
-        // تخزين رقم المنظمة وuserId في الجلسة
-        req.session.organizationNumber = organizer.OrganizationNumber; // تخزين رقم المنظمة
-        req.session.userId = organizer._id; // تخزين userId
-
-        res.redirect('/homeOrg'); // إعادة التوجيه إلى صفحة المنظم
+        // Redirect to the organizer's homepage with the organization number in the query string
+        res.redirect(`/homeOrg?organizationNumber=${encodeURIComponent(organizer.OrganizationNumber)}`);
     } catch (error) {
-        console.error('Error occurred during login:', error); 
-        res.status(500).send('Server error'); 
+        console.error('Error occurred during login:', error);
+        res.status(500).send('Server error');
     }
 };
+
 
 
 

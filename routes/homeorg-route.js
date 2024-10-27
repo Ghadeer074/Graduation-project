@@ -1,10 +1,8 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const homeorg = require("../controllers/control-home-org.js");
+const homeOrgController = require('../controllers/control-home-org');  // Import the controller
 
-// reandring request page (home-org page) - get request 
-//router.get('/', homeorg.homeOrg);
-router.get('/homeOrg', homeorg.homeOrg);
+// Route to render the organizer's homepage
+router.get('/homeOrg', homeOrgController.homeOrg);
 
 module.exports = router;
-

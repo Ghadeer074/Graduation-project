@@ -10,18 +10,16 @@ exports.getPilgrims = async (req, res) => {
     }
 };
 
-/// Add a new pilgrim
+// Add a new pilgrim
 exports.addPilgrim = async (req, res) => {
     try {
         const newPilgrim = new PilgrimModel(req.body);
         await newPilgrim.save();
-        // بعد الحفظ بنجاح، إعادة توجيه المستخدم إلى الصفحة الرئيسية لعرض قائمة الحجاج
-        res.redirect('/');
+        res.redirect('/');  // Redirect to the homepage or pilgrims list after adding
     } catch (error) {
         res.status(500).json({ error: 'Failed to add pilgrim' });
     }
 };
-
 
 // Get a single pilgrim by ID
 exports.getPilgrimById = async (req, res) => {
@@ -30,7 +28,7 @@ exports.getPilgrimById = async (req, res) => {
         if (!pilgrim) {
             return res.status(404).json({ error: 'Pilgrim not found' });
         }
-        res.json(pilgrim);
+        res.json(pilgrim); // You can adjust this to render a page if needed
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch pilgrim' });
     }

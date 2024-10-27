@@ -13,7 +13,8 @@ exports.login = async (req, res) => {
             return res.status(400).send('Invalid password');
         }
 
-        res.redirect('/homePilg'); 
+        // Redirect to the home page with the username as a query parameter
+        res.redirect(`/homePilg?username=${encodeURIComponent(pilgrim.username)}`); 
     } catch (error) {
         console.error('Error occurred during login:', error); 
         res.status(500).send('Server error'); 

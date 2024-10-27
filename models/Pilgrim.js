@@ -8,13 +8,10 @@ const pilgrimSchema = new mongoose.Schema({
     province: { type: String, required: true },
     dateAndTime: { type: Date, required: true },
     destination: { type: String, required: true },
-    
+
+    flightId: { type: mongoose.Schema.Types.ObjectId, ref: 'FlightModel' } // Link to the Flight
 });
 
-//const PilgrimModel = mongoose.model('PilgrimModel', pilgrimSchema);
-const PilgrimModel = mongoose.models.PilgrimModel || mongoose.model('PilgrimModel', pilgrimSchema);/////////
-
+const PilgrimModel = mongoose.model('PilgrimModel', pilgrimSchema);
 
 module.exports = PilgrimModel;
-
-

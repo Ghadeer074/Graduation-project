@@ -32,27 +32,36 @@
         <h2 class="section-title">Pilgrim Information</h2>
         <div class="info-card">
             <div class="info-details">
-               <p><strong>Name: </strong> </p>
-                <p><strong>Gender:  </strong> </p>
-                <p><strong>Birthday:  </strong> </p>
-                <p><strong>Nationality: </strong> </p>
-                <p><strong>Province: </strong> </p>
+                <p><strong>First Name: </strong> <%= pilgrim.firstName %></p>
+                <p><strong>Last Name: </strong> <%= pilgrim.lastName %></p>
+                <p><strong>Gender: </strong> <%= pilgrim.gender %></p>
+                <p><strong>Date of Birth: </strong> <%= pilgrim.dob %></p>
+                <p><strong>Nationality: </strong> <%= pilgrim.nationality %></p>
+                <p><strong>Province: </strong> <%= pilgrim.province %></p>
             </div>
         </div>
     </section>
+    
 
     <!-- Title and Flight Info Card -->
     <section class="flight-info-section" id="flight-info-section">
         <h2 class="section-title">Flight Information</h2>
         <div class="info-card">
             <div class="info-details">
-                <p><strong>Flight Number:</strong> <!--database--></p>
-                <p><strong>Date:</strong> </p>
-                <p><strong>Time:</strong> </p>
-                <p><strong>Destination:</strong> </p>
+                <% if (flight && flight.flightNumber) { %>
+                    <p><strong>Flight Number:</strong> <%= flight.flightNumber %></p>
+                    <p><strong>Date:</strong> <%= flight.date ? flight.date.toDateString() : 'N/A' %></p>
+                    <p><strong>Time:</strong> <%= flight.time %></p>
+                    <p><strong>Destination:</strong> <%= flight.destination %></p>
+                <% } else { %>
+                    <p>No flight information available.</p>
+                <% } %>
             </div>
         </div>
     </section>
+    
+    
+    
 
     <!-- Chat with Organizer Section (Initially Hidden) -->
     <section class="chat-section" id="chatSection" style="display: none;">
