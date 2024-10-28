@@ -269,16 +269,3 @@ document.getElementById("confirmDeleteBtn").onclick = function () {
 document.getElementById("cancelDeleteBtn").onclick = function () {
     document.getElementById("deleteGroupPopup").style.display = "none";
 };
-
-
-
-
-
-
-
-
-
-
-
-
-

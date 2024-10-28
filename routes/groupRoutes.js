@@ -222,96 +222,66 @@ module.exports = router;*/
 
 const express = require('express');
 const router = express.Router();
-const Group = require('../models/group'); // تأكد من أن هذا هو مسار الموديل الصحيح
-const Pilgrim = require('../models/pilgrim'); // تأكد من أن هذا هو مسار موديل الحجاج
+const Group = require('../models/group');
+const Pilgrim = require('../models/pilgrim'); // Ensure this is the correct path for your Pilgrim model
 
-// دالة لتوليد groupID جديد
-function generateNewGroupID() {
-    return `group-${Date.now()}-${Math.floor(Math.random() * 1000)}`; // مثال لتوليد رقم فريد
-}
-
-// إضافة مجموعة جديدة
+// Add a new group
 router.post('/groups', async (req, res) => {
     try {
-        const userId = req.session.userId; 
-        if (!userId) {
-            return res.status(400).send('User ID is required');
-        }
-
-        // توليد groupID جديد
-        const newGroupID = generateNewGroupID(); // توليد قيمة جديدة لـ groupID
-
-        // تحقق من أن req.body ليس فارغًا
-        if (!req.body || Object.keys(req.body).length === 0) {
-            return res.status(400).send('Request body is required');
-        }
-
-        // إنشاء كائن مجموعة جديد باستخدام البيانات من الطلب
-        const newGroup = new Group({
-            ...req.body,
-            userId: userId,
-            groupID: newGroupID // إضافة groupID الجديد
-        });
-
-        // تأكد من أن groupID ليس null
-        if (!newGroup.groupID) {
-            return res.status(400).send('groupID cannot be null');
-        }
-
-        // حفظ المجموعة في قاعدة البيانات
+        const newGroup = new Group(req.body);
         await newGroup.save();
-        res.redirect('/groups'); 
+        res.redirect('/groups'); // Redirect to groups page after adding
     } catch (error) {
-        console.error('Error adding group:', error);
-        res.status(500).send('Error adding group');
+        console.error("Error adding group:", error);
+        res.status(500).send("Error adding group");
     }
 });
 
-// عرض جميع المجموعات
-router.get('/groups', async (req, res) => {
-    try {
-        const userId = req.session.userId; 
-        const groups = await Group.find({ userId: userId });
-
-        res.render('groups', { groups });
-    } catch (error) {
-        console.error('Error fetching groups:', error);
-        res.status(500).send('Error fetching groups');
-    }
-});
-
-// تعديل مجموعة
+// Edit an existing group
 router.post('/editGroup/:id', async (req, res) => {
     try {
         await Group.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        res.redirect('/groups'); 
+        res.redirect('/groups'); // Redirect to groups page after editing
     } catch (error) {
-        console.error('Error updating group:', error);
-        res.status(500).send('Error updating group');
+        console.error("Error updating group:", error);
+        res.status(500).send("Error updating group");
     }
 });
 
-// حذف مجموعة
+// Delete a group
 router.post('/deleteGroup/:id', async (req, res) => {
     try {
         await Group.findByIdAndDelete(req.params.id);
-        res.redirect('/groups'); 
+        res.redirect('/groups'); // Redirect to groups page after deleting
     } catch (error) {
-        console.error('Error deleting group:', error);
-        res.status(500).send('Error deleting group');
+        console.error("Error deleting group:", error);
+        res.status(500).send("Error deleting group");
+    }
+});
+
+// Display groups page
+router.get('/groups', async (req, res) => {
+    try {
+        const groups = await Group.find(); // Fetch all groups
+        res.render('groups', { groups }); // Render groups page with data
+    } catch (error) {
+        console.error("Error fetching groups:", error);
+        res.status(500).send("Error fetching groups");
     }
 });
 
 // Fetch users in a specific group
 router.get('/groups/:id/users', async (req, res) => {
     try {
-        const pilgrims = await Pilgrim.find({ groupId: req.params.id });
-        res.render('pilgrims', { pilgrims });
+        // Make sure to adjust the query to fetch users related to the specific group
+        const pilgrims = await Pilgrim.find({ groupId: req.params.id }); // Adjust according to your Pilgrim model
+        res.render('pilgrims', { pilgrims }); // Pass 'pilgrims' to the view
     } catch (error) {
         console.error("Error fetching users:", error);
         res.status(500).send("Error fetching users");
     }
 });
+
 
 // Fetch group details for editing
 router.get('/groups/:id', async (req, res) => {
@@ -325,7 +295,6 @@ router.get('/groups/:id', async (req, res) => {
 });
 
 module.exports = router;
-
 
 
 

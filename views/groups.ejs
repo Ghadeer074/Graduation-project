@@ -90,24 +90,9 @@
         </div>
     </div>
     <script src="/JavaScript/script-group.js"></script> 
-
-    <script>
-        // JavaScript to handle row click
-        document.querySelectorAll('#groupsTable tbody tr').forEach(row => {
-            row.addEventListener('click', (event) => {
-                // Check if the click is not on a button
-                if (!event.target.matches('.edit-btn') && !event.target.matches('.delete-btn')) {
-                    const groupId = row.getAttribute('data-id');
-                    window.location.href = `/groups/${groupId}/users`; // تعديل الرابط لعرض الحجاج الخاصين بالمجموعة
-                }
-            });
-        });
-    </script>
-                <%- include('./component/footer.ejs') %>
-
+ 
 </body>
 </html>
-
 
 
 
