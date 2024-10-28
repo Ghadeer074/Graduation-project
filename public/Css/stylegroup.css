@@ -3,8 +3,9 @@ body {
     background-color: #f8ebe4 !important; 
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x:auto;
     color: #4e3621; /* لون النص */
+   
 }
 
 /* العنوان */

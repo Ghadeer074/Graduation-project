@@ -5,7 +5,7 @@ footer {
     padding: 5px 0;
     margin-top: 5px;
     color: #333 !important;
-    position: relative;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
